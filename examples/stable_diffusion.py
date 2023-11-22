@@ -75,20 +75,32 @@ class Decoder:
     self.conv_out = Conv2d(128, 3, 3, padding=1)
 
   def __call__(self, x):
+    import numpy as np
     x = self.conv_in(x)
+    debug_x = x.numpy()
+    print("decode debug conv_in", np.min(debug_x), np.max(debug_x))
     x = self.mid(x)
+    debug_x = x.numpy()
+    print("decode debug mid", np.min(debug_x), np.max(debug_x))
 
     for l in self.up[::-1]:
       print("decode", x.shape)
       for b in l['block']: x = b(x)
+      debug_x = x.numpy()
+      print("decode debug block", np.min(debug_x), np.max(debug_x))
       if 'upsample' in l:
         # https://pytorch.org/docs/stable/generated/torch.nn.functional.interpolate.html ?
         bs,c,py,px = x.shape
         x = x.reshape(bs, c, py, 1, px, 1).expand(bs, c, py, 2, px, 2).reshape(bs, c, py*2, px*2)
         x = l['upsample']['conv'](x)
+        debug_x = x.numpy()
+        print("decode debug upsample", np.min(debug_x), np.max(debug_x))
       x.realize()
 
-    return self.conv_out(self.norm_out(x).swish())
+    out = self.conv_out(self.norm_out(x).swish())
+    debug_x = out.numpy()
+    print("decode debug conv_out", np.min(debug_x), np.max(debug_x))
+    return out
 
 class Encoder:
   def __init__(self):
@@ -214,11 +226,11 @@ class BasicTransformerBlock:
     return x
 
 class SpatialTransformer:
-  def __init__(self, channels, context_dim, n_heads, d_head):
+  def __init__(self, channels, context_dim, n_heads, d_head, num_layers=1):
     self.norm = GroupNorm(32, channels)
     assert channels == n_heads * d_head
     self.proj_in = Conv2d(channels, n_heads * d_head, 1)
-    self.transformer_blocks = [BasicTransformerBlock(channels, context_dim, n_heads, d_head)]
+    self.transformer_blocks = [BasicTransformerBlock(channels, context_dim, n_heads, d_head) for _ in range(num_layers)]
     self.proj_out = Conv2d(n_heads * d_head, channels, 1)
 
   def __call__(self, x, context=None):
@@ -595,6 +607,7 @@ class StableDiffusion:
 
 # this is sd-v1-4.ckpt
 FILENAME = Path(__file__).parents[1] / "weights/sd-v1-4.ckpt"
+Device.DEFAULT = "WEBGPU"
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='Run Stable Diffusion', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
