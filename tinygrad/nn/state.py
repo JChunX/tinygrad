@@ -58,6 +58,7 @@ def load_state_dict(model, state_dict, strict=True, verbose=True):
         if DEBUG >= 1: print(f"WARNING: not loading {k}")
         continue
       v.assign(state_dict[k].to(v.device)).realize()
+      if (Device.DEFAULT == "WEBGPU"): v.numpy() # WebGPU weight loading hack
 
 # torch support!
 

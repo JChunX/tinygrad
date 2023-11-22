@@ -84,7 +84,7 @@ class LRUAllocator:
     assert (curr_free := self._get_cur_free_space(device)) > space_to_free, f"out of memory - requested: {space_to_free/1e9:5.2f} GB, available: {curr_free/1e9:5.2f} GB"
 
   def _alloc_buffer(self, size, dtype, device, **kwargs):
-    self.ensure_has_free_space(size*dtype.itemsize, device)
+    #self.ensure_has_free_space(size*dtype.itemsize, device)
     while True:
       try:
         newbuf = self._do_alloc(max(1, size), dtype, device, **kwargs)
