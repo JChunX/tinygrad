@@ -590,7 +590,6 @@ class StableDiffusion:
 
 # this is sd-v1-4.ckpt
 FILENAME = Path(__file__).parents[1] / "weights/sd-v1-4.ckpt"
-Device.DEFAULT = "WEBGPU"
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='Run Stable Diffusion', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
