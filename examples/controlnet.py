@@ -656,14 +656,15 @@ if __name__ == "__main__":
   
   parser = argparse.ArgumentParser(description='Run ControlNet', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
   parser.add_argument('--steps', type=int, default=5, help='Number of steps in diffusion')
-  parser.add_argument('--control_image', type=str, default="examples/webgpu/controlnet/wheat_field_with_cypresses.png", help='Image to use as control')
-  parser.add_argument('--prompt', type=str, default="a high-quality painting of a starry night", help="Phrase to render")
+  parser.add_argument('--control_image', type=str, default="examples/webgpu/controlnet/vermeer.png", help='Image (512x512) to use as control')
+  parser.add_argument('--prompt', type=str, default="a photo of a cat")
   parser.add_argument('--out', type=str, default=Path(tempfile.gettempdir()) / "rendered.png", help="Output filename")
   parser.add_argument('--noshow', action='store_true', help="Don't show the image")
   parser.add_argument('--fp16', action='store_true', help="Cast the weights to float16")
   parser.add_argument('--timing', action='store_true', help="Print timing per step")
   parser.add_argument('--seed', type=int, help="Set the random latent seed")
   parser.add_argument('--guidance', type=float, default=7.5, help="Prompt strength")
+  parser.add_argument('--conditioning_scale', type=float, default=1.0, help="Conditioning strength")
   parser.add_argument('--canny_high', type=int, default=200, help="Canny high threshold")
   parser.add_argument('--canny_low', type=int, default=100, help="Canny low threshold")
   args = parser.parse_args()
@@ -733,13 +734,14 @@ if __name__ == "__main__":
       t.set_description("%3d %3d" % (index, timestep))
       with Timing("step in ", enabled=args.timing, on_exit=lambda _: f", using {GlobalCounters.mem_used/1e9:.2f} GB"):
         tid = Tensor([index])
+        print(canny_condition.shape)
         latent = run(model, canny_condition, unconditional_context, context, latent, Tensor(
-          [timestep]), alphas[tid], alphas_prev[tid], Tensor([args.guidance]), 1.0)
-        while (not latent.numpy().any() or (np.isnan(latent.numpy()).any())):
-          print("latent: ", latent.numpy().max())
+          [timestep]), alphas[tid], alphas_prev[tid], Tensor([args.guidance]), Tensor([args.conditioning_scale]))
         if args.timing: Device[Device.DEFAULT].synchronize()
     del run
 
+  while (not latent.numpy().any() or (np.isnan(latent.numpy()).any())):
+    print("retry latent memory read: ", latent.numpy().max())
   # upsample latent space to image with autoencoder
   x = model.decode(latent)
   print(x.shape)
