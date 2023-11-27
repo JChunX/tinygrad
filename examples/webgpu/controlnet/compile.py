@@ -36,7 +36,7 @@ FILENAME_CONTROLNET = Path(__file__).parents[3] / "weights/sd-controlnet-canny.b
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='Compile ControlNet', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
   parser.add_argument('--remoteweights', action='store_true', help="Use safetensors from Huggingface, or from local")
-  parser.add_argument('--weights_dir', type=str, default='/Volumes/NVME/cache', help="Directory to save weights to")
+  parser.add_argument('--weights_dir', type=str, default=os.path.dirname(__file__), help="Path to weights directory")
   args = parser.parse_args()
   Device.DEFAULT = "WEBGPU"
   
@@ -137,29 +137,33 @@ if __name__ == "__main__":
   }}
   """
 
-    
   base_url = ""
+  if not os.path.exists(args.weights_dir):
+    os.makedirs(args.weights_dir)
+    
   for step in sub_steps:
     prg += compile_step(model, step)
     
     if step.name == "diffusor":
       if args.remoteweights:
-        base_url = "https://huggingface.co/jchun/tinygrad-sd-control-f16/resolve/main/"
+        base_url = "https://huggingface.co/jchun/tinygrad-sd-controlnet-f16/resolve/main/"
       else:
         state = get_state_dict(model)
         safetensor_path = os.path.join(args.weights_dir, "net.safetensors")
         safetensor_conv_path = safetensor_path.replace(".safetensors", "_conv.safetensors")
-        if not os.path.exists(safetensor_path):
-          safe_save(state, safetensor_path) # TODO: is this saving all zeros??
-        if not os.path.exists(safetensor_conv_path):
-          convert_f32_to_f16(safetensor_path, # TODO: is this saving all zeros??
-                          safetensor_conv_path)
-        split_safetensor(safetensor_conv_path)
+        if not os.path.exists(os.path.join(args.weights_dir, "net_part0.safetensors")):
+          if not os.path.exists(safetensor_path):
+            print("Saving safetensors to: ", safetensor_path)
+            safe_save(state, safetensor_path)
+          if not os.path.exists(safetensor_conv_path):
+            print("Converting safetensors to f16...")
+            convert_f32_to_f16(safetensor_path,
+                            safetensor_conv_path)
+          print("Splitting safetensors...")
+          split_safetensor(safetensor_conv_path)
         os.remove(safetensor_path)
         os.remove(safetensor_conv_path)
         
-        # copy all safetensors from weights_dir to current directory
-        os.system(f"cp {os.path.join(args.weights_dir, '*.safetensors')} .")
         base_url = "."
     
   prekernel = f"""
