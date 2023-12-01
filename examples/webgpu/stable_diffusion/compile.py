@@ -156,7 +156,8 @@ if __name__ == "__main__":
         state = get_state_dict(model)
         safe_save(state, os.path.join(os.path.dirname(__file__), "net.safetensors"))
         convert_f32_to_f16("./net.safetensors", "./net_conv.safetensors")
-        split_safetensor("./net_conv.safetensors")
+        offsets = split_safetensor("./net_conv.safetensors")
+        print(f'Offsets: {offsets}')
         os.remove("net.safetensors")
         os.remove("net_conv.safetensors")
         base_url = "."

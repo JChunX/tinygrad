@@ -1,18 +1,18 @@
 import os
+import struct
+
 import argparse
 from collections import namedtuple
 from pathlib import Path
 from typing import Any, List, NamedTuple
 
+import numpy as np
+
 from tinygrad.ops import Device
-from tinygrad.nn.state import load_state_dict, torch_load, get_state_dict, safe_save
+from tinygrad.nn.state import load_state_dict, torch_load, get_state_dict, safe_save, safe_load_metadata
 from tinygrad.tensor import Tensor
 from extra.export_model import jit_model, compile_net
 
-from examples.webgpu.stable_diffusion.compile import (
-  convert_f32_to_f16,
-  split_safetensor
-)
 from examples.stable_diffusion import (
   StableDiffusion,
   download_file,
@@ -28,7 +28,63 @@ class Step(NamedTuple):
   name: str = ""
   input: List[Tensor] = []
   forward: Any = None
+  
+def convert_f32_to_f16(input_file, output_file):
+  with open(input_file, 'rb') as f:
+    metadata_length_bytes = f.read(8)
+    metadata_length = int.from_bytes(metadata_length_bytes, byteorder='little', signed=False)
+    metadata_json_bytes = f.read(metadata_length)
+    float32_values = np.fromfile(f, dtype=np.float32)
 
+  float16_values = float32_values.astype(np.float16)
+
+  with open(output_file, 'wb') as f:
+    f.write(metadata_length_bytes)
+    f.write(metadata_json_bytes)
+    float16_values.tofile(f)
+
+def split_safetensor(fn):
+  _, json_len, metadata = safe_load_metadata(fn)
+  # text_model_offset = 3772703308
+  chunk_size = 536870912
+
+  for k in metadata:
+    # safetensor is in fp16
+    # if (metadata[k]["data_offsets"][0] < text_model_offset):
+    metadata[k]["data_offsets"][0] = int(metadata[k]["data_offsets"][0]/2)
+    metadata[k]["data_offsets"][1] = int(metadata[k]["data_offsets"][1]/2)
+  
+  last_offset = 0
+  part_end_offsets = []
+
+  for k in metadata:
+    offset = metadata[k]['data_offsets'][0]
+
+    # if offset == text_model_offset:
+    #   break
+
+    part_offset = offset - last_offset
+    
+    if (part_offset >= chunk_size):
+      part_end_offsets.append(8+json_len+offset)
+      last_offset = offset
+
+  # text_model_start = int(text_model_offset/2)
+  net_bytes = bytes(open(fn, 'rb').read())
+  # part_end_offsets.append(text_model_start+8+json_len)
+  cur_pos = 0
+  
+  for i, end_pos in enumerate(part_end_offsets):
+    with open(f'./net_part{i}.safetensors', "wb+") as f:
+      f.write(net_bytes[cur_pos:end_pos])
+      cur_pos = end_pos
+
+  # with open(f'./net_textmodel.safetensors', "wb+") as f:
+  #   f.write(net_bytes[text_model_start+8+json_len:])
+  
+  return part_end_offsets
+
+# look into render bundles
 
 FILENAME_DIFFUSION = Path(__file__).parents[3] / "weights/sd-v1-4.ckpt"
 FILENAME_CONTROLNET = Path(__file__).parents[3] / "weights/sd-controlnet-canny.bin"
@@ -141,6 +197,8 @@ if __name__ == "__main__":
   if not os.path.exists(args.weights_dir):
     os.makedirs(args.weights_dir)
     
+  fp32_offsets = []
+    
   for step in sub_steps:
     prg += compile_step(model, step)
     
@@ -149,21 +207,58 @@ if __name__ == "__main__":
         base_url = "https://huggingface.co/jchun/tinygrad-sd-controlnet-f16/resolve/main/"
       else:
         state = get_state_dict(model)
+        
+        # save text model weights separately
+        text_model_keys = [k for k in state.keys() if 'cond_stage_model.transformer.text_model' in k]
+        text_model_state = {k: state[k] for k in text_model_keys}
+        text_model_safe_path = os.path.join(args.weights_dir, "net_textmodel.safetensors")
+        safe_save(text_model_state, text_model_safe_path)
+        text_model_size = int(os.popen(f"stat -f%z {text_model_safe_path}").read())
+        print("text_model_size: ", text_model_size)
+        
+        # save diffusion model weights in chunks
+        diffusion_model_keys = [k for k in state.keys() if 'cond_stage_model.transformer.text_model' not in k]
+        diffusion_model_state = {k: state[k] for k in diffusion_model_keys}
+        
         safetensor_path = os.path.join(args.weights_dir, "net.safetensors")
         safetensor_conv_path = safetensor_path.replace(".safetensors", "_conv.safetensors")
+        
         if not os.path.exists(os.path.join(args.weights_dir, "net_part0.safetensors")):
           if not os.path.exists(safetensor_path):
             print("Saving safetensors to: ", safetensor_path)
-            safe_save(state, safetensor_path)
+            safe_save(diffusion_model_state, safetensor_path)
           if not os.path.exists(safetensor_conv_path):
             print("Converting safetensors to f16...")
             convert_f32_to_f16(safetensor_path,
                             safetensor_conv_path)
           print("Splitting safetensors...")
           split_safetensor(safetensor_conv_path)
-        os.remove(safetensor_path)
-        os.remove(safetensor_conv_path)
+        if os.path.exists(safetensor_path):
+          os.remove(safetensor_path)
+        if os.path.exists(safetensor_conv_path):
+          os.remove(safetensor_conv_path) 
         
+        # read out f32 offsets for later
+        offset_count = 0
+        safetensors = sorted([os.path.join(args.weights_dir, f) for f in os.listdir(args.weights_dir) if 'net_part' in f])
+        for i, file in enumerate(safetensors):
+          filesize = int(os.popen(f"stat -f%z {file}").read())
+          # this is the uncompressed weights size
+          if i == 0:
+            with open(file, 'rb') as f:
+              # Read the first 8 bytes (safetensors metadata length)
+              bytes_data = f.read(8)
+              # Unpack the bytes to a 64-bit unsigned integer
+              N = struct.unpack('Q', bytes_data)[0]
+            fp32_size = 8 + N + 2 * (filesize - 8 - N) 
+          else:
+            fp32_size = filesize * 2
+          offset_count += fp32_size
+          fp32_offsets.append(offset_count)
+            
+        fp32_offsets[3] += text_model_size
+        
+        print("fp32_offsets: ", fp32_offsets)
         base_url = "."
     
   prekernel = f"""
@@ -175,22 +270,27 @@ if __name__ == "__main__":
     }};
 
   const getTensorBuffer = (safetensorParts, tensorMetadata, key) => {{
+    // Dynamically compute start offsets in bytes
+    let partStartOffsets = [];
+    let totalLength = 0;
+
+    for (let part of safetensorParts) {{
+        partStartOffsets.push(totalLength);
+        totalLength += part.length; // part.length is already in bytes
+    }}
+
     let selectedPart = 0;
-    let counter = 0;
-    let partStartOffsets = [1131408336, 2227518416, 3308987856, 4265298864];
     let correctedOffsets = tensorMetadata.data_offsets;
-    let prev_offset = 0;
 
-    for (let start of partStartOffsets) {{
-      prev_offset = (counter == 0) ? 0 : partStartOffsets[counter-1];
+    for (let i = 0; i < partStartOffsets.length; i++) {{
+        let start = partStartOffsets[i];
+        let prevOffset = (i === 0) ? 0 : partStartOffsets[i - 1];
 
-      if (tensorMetadata.data_offsets[0] < start) {{
-        selectedPart = counter;
-        correctedOffsets = [correctedOffsets[0]-prev_offset, correctedOffsets[1]-prev_offset];
-        break;
-      }}
-
-      counter++;
+        if (tensorMetadata.data_offsets[0] < start) {{
+            selectedPart = i;
+            correctedOffsets = [correctedOffsets[0] - prevOffset, correctedOffsets[1] - prevOffset];
+            break;
+        }}
     }}
 
     let allZero = true;
@@ -207,8 +307,9 @@ if __name__ == "__main__":
         console.log("Error: weight '" + key + "' is all zero.");
     }}
 
-    return safetensorParts[selectedPart].subarray(...correctedOffsets);
-  }}
+    return out;
+  }};
+
 
   const getWeight = (safetensors, key) => {{
     let uint8Data = getTensorBuffer(safetensors, getTensorMetadata(safetensors[0])[key], key);

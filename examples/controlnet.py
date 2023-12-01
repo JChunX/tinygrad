@@ -676,7 +676,7 @@ if __name__ == "__main__":
   image = np.array(image)
 
   image = cv2.Canny(image, args.canny_low, args.canny_high)
-  image = image[:, :, None]
+  image = image[:, :, None] # 512x512x1
   image = np.concatenate([image, image, image], axis=2)
   canny_image = Image.fromarray(image)
   canny_condition = np.array(canny_image).transpose(2, 0, 1).astype(np.float32) / 255.0
