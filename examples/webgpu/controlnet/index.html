@@ -306,44 +306,26 @@
             const getF32Safetensors = async (device, progress) => {
 
                 // read first 8 bytes of file
-                const file = window.MODEL_BASE_URL + '/net.safetensors';
+                const file = 'net.safetensors';
                 console.log("Fetching safetensors from: " + file);
                 
                 try {
-                    const response = await fetch(file);
-                    const reader = response.body.getReader();
-                    let receivedLength = 0; // length of received bytes
-                    let chunks = []; // array to store chunks
-
-                    while (true) {
-                        const { done, value } = await reader.read();
-
-                        if (done) {
-                            break;
+                    const response = await fetch(file, {
+                        headers: {
+                            "Range": 'bytes=0-7'
                         }
-
-                        chunks.push(value);
-                        receivedLength += value.length;
-
-                        if (receivedLength >= 8) {
-                            break; // Stop reading once xBytes are received
-                        }
+                    });
+                    if (!response.ok && response.status !== 206) {
+                        throw new Error(`Unexpected response status ${response.status}`);
                     }
-                    // Combine chunks into a single Uint8Array
-                    let chunksAll = new Uint8Array(receivedLength);
-                    let position = 0;
-                    for (let chunk of chunks) {
-                        chunksAll.set(chunk, position);
-                        position += chunk.length;
-                    }
+                    const data = await response.arrayBuffer();
+                    const result = new Uint8Array(data);
 
-                    // Process the data (e.g., convert to a string, handle as binary data, etc.)
-                    // For example, to convert to a string:
-                    const metaDataLength = Number(new DataView(chunksAll.buffer).getBigUint64(0, true));
+                    const metaDataLength = Number(new DataView(result.buffer).getBigUint64(0, true));
                     console.log("Metadata length: " + metaDataLength);
 
                     // Return or process the result as needed
-                    return result;
+                    return metaDataLength;
                 }
                 catch (e) {
                     console.log("Error fetching safetensors: " + e);
