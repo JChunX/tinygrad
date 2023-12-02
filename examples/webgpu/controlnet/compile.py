@@ -152,7 +152,7 @@ if __name__ == "__main__":
     kernel_calls = '\n    '.join([f"addComputePass(device, commandEncoder, piplines[{i}], [{', '.join(args)}], {global_size});" for i, (_name, args, global_size, _local_size) in enumerate(statements) ])
     
     # Allocate GPU IO buffers
-    bufs =  '\n  '.join([f"const {name} = " + (f"createEmptyBuf(device, {size});" if _key not in weights else f"createWeightBuf(device, {size}, getTensorBuffer(safetensor, metadata['{weights[_key]}'], '{weights[_key]}'))") + ";"  for name,(size,dtype,_key) in bufs.items()])
+    bufs =  '\n  '.join([f"const {name} = " + (f"createEmptyBuf(device, {size});" if _key not in weights else f"createWeightBuf(device, {size}, metadata['{weights[_key]}'])") + ";"  for name,(size,dtype,_key) in bufs.items()])
     
     # Allocate Stage buffer for input
     gpu_write_bufs =  '\n  '.join([f"const gpuWriteBuffer{i} = device.createBuffer({{size:input{i}.size, usage: GPUBufferUsage.COPY_SRC | GPUBufferUsage.MAP_WRITE }});" for i,(_,value) in enumerate(special_names.items()) if "output" not in value])
@@ -323,8 +323,17 @@ if __name__ == "__main__":
   const createEmptyBuf = (device, size) => {{
       return device.createBuffer({{size, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.COPY_DST }});
   }};
+  
+  const readWeightsFromFile = (tensorMetaData) => {{
+    const dataOffsets = tensorMetaData.data_offsets;
+    const data = readRangeFromFile(dataOffsets[0], dataOffsets[1]);
+    return data;
+  }};
 
-  const createWeightBuf = (device, size, data) => {{
+  const createWeightBuf = (device, size, tensorMetaData) => {{
+    
+    let data = readWeightsFromFile(tensorMetaData);
+
     const buf = device.createBuffer({{ mappedAtCreation: true, size, usage: GPUBufferUsage.STORAGE }});
     new Uint8Array(buf.getMappedRange()).set(data);
     buf.unmap();
