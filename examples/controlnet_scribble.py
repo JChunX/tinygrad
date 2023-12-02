@@ -139,7 +139,7 @@ class ControlNetDownsample:
     return self.conv(x)
 
 
-class ControlNetModel:
+class ControlNetModelScribble:
   '''
   Tinygrad SD controlnet.
   see ControlNetModel in diffusers/models/controlnet.py
@@ -695,7 +695,7 @@ if __name__ == "__main__":
   download_file(
     'https://huggingface.co/lllyasviel/sd-controlnet-scribble/resolve/main/diffusion_pytorch_model.bin', FILENAME_CONTROLNET)
   state_dict_controlnet = torch_load(FILENAME_CONTROLNET)
-  controlnet = ControlNetModel(cross_attention_dim=768)
+  controlnet = ControlNetModelScribble(cross_attention_dim=768)
   load_state_dict(controlnet, state_dict_controlnet, strict=False)
   
   model = ControlNetStableDiffusion(diffusion_model, controlnet)
