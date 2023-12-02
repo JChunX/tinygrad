@@ -76,7 +76,10 @@ def split_safetensor(fn):
   
   for i, end_pos in enumerate(part_end_offsets):
     with open(f'./net_part{i}.safetensors', "wb+") as f:
-      f.write(net_bytes[cur_pos:end_pos])
+      if i < len(part_end_offsets)-1:
+        f.write(net_bytes[cur_pos:end_pos])
+      else:
+        f.write(net_bytes[cur_pos:])
       cur_pos = end_pos
 
   # with open(f'./net_textmodel.safetensors', "wb+") as f:
@@ -207,58 +210,59 @@ if __name__ == "__main__":
         base_url = "https://huggingface.co/jchun/tinygrad-sd-controlnet-f16/resolve/main/"
       else:
         state = get_state_dict(model)
+        safe_save(state, os.path.join(args.weights_dir, "net.safetensors"))
         
         # save text model weights separately
-        text_model_keys = [k for k in state.keys() if 'cond_stage_model.transformer.text_model' in k]
-        text_model_state = {k: state[k] for k in text_model_keys}
-        text_model_safe_path = os.path.join(args.weights_dir, "net_textmodel.safetensors")
-        safe_save(text_model_state, text_model_safe_path)
-        text_model_size = int(os.popen(f"stat -f%z {text_model_safe_path}").read())
-        print("text_model_size: ", text_model_size)
+        # text_model_keys = [k for k in state.keys() if 'cond_stage_model.transformer.text_model' in k]
+        # text_model_state = {k: state[k] for k in text_model_keys}
+        # text_model_safe_path = os.path.join(args.weights_dir, "net_textmodel.safetensors")
+        # safe_save(text_model_state, text_model_safe_path)
+        # text_model_size = int(os.popen(f"stat -f%z {text_model_safe_path}").read())
+        # print("text_model_size: ", text_model_size)
         
-        # save diffusion model weights in chunks
-        diffusion_model_keys = [k for k in state.keys() if 'cond_stage_model.transformer.text_model' not in k]
-        diffusion_model_state = {k: state[k] for k in diffusion_model_keys}
+        # # save diffusion model weights in chunks
+        # diffusion_model_keys = [k for k in state.keys() if 'cond_stage_model.transformer.text_model' not in k]
+        # diffusion_model_state = {k: state[k] for k in diffusion_model_keys}
         
-        safetensor_path = os.path.join(args.weights_dir, "net.safetensors")
-        safetensor_conv_path = safetensor_path.replace(".safetensors", "_conv.safetensors")
+        # safetensor_path = os.path.join(args.weights_dir, "net.safetensors")
+        # safetensor_conv_path = safetensor_path.replace(".safetensors", "_conv.safetensors")
         
-        if not os.path.exists(os.path.join(args.weights_dir, "net_part0.safetensors")):
-          if not os.path.exists(safetensor_path):
-            print("Saving safetensors to: ", safetensor_path)
-            safe_save(diffusion_model_state, safetensor_path)
-          if not os.path.exists(safetensor_conv_path):
-            print("Converting safetensors to f16...")
-            convert_f32_to_f16(safetensor_path,
-                            safetensor_conv_path)
-          print("Splitting safetensors...")
-          split_safetensor(safetensor_conv_path)
-        if os.path.exists(safetensor_path):
-          os.remove(safetensor_path)
-        if os.path.exists(safetensor_conv_path):
-          os.remove(safetensor_conv_path) 
+        # if not os.path.exists(os.path.join(args.weights_dir, "net_part0.safetensors")):
+        #   if not os.path.exists(safetensor_path):
+        #     print("Saving safetensors to: ", safetensor_path)
+        #     safe_save(diffusion_model_state, safetensor_path)
+        #   # if not os.path.exists(safetensor_conv_path):
+        #   #   print("Converting safetensors to f16...")
+        #   #   convert_f32_to_f16(safetensor_path,
+        #   #                   safetensor_conv_path)
+        #   # print("Splitting safetensors...")
+        #   # split_safetensor(safetensor_conv_path)
+        # if os.path.exists(safetensor_path):
+        #   os.remove(safetensor_path)
+        # if os.path.exists(safetensor_conv_path):
+        #   os.remove(safetensor_conv_path) 
         
-        # read out f32 offsets for later
-        offset_count = 0
-        safetensors = sorted([os.path.join(args.weights_dir, f) for f in os.listdir(args.weights_dir) if 'net_part' in f])
-        for i, file in enumerate(safetensors):
-          filesize = int(os.popen(f"stat -f%z {file}").read())
-          # this is the uncompressed weights size
-          if i == 0:
-            with open(file, 'rb') as f:
-              # Read the first 8 bytes (safetensors metadata length)
-              bytes_data = f.read(8)
-              # Unpack the bytes to a 64-bit unsigned integer
-              N = struct.unpack('Q', bytes_data)[0]
-            fp32_size = 8 + N + 2 * (filesize - 8 - N) 
-          else:
-            fp32_size = filesize * 2
-          offset_count += fp32_size
-          fp32_offsets.append(offset_count)
+        # # read out f32 offsets for later
+        # offset_count = 0
+        # safetensors = sorted([os.path.join(args.weights_dir, f) for f in os.listdir(args.weights_dir) if 'net_part' in f])
+        # for i, file in enumerate(safetensors):
+        #   filesize = int(os.popen(f"stat -f%z {file}").read())
+        #   # this is the uncompressed weights size
+        #   if i == 0:
+        #     with open(file, 'rb') as f:
+        #       # Read the first 8 bytes (safetensors metadata length)
+        #       bytes_data = f.read(8)
+        #       # Unpack the bytes to a 64-bit unsigned integer
+        #       N = struct.unpack('Q', bytes_data)[0]
+        #     fp32_size = 8 + N + 2 * (filesize - 8 - N) 
+        #   else:
+        #     fp32_size = filesize * 2
+        #   offset_count += fp32_size
+        #   fp32_offsets.append(offset_count)
             
-        fp32_offsets[3] += text_model_size
+        # fp32_offsets[3] += text_model_size
         
-        print("fp32_offsets: ", fp32_offsets)
+        # print("fp32_offsets: ", fp32_offsets)
         base_url = "."
     
   prekernel = f"""
