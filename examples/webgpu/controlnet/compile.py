@@ -138,6 +138,16 @@ if __name__ == "__main__":
   
   prg = ""
   
+  def ensure_nonzero_state(state_dict):
+    # for each k, v in state_dict, call v.numpy() until v is not all zeros.
+    for k, v in state_dict.items():
+      print("k: ", k)
+      while np.all(v.numpy() == 0):
+        print(f"Warning: {k} is all zeros.")
+        print("Retrying...")
+        v.numpy()
+    return state_dict
+  
   def compile_step(model, step: Step):
     run, special_names = jit_model(step, *step.input)
     functions, statements, bufs, _ = compile_net(run, special_names)
@@ -152,7 +162,7 @@ if __name__ == "__main__":
     kernel_calls = '\n    '.join([f"addComputePass(device, commandEncoder, piplines[{i}], [{', '.join(args)}], {global_size});" for i, (_name, args, global_size, _local_size) in enumerate(statements) ])
     
     # Allocate GPU IO buffers
-    bufs =  '\n  '.join([f"const {name} = " + (f"createEmptyBuf(device, {size});" if _key not in weights else f"createWeightBuf(device, {size}, metadata['{weights[_key]}'])") + ";"  for name,(size,dtype,_key) in bufs.items()])
+    bufs =  '\n  '.join([f"const {name} = " + (f"createEmptyBuf(device, {size});" if _key not in weights else f"await createWeightBuf(device, {size}, filename, metadata['{weights[_key]}'], metadataLength)") + ";"  for name,(size,dtype,_key) in bufs.items()])
     
     # Allocate Stage buffer for input
     gpu_write_bufs =  '\n  '.join([f"const gpuWriteBuffer{i} = device.createBuffer({{size:input{i}.size, usage: GPUBufferUsage.COPY_SRC | GPUBufferUsage.MAP_WRITE }});" for i,(_,value) in enumerate(special_names.items()) if "output" not in value])
@@ -164,9 +174,7 @@ if __name__ == "__main__":
     {kernel_code}
 
     return {{
-    "setup": async (device, safetensor) => {{
-      const metadata = getTensorMetadata(safetensor[0]);
-
+    "setup": async (device, filename, metadata, metadataLength) => {{
       {bufs}
       
       {gpu_write_bufs}
@@ -210,59 +218,9 @@ if __name__ == "__main__":
         base_url = "https://huggingface.co/jchun/tinygrad-sd-controlnet-f16/resolve/main/"
       else:
         state = get_state_dict(model)
+        ensure_nonzero_state(state)
         safe_save(state, os.path.join(args.weights_dir, "net.safetensors"))
-        
-        # save text model weights separately
-        # text_model_keys = [k for k in state.keys() if 'cond_stage_model.transformer.text_model' in k]
-        # text_model_state = {k: state[k] for k in text_model_keys}
-        # text_model_safe_path = os.path.join(args.weights_dir, "net_textmodel.safetensors")
-        # safe_save(text_model_state, text_model_safe_path)
-        # text_model_size = int(os.popen(f"stat -f%z {text_model_safe_path}").read())
-        # print("text_model_size: ", text_model_size)
-        
-        # # save diffusion model weights in chunks
-        # diffusion_model_keys = [k for k in state.keys() if 'cond_stage_model.transformer.text_model' not in k]
-        # diffusion_model_state = {k: state[k] for k in diffusion_model_keys}
-        
-        # safetensor_path = os.path.join(args.weights_dir, "net.safetensors")
-        # safetensor_conv_path = safetensor_path.replace(".safetensors", "_conv.safetensors")
-        
-        # if not os.path.exists(os.path.join(args.weights_dir, "net_part0.safetensors")):
-        #   if not os.path.exists(safetensor_path):
-        #     print("Saving safetensors to: ", safetensor_path)
-        #     safe_save(diffusion_model_state, safetensor_path)
-        #   # if not os.path.exists(safetensor_conv_path):
-        #   #   print("Converting safetensors to f16...")
-        #   #   convert_f32_to_f16(safetensor_path,
-        #   #                   safetensor_conv_path)
-        #   # print("Splitting safetensors...")
-        #   # split_safetensor(safetensor_conv_path)
-        # if os.path.exists(safetensor_path):
-        #   os.remove(safetensor_path)
-        # if os.path.exists(safetensor_conv_path):
-        #   os.remove(safetensor_conv_path) 
-        
-        # # read out f32 offsets for later
-        # offset_count = 0
-        # safetensors = sorted([os.path.join(args.weights_dir, f) for f in os.listdir(args.weights_dir) if 'net_part' in f])
-        # for i, file in enumerate(safetensors):
-        #   filesize = int(os.popen(f"stat -f%z {file}").read())
-        #   # this is the uncompressed weights size
-        #   if i == 0:
-        #     with open(file, 'rb') as f:
-        #       # Read the first 8 bytes (safetensors metadata length)
-        #       bytes_data = f.read(8)
-        #       # Unpack the bytes to a 64-bit unsigned integer
-        #       N = struct.unpack('Q', bytes_data)[0]
-        #     fp32_size = 8 + N + 2 * (filesize - 8 - N) 
-        #   else:
-        #     fp32_size = filesize * 2
-        #   offset_count += fp32_size
-        #   fp32_offsets.append(offset_count)
-            
-        # fp32_offsets[3] += text_model_size
-        
-        # print("fp32_offsets: ", fp32_offsets)
+
         base_url = "."
     
   prekernel = f"""
@@ -324,15 +282,44 @@ if __name__ == "__main__":
       return device.createBuffer({{size, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.COPY_DST }});
   }};
   
-  const readWeightsFromFile = (tensorMetaData) => {{
+  const readRangeFromFile = async (file, start, end) => {{
+    // read bytes from start to end from file, exclusive of end
+    console.log("Fetching safetensors from: " + file + " start: " + start + " end: " + end);
+
+    try {{
+        const response = await fetch(file, {{
+            headers: {{
+                "Range": 'bytes='.concat(start, '-', end-1)
+            }}
+        }});
+        if (!response.ok && response.status !== 206) {{
+            throw new Error('Unexpected response status ${{response.status}}');
+        }}
+        const data = await response.arrayBuffer();
+        const result = new Uint8Array(data);
+
+        // Return or process the result as needed
+        return result;
+    }}
+    catch (e) {{
+        console.log("Error fetching safetensors: " + e);
+    }}
+    return [];
+  }};
+  
+  const readWeightsFromFile = async (filename, tensorMetaData, metadataLength) => {{
     const dataOffsets = tensorMetaData.data_offsets;
-    const data = readRangeFromFile(dataOffsets[0], dataOffsets[1]);
+    const data = await readRangeFromFile(
+      filename, 
+      dataOffsets[0] + 8 + metadataLength,
+      dataOffsets[1] + 8 + metadataLength
+    );
     return data;
   }};
 
-  const createWeightBuf = (device, size, tensorMetaData) => {{
+  const createWeightBuf = async (device, size, filename, tensorMetaData, metadataLength) => {{
     
-    let data = readWeightsFromFile(tensorMetaData);
+    let data = await readWeightsFromFile(filename, tensorMetaData, metadataLength);
 
     const buf = device.createBuffer({{ mappedAtCreation: true, size, usage: GPUBufferUsage.STORAGE }});
     new Uint8Array(buf.getMappedRange()).set(data);
@@ -351,3 +338,13 @@ if __name__ == "__main__":
 
   with open(os.path.join(os.path.dirname(__file__), "net.js"), "w") as text_file:
     text_file.write(prekernel + prg)
+
+
+# const gpuDebugBuffer = device.createBuffer({ size: buf_0.size, usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ });
+
+# commandEncoder.copyBufferToBuffer(buf_0, 0, gpuDebugBuffer, 0, buf_0.size);        
+        
+# await gpuDebugBuffer.mapAsync(GPUMapMode.READ);
+# const debugBuffer = new Float32Array(gpuDebugBuffer.size/4);
+# debugBuffer.set(new Float32Array(gpuDebugBuffer.getMappedRange()));
+# gpuDebugBuffer.unmap();
