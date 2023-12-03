@@ -394,25 +394,21 @@
                     let max_val = -1;
                     for (let i = 0; i < rows; i++) {
                         for (let j = 0; j < cols; j++) {
-                            let dstIndex = (i * cols + j) * 3;
+                            let dstIndex = i * cols + j;
                             let value = control_canny.ucharPtr(i, j)[0] / 255.0;
                             if (value > max_val) {
                                 max_val = value;
                             }
 
                             // Repeat this value in all three channels
-                            control_tensor[dstIndex] = value;     // Red channel
-                            control_tensor[dstIndex + 1] = value; // Green channel
-                            control_tensor[dstIndex + 2] = value; // Blue channel
+                            control_tensor[0 * 512 * 512 + dstIndex] = value; 
+                            control_tensor[1 * 512 * 512 + dstIndex] = value;
+                            control_tensor[2 * 512 * 512 + dstIndex] = value;
                         }
                     }
-                    console.log("[DEBUG] control max val: " + max_val);
 
                     let context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP(prompt)));
                     let unconditional_context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP("")));
-
-                    console.log("Context: " + context);
-                    console.log("Unconditional context: " + unconditional_context);
 
                     let timesteps = [];
 
