@@ -88,7 +88,7 @@
     <div id="mybox">
         <label>
             Constraint:
-            <select id="constraintSelect" onchange="modelSelect()">
+            <select id="constraintSelect">
                 <option value="default">Select a Constraint</option>
                 <option value="canedge">Canny Edge Map</option>
                 <option value="scribble">Scribble</option>
@@ -178,6 +178,19 @@
             cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
             cv.Canny(src, dst, cannyLow, cannyHigh, 3, false);
             cv.imshow('controlCanvas', dst);
+            return dst;
+        }
+
+        //TODO test this
+        function convertScribble(canvas) {
+            //all pixel values under 128 set to 255, all pixel values over 128 set to 0
+            const ctx = canvas.getContext('2d');
+            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            let src = cv.matFromImageData(imgData);
+            let dst = new cv.Mat();
+            cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+            cv.threshold(src, dst, 128, 255, cv.THRESH_BINARY_INV);
             return dst;
         }
 
@@ -558,40 +571,43 @@
             document.getElementById("guidanceRange").disabled = false;
             document.getElementById("conditioningScale").disabled = false;
 
-            //model variant specific options
-            if (modelVariant == "canedge") {
-                document.getElementById("imageUpload").hidden = false;
-                // make clear button for scribble invisible
-                document.getElementById("clear").hidden = true;
-                clearCanvas();
+                //model variant specific options
+                if (modelVariant == "canedge") {
+                    document.getElementById("imageUpload").hidden = false;
+                    // make clear button for scribble invisible
+                    document.getElementById("clear").hidden = true;
+                    clearCanvas();
+                }
+                else if (modelVariant == "scribble") {
+                    //make constraint image upload invisible
+                    document.getElementById("imageUpload").hidden = true;
+                    //visible button
+                    document.getElementById("clear").hidden = false;
+                }
             }
-            else if (modelVariant == "scribble") {
-                //make constraint image upload invisible
-                document.getElementById("imageUpload").hidden = true;
-                //visible button
-                document.getElementById("clear").hidden = false;
+
+            //model select handler on change
+            document.getElementById("constraintSelect").addEventListener("change", modelSelect);
+
+            //use preview canvas as drawing canvas
+            //adapted from https://www.geeksforgeeks.org/how-to-draw-with-mouse-in-html-5-canvas/
+            var inputCanvas = document.getElementById('inputCanvas');
+            const inputCtx = inputCanvas.getContext('2d');
+            let coord = { x: 0, y: 0 };
+            let paint = false;
+
+            function getPosition(event) {
+                coord.x = event.clientX - inputCanvas.offsetLeft;
+                coord.y = event.clientY - inputCanvas.offsetTop + window.scrollY;
             }
-        }
 
-        //use preview canvas as drawing canvas
-        //adapted from https://www.geeksforgeeks.org/how-to-draw-with-mouse-in-html-5-canvas/
-        var canvas = document.getElementById('inputCanvas');
-        const ctx = canvas.getContext('2d');
-        let coord = { x: 0, y: 0 };
-        let paint = false;
-
-        function getPosition(event) {
-            coord.x = event.clientX - canvas.offsetLeft;
-            coord.y = event.clientY - canvas.offsetTop + window.scrollY;
-        }
-
-        function startPainting(event) {
-            paint = true;
-            getPosition(event);
-        }
-        function stopPainting() {
-            paint = false;
-        }
+            function startPainting(event) {
+                paint = true;
+                getPosition(event);
+            }
+            function stopPainting() {
+                paint = false;
+            }
 
         function sketch(event) {
             if (!paint || document.getElementById("constraintSelect").value != "scribble") return;
@@ -600,21 +616,22 @@
             ctx.lineCap = 'round';
             ctx.strokeStyle = 'black';
 
-            ctx.moveTo(coord.x, coord.y);
+                inputCtx.moveTo(coord.x, coord.y);
 
-            getPosition(event);
+                getPosition(event);
 
-            ctx.lineTo(coord.x, coord.y);
+                inputCtx.lineTo(coord.x, coord.y);
 
-            ctx.stroke();
-        }
+                inputCtx.stroke();
+            }
 
-        function clearCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        }
+            function clearCanvas() {
+                inputCtx.clearRect(0, 0, canvas.width, canvas.height);
+            }
 
-        var clear = document.getElementById("clear");
-        clear.addEventListener("click", clearCanvas);
+            var clear = document.getElementById("clear");
+            clear.addEventListener("click", clearCanvas);
+        });
     </script>
 </body>
 
