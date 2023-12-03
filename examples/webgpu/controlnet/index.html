@@ -168,32 +168,6 @@
             }
         }
 
-        function convertToCanny(canvas, cannyHigh, cannyLow) {
-
-            const ctx = canvas.getContext('2d');
-            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-            let src = cv.matFromImageData(imgData);
-            let dst = new cv.Mat();
-            cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
-            cv.Canny(src, dst, cannyLow, cannyHigh, 3, false);
-            cv.imshow('controlCanvas', dst);
-            return dst;
-        }
-
-        //TODO test this
-        function convertScribble(canvas) {
-            //all pixel values under 128 set to 255, all pixel values over 128 set to 0
-            const ctx = canvas.getContext('2d');
-            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-            let src = cv.matFromImageData(imgData);
-            let dst = new cv.Mat();
-            cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
-            cv.threshold(src, dst, 128, 255, cv.THRESH_BINARY_INV);
-            return dst;
-        }
-
         function initDb() {
             return new Promise((resolve, reject) => {
                 let db;
@@ -308,7 +282,7 @@
             const delta = (performance.now() - start).toFixed(1)
             console.log(`${delta} ms ${label}`);
             return out;
-        }
+        };
 
         const getProgressDlForPart = async (part, progressCallback) => {
             const response = await fetch(part);
@@ -352,7 +326,20 @@
             else if (modelVariant == "scribble") {
                 return getScribbleControl(canvas);
             }
-        };
+        }
+
+        function convertToCanny(canvas, cannyHigh, cannyLow) {
+
+            const ctx = canvas.getContext('2d');
+            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            let src = cv.matFromImageData(imgData);
+            let dst = new cv.Mat();
+            cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+            cv.Canny(src, dst, cannyLow, cannyHigh, 3, false);
+            cv.imshow('controlCanvas', dst);
+            return dst;
+        }
 
         function getCannyControl(canvas) {
             // TODO: move canny parameters to gui
@@ -375,28 +362,51 @@
                 }
             }
             return control_tensor;
-        };
+        }
 
-        function getScribbleControl(canvas) {
+        function convertToScribble(canvas) {
             const ctx = canvas.getContext('2d');
             const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const data = imgData.data;
+            let src = cv.matFromImageData(imgData);
+            let dst = new cv.Mat();
+            cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+            cv.threshold(src, dst, 128, 255, cv.THRESH_BINARY_INV);
+            cv.imshow('controlCanvas', dst);
+            return dst;
+        }
 
-            const rows = imgData.height;
-            const cols = imgData.width;
+        function getScribbleControl(canvas) {
+            let control_scribble = convertToScribble(canvas)
 
             let control_tensor = new Float32Array(3 * 512 * 512);
             for (let i = 0; i < rows; i++) {
                 for (let j = 0; j < cols; j++) {
                     let dstIndex = i * cols + j;
-                    let value = data[4 * dstIndex + 3] / 255.0;
-                    control_tensor[0 * 512 * 512 + dstIndex] = value;
+                    let value = control_scribble.ucharPtr(i, j)[0] / 255.0;
+                    control_tensor[0 * 512 * 512 + dstIndex] = value; 
                     control_tensor[1 * 512 * 512 + dstIndex] = value;
                     control_tensor[2 * 512 * 512 + dstIndex] = value;
                 }
             }
             return control_tensor;
-        };
+
+            // const data = imgData.data;
+
+            // const rows = imgData.height;
+            // const cols = imgData.width;
+
+            // let control_tensor = new Float32Array(3 * 512 * 512);
+            // for (let i = 0; i < rows; i++) {
+            //     for (let j = 0; j < cols; j++) {
+            //         let dstIndex = i * cols + j;
+            //         let value = data[4 * dstIndex + 3] / 255.0;
+            //         control_tensor[0 * 512 * 512 + dstIndex] = value;
+            //         control_tensor[1 * 512 * 512 + dstIndex] = value;
+            //         control_tensor[2 * 512 * 512 + dstIndex] = value;
+            //     }
+            // }
+            // return control_tensor;
+        }
 
         function getSafeTensorName(modelVariant) {
             if (modelVariant == "canedge") {
@@ -405,7 +415,7 @@
             else if (modelVariant == "scribble") {
                 return "./net_scribble.safetensors";
             }
-        };
+        }
  
         window.addEventListener('load', async function () {
             if (!navigator.gpu) {
