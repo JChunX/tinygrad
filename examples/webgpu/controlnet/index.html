@@ -396,22 +396,25 @@
             function runStableDiffusion(control, prompt, steps, guidance, conditioning_scale) {
                 return new Promise(async (resolve, reject) => {
 
-                    // TODO: convert control to canny image
-                    // TODO: move canny parameters to gui
-                    let canny_high = 200
-                    let canny_low = 100
+                    // TODO: Test this
+                    var control_img;
+                    if (document.getElementById("constraintSelect").value == "canedge") {
+                        let canny_high = 200
+                        let canny_low = 100
+                        control_img = convertToCanny(control, canny_high, canny_low)
+                    } else if (document.getElementById("constraintSelect").value == "scribble") {
+                        control_img = convertScribble(control);
+                    }
 
-                    let control_canny = convertToCanny(control, canny_high, canny_low)
-
-                    const rows = control_canny.rows;
-                    const cols = control_canny.cols;
+                    const rows = control_img.rows;
+                    const cols = control_img.cols;
 
                     let control_tensor = new Float32Array(3 * 512 * 512);
                     let max_val = -1;
                     for (let i = 0; i < rows; i++) {
                         for (let j = 0; j < cols; j++) {
                             let dstIndex = i * cols + j;
-                            let value = control_canny.ucharPtr(i, j)[0] / 255.0;
+                            let value = control_img.ucharPtr(i, j)[0] / 255.0;
                             if (value > max_val) {
                                 max_val = value;
                             }
