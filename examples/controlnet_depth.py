@@ -139,7 +139,7 @@ class ControlNetDownsample:
     return self.conv(x)
 
 
-class ControlNetModel:
+class ControlNetModelDepth:
   '''
   Tinygrad SD controlnet.
   see ControlNetModel in diffusers/models/controlnet.py
@@ -645,7 +645,7 @@ class ControlNetStableDiffusion(StableDiffusion):
     return x_prev.realize()
   
 FILENAME_DIFFUSION = Path(__file__).parents[1] / "weights/sd-v1-4.ckpt"
-FILENAME_CONTROLNET = Path(__file__).parents[1] / "weights/sd-controlnet-canny.bin"
+FILENAME_CONTROLNET = Path(__file__).parents[1] / "weights/sd-controlnet-depth.bin"
 
 if __name__ == "__main__":
   from examples.stable_diffusion import *
@@ -693,9 +693,9 @@ if __name__ == "__main__":
   load_state_dict(diffusion_model, state_dict_diffusion, strict=False)
 
   download_file(
-    'https://huggingface.co/lllyasviel/sd-controlnet-canny/resolve/main/diffusion_pytorch_model.bin', FILENAME_CONTROLNET)
+    'https://huggingface.co/lllyasviel/sd-controlnet-depth/resolve/main/diffusion_pytorch_model.bin', FILENAME_CONTROLNET)
   state_dict_controlnet = torch_load(FILENAME_CONTROLNET)
-  controlnet = ControlNetModel(cross_attention_dim=768)
+  controlnet = ControlNetModelDepth(cross_attention_dim=768)
   load_state_dict(controlnet, state_dict_controlnet, strict=False)
   
   model = ControlNetStableDiffusion(diffusion_model, controlnet)
