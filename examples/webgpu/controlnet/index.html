@@ -138,10 +138,12 @@
             <span id="progressFraction"></span>
         </div>
     </div>
-    <canvas id="edgeCanvas" width="512" height="512"></canvas>
+    <canvas id="controlCanvas" width="512" height="512"></canvas>
     <canvas id="canvas" width="512" height="512"></canvas>
 
     <script>
+        let nets, metadata, safetensorsName, metadataLength;
+
         function previewImage() {
             var fileInput = document.getElementById('imageUpload');
             if (fileInput.files && fileInput.files[0]) {
@@ -175,7 +177,7 @@
             let dst = new cv.Mat();
             cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
             cv.Canny(src, dst, cannyLow, cannyHigh, 3, false);
-            cv.imshow('edgeCanvas', dst);
+            cv.imshow('controlCanvas', dst);
             return dst;
         }
 
@@ -263,41 +265,135 @@
             });
         }
 
-        const loadNet = async (modelConstraint) => {
-            const modelDlTitle = document.getElementById("modelDlTitle");
+        const getDevice = async () => {
+            const adapter = await navigator.gpu.requestAdapter();
+            const requiredLimits = {};
+            const maxBufferSizeInSDModel = 4294967292; // ~4GB
+            requiredLimits.maxStorageBufferBindingSize = maxBufferSizeInSDModel;
+            requiredLimits.maxBufferSize = maxBufferSizeInSDModel;
 
-            const progress = (loaded, total) => {
-                document.getElementById("modelDlProgressBar").value = (loaded / total) * 100
-                document.getElementById("modelDlProgressValue").innerHTML = Math.trunc((loaded / total) * 100) + "%"
-            }
+            return await adapter.requestDevice({
+                requiredLimits
+            });
+        };
 
-            const device = await getDevice();
+        const getMetadataLength = async (file) => {
+            return await readRangeFromFile(file, 0, 8).then((result) => {
+                return Number(new DataView(result.buffer).getBigUint64(0, true));
+            });
+        };
 
-            let models = ["textModel", "diffusor", "decoder"];
+        const getMetadata = async (file, N) => {
+            return await readRangeFromFile(file, 8, 8 + N).then((result) => {
+                return JSON.parse(new TextDecoder("utf-8").decode(result));
+            });
+        };
 
-            safetensorsName = './net.safetensors';
-            metadataLength = await getMetadataLength(safetensorsName);
-            metadata = await getMetadata(safetensorsName, metadataLength);
-            console.log("Metadata: " + JSON.stringify(metadata));
-
-
-            nets = await timer(() => Promise.all([
-                textModel().setup(device, safetensorsName, metadata, metadataLength),
-                diffusor().setup(device, safetensorsName, metadata, metadataLength),
-                decoder().setup(device, safetensorsName, metadata, metadataLength)
-            ]).then((loadedModels) => loadedModels.reduce((acc, model, index) => { acc[models[index]] = model; return acc; }, {})), "(compilation)")
-
-            progress(1, 1);
-
-            modelDlTitle.innerHTML = "Model ready"
-            setTimeout(() => {
-                document.getElementById("modelDlProgressBar").style.display = "none";
-                document.getElementById("modelDlProgressValue").style.display = "none";
-                document.getElementById("divStepProgress").style.display = "flex";
-            }, 1000);
-            document.getElementById("btnRunNet").disabled = false;
+        const timer = async (func, label = "") => {
+            const start = performance.now();
+            const out = await func();
+            const delta = (performance.now() - start).toFixed(1)
+            console.log(`${delta} ms ${label}`);
+            return out;
         }
 
+        const getProgressDlForPart = async (part, progressCallback) => {
+            const response = await fetch(part);
+            const contentLength = response.headers.get('content-length');
+            const total = parseInt(contentLength, 10);
+
+            const res = new Response(new ReadableStream({
+                async start(controller) {
+                    const reader = response.body.getReader();
+                    for (; ;) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+                        progressCallback(part, value.byteLength, total);
+                        controller.enqueue(value);
+                    }
+
+                    controller.close();
+                },
+            }));
+
+            return res.arrayBuffer();
+        };
+
+        const progressCallback = (part, loaded, total) => {
+            totalLoaded += loaded;
+
+            if (!partSize[part]) {
+                totalSize += total;
+                partSize[part] = true;
+            }
+
+            progress(totalLoaded, totalSize);
+        };
+
+        function getControlTensor(modelVariant) {
+            const canvas = document.getElementById('inputCanvas');
+
+            if (modelVariant == "canedge") {
+                return getCannyControl(canvas);
+            }
+            else if (modelVariant == "scribble") {
+                return getScribbleControl(canvas);
+            }
+        };
+
+        function getCannyControl(canvas) {
+            // TODO: move canny parameters to gui
+            let canny_high = 200
+            let canny_low = 100
+
+            let control_canny = convertToCanny(canvas, canny_high, canny_low)
+
+            const rows = control_canny.rows;
+            const cols = control_canny.cols;
+
+            let control_tensor = new Float32Array(3 * 512 * 512);
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    let dstIndex = i * cols + j;
+                    let value = control_canny.ucharPtr(i, j)[0] / 255.0;
+                    control_tensor[0 * 512 * 512 + dstIndex] = value; 
+                    control_tensor[1 * 512 * 512 + dstIndex] = value;
+                    control_tensor[2 * 512 * 512 + dstIndex] = value;
+                }
+            }
+            return control_tensor;
+        };
+
+        function getScribbleControl(canvas) {
+            const ctx = canvas.getContext('2d');
+            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imgData.data;
+
+            const rows = imgData.height;
+            const cols = imgData.width;
+
+            let control_tensor = new Float32Array(3 * 512 * 512);
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    let dstIndex = i * cols + j;
+                    let value = data[4 * dstIndex + 3] / 255.0;
+                    control_tensor[0 * 512 * 512 + dstIndex] = value;
+                    control_tensor[1 * 512 * 512 + dstIndex] = value;
+                    control_tensor[2 * 512 * 512 + dstIndex] = value;
+                }
+            }
+            return control_tensor;
+        };
+
+        function getSafeTensorName(modelVariant) {
+            if (modelVariant == "canedge") {
+                return "./net_canny.safetensors";
+            }
+            else if (modelVariant == "scribble") {
+                return "./net_scribble.safetensors";
+            }
+        };
+ 
         window.addEventListener('load', async function () {
             if (!navigator.gpu) {
                 document.getElementById("wgpuError").style.display = "";
@@ -308,141 +404,13 @@
             let db = await initDb();
 
             const ctx = document.getElementById("canvas").getContext("2d", { willReadFrequently: true });
-            let labels, nets, safetensorParts, metadata, safetensorsName, metadataLength;
 
             document.addEventListener('mousedown', startPainting);
             document.addEventListener('mouseup', stopPainting);
             document.addEventListener('mousemove', sketch);
 
-            const getDevice = async () => {
-                const adapter = await navigator.gpu.requestAdapter();
-                const requiredLimits = {};
-                const maxBufferSizeInSDModel = 4294967292; // ~4GB
-                requiredLimits.maxStorageBufferBindingSize = maxBufferSizeInSDModel;
-                requiredLimits.maxBufferSize = maxBufferSizeInSDModel;
-
-                return await adapter.requestDevice({
-                    requiredLimits
-                });
-            };
-
-            const timer = async (func, label = "") => {
-                const start = performance.now();
-                const out = await func();
-                const delta = (performance.now() - start).toFixed(1)
-                console.log(`${delta} ms ${label}`);
-                return out;
-            }
-
-            const getProgressDlForPart = async (part, progressCallback) => {
-                const response = await fetch(part);
-                const contentLength = response.headers.get('content-length');
-                const total = parseInt(contentLength, 10);
-
-                const res = new Response(new ReadableStream({
-                    async start(controller) {
-                        const reader = response.body.getReader();
-                        for (; ;) {
-                            const { done, value } = await reader.read();
-                            if (done) break;
-                            progressCallback(part, value.byteLength, total);
-                            controller.enqueue(value);
-                        }
-
-                        controller.close();
-                    },
-                }));
-
-                return res.arrayBuffer();
-            };
-
-            const progressCallback = (part, loaded, total) => {
-                totalLoaded += loaded;
-
-                if (!partSize[part]) {
-                    totalSize += total;
-                    partSize[part] = true;
-                }
-
-                progress(totalLoaded, totalSize);
-            };
-
-            const getMetadataLength = async (file) => {
-                return await readRangeFromFile(file, 0, 8).then((result) => {
-                    return Number(new DataView(result.buffer).getBigUint64(0, true));
-                });
-            };
-
-            const getMetadata = async (file, N) => {
-                return await readRangeFromFile(file, 8, 8 + N).then((result) => {
-                    return JSON.parse(new TextDecoder("utf-8").decode(result));
-                });
-            };
-
-            // const loadNet = async (modelConstraint) => {
-            //     const modelDlTitle = document.getElementById("modelDlTitle");
-
-            //     const progress = (loaded, total) => {
-            //         document.getElementById("modelDlProgressBar").value = (loaded / total) * 100
-            //         document.getElementById("modelDlProgressValue").innerHTML = Math.trunc((loaded / total) * 100) + "%"
-            //     }
-
-            //     const device = await getDevice();
-
-            //     let models = ["textModel", "diffusor", "decoder"];
-
-            //     safetensorsName = './net.safetensors';
-            //     metadataLength = await getMetadataLength(safetensorsName);
-            //     metadata = await getMetadata(safetensorsName, metadataLength);
-            //     console.log("Metadata: " + JSON.stringify(metadata));
-
-
-            //     nets = await timer(() => Promise.all([
-            //         textModel().setup(device, safetensorsName, metadata, metadataLength),
-            //         diffusor().setup(device, safetensorsName, metadata, metadataLength),
-            //         decoder().setup(device, safetensorsName, metadata, metadataLength)
-            //     ]).then((loadedModels) => loadedModels.reduce((acc, model, index) => { acc[models[index]] = model; return acc; }, {})), "(compilation)")
-
-            //     progress(1, 1);
-
-            //     modelDlTitle.innerHTML = "Model ready"
-            //     setTimeout(() => {
-            //         document.getElementById("modelDlProgressBar").style.display = "none";
-            //         document.getElementById("modelDlProgressValue").style.display = "none";
-            //         document.getElementById("divStepProgress").style.display = "flex";
-            //     }, 1000);
-            //     document.getElementById("btnRunNet").disabled = false;
-            // }
-
-            function runStableDiffusion(control, prompt, steps, guidance, conditioning_scale) {
+            function runStableDiffusion(control_tensor, prompt, steps, guidance, conditioning_scale) {
                 return new Promise(async (resolve, reject) => {
-
-                    // TODO: convert control to canny image
-                    // TODO: move canny parameters to gui
-                    let canny_high = 200
-                    let canny_low = 100
-
-                    let control_canny = convertToCanny(control, canny_high, canny_low)
-
-                    const rows = control_canny.rows;
-                    const cols = control_canny.cols;
-
-                    let control_tensor = new Float32Array(3 * 512 * 512);
-                    let max_val = -1;
-                    for (let i = 0; i < rows; i++) {
-                        for (let j = 0; j < cols; j++) {
-                            let dstIndex = i * cols + j;
-                            let value = control_canny.ucharPtr(i, j)[0] / 255.0;
-                            if (value > max_val) {
-                                max_val = value;
-                            }
-
-                            // Repeat this value in all three channels
-                            control_tensor[0 * 512 * 512 + dstIndex] = value; 
-                            control_tensor[1 * 512 * 512 + dstIndex] = value;
-                            control_tensor[2 * 512 * 512 + dstIndex] = value;
-                        }
-                    }
 
                     let context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP(prompt)));
                     let unconditional_context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP("")));
@@ -505,7 +473,11 @@
             document.getElementById("btnRunNet").addEventListener("click", function (e) {
                 e.target.disabled = true;
 
-                runStableDiffusion(document.getElementById('inputCanvas'), document.getElementById("promptText").value, document.getElementById("stepRange").value, document.getElementById("guidanceRange").value, document.getElementById("conditioningScale").value).then((image) => {
+                document.getElementById('inputCanvas')
+
+                const controlTensor = getControlTensor(document.getElementById("constraintSelect").value);
+
+                runStableDiffusion(controlTensor, document.getElementById("promptText").value, document.getElementById("stepRange").value, document.getElementById("guidanceRange").value, document.getElementById("conditioningScale").value).then((image) => {
                     let pixels = []
                     let pixelCounter = 0
 
@@ -540,13 +512,46 @@
                 guidanceValue.textContent = guidanceSlider.value;
             });
 
-
-            //loadNet();
         });
+
+        const loadNet = async (modelVariant) => {
+            const modelDlTitle = document.getElementById("modelDlTitle");
+
+            const progress = (loaded, total) => {
+                document.getElementById("modelDlProgressBar").value = (loaded / total) * 100
+                document.getElementById("modelDlProgressValue").innerHTML = Math.trunc((loaded / total) * 100) + "%"
+            }
+
+            const device = await getDevice();
+
+            let models = ["textModel", "diffusor", "decoder"];
+
+            safetensorsName = getSafeTensorName(modelVariant);
+            metadataLength = await getMetadataLength(safetensorsName);
+            metadata = await getMetadata(safetensorsName, metadataLength);
+            console.log("Metadata: " + JSON.stringify(metadata));
+
+
+            nets = await timer(() => Promise.all([
+                textModel().setup(device, safetensorsName, metadata, metadataLength),
+                diffusor().setup(device, safetensorsName, metadata, metadataLength),
+                decoder().setup(device, safetensorsName, metadata, metadataLength)
+            ]).then((loadedModels) => loadedModels.reduce((acc, model, index) => { acc[models[index]] = model; return acc; }, {})), "(compilation)")
+
+            progress(1, 1);
+
+            modelDlTitle.innerHTML = "Model ready"
+            setTimeout(() => {
+                document.getElementById("modelDlProgressBar").style.display = "none";
+                document.getElementById("modelDlProgressValue").style.display = "none";
+                document.getElementById("divStepProgress").style.display = "flex";
+            }, 1000);
+            document.getElementById("btnRunNet").disabled = false;
+        }
 
         //after selecting model variant, load the model, enable all other options
         function modelSelect() {
-            modelVariant = document.getElementById("constraintSelect").value;
+            const modelVariant = document.getElementById("constraintSelect").value;
             loadNet(modelVariant);
             document.getElementById("promptText").disabled = false;
             document.getElementById("stepRange").disabled = false;
@@ -591,7 +596,7 @@
         function sketch(event) {
             if (!paint || document.getElementById("constraintSelect").value != "scribble") return;
             ctx.beginPath();
-            ctx.lineWidth = 5;
+            ctx.lineWidth = 7;
             ctx.lineCap = 'round';
             ctx.strokeStyle = 'black';
 

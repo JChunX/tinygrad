@@ -90,12 +90,22 @@ def split_safetensor(fn):
 # look into render bundles
 
 FILENAME_DIFFUSION = Path(__file__).parents[3] / "weights/sd-v1-4.ckpt"
-FILENAME_CONTROLNET = Path(__file__).parents[3] / "weights/sd-controlnet-canny.bin"
+
+def get_controlnet_url_file(variant):
+  if variant == "canny":
+    return ("https://huggingface.co/lllyasviel/sd-controlnet-canny/resolve/main/diffusion_pytorch_model.bin", 
+            Path(__file__).parents[3] + "/sd-controlnet-canny.bin")
+  elif variant == "scribble":
+    return ("https://huggingface.co/lllyasviel/sd-controlnet-scribble/resolve/main/diffusion_pytorch_model.bin", 
+            Path(__file__).parents[3] + "/sd-controlnet-scribble.bin")
+  else:
+    raise ValueError(f"Unknown variant: {variant}")
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='Compile ControlNet', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
   parser.add_argument('--remoteweights', action='store_true', help="Use safetensors from Huggingface, or from local")
   parser.add_argument('--weights_dir', type=str, default=os.path.dirname(__file__), help="Path to weights directory")
+  parser.add_argument('--variant', type=str, default='canny', help="Variant of ControlNet to use")
   args = parser.parse_args()
   Device.DEFAULT = "WEBGPU"
   
@@ -108,9 +118,11 @@ if __name__ == "__main__":
   diffusion_model.model = namedtuple("DiffusionModel", ["diffusion_model"])(
   diffusion_model=ControlNetUNetModel())
   load_state_dict(diffusion_model, state_dict_diffusion, strict=False)
-  download_file(
-  'https://huggingface.co/lllyasviel/sd-controlnet-canny/resolve/main/diffusion_pytorch_model.bin', FILENAME_CONTROLNET)
-  state_dict_controlnet = torch_load(FILENAME_CONTROLNET)
+  
+  controlnet_url, controlnet_filename = get_controlnet_url_file(args.variant)
+  
+  download_file(controlnet_url, controlnet_filename)
+  state_dict_controlnet = torch_load(controlnet_filename)
   controlnet = ControlNetModel(cross_attention_dim=768)
   load_state_dict(controlnet, state_dict_controlnet, strict=False)
 
@@ -204,7 +216,9 @@ if __name__ == "__main__":
   }}
   """
 
-  base_url = ""
+  base_url = "."
+  if args.remoteweights:
+    base_url = "https://huggingface.co/jchun/tinygrad-sd-controlnet-f16/resolve/main/"
   if not os.path.exists(args.weights_dir):
     os.makedirs(args.weights_dir)
     
@@ -212,16 +226,10 @@ if __name__ == "__main__":
     
   for step in sub_steps:
     prg += compile_step(model, step)
-    
     if step.name == "diffusor":
-      if args.remoteweights:
-        base_url = "https://huggingface.co/jchun/tinygrad-sd-controlnet-f16/resolve/main/"
-      else:
-        state = get_state_dict(model)
-        ensure_nonzero_state(state)
-        safe_save(state, os.path.join(args.weights_dir, "net.safetensors"))
-
-        base_url = "."
+      state = get_state_dict(model)
+      ensure_nonzero_state(state)
+      safe_save(state, os.path.join(args.weights_dir, "net_{}.safetensors".format(args.variant)))
     
   prekernel = f"""
     window.MODEL_BASE_URL= "{base_url}";
@@ -338,13 +346,3 @@ if __name__ == "__main__":
 
   with open(os.path.join(os.path.dirname(__file__), "net.js"), "w") as text_file:
     text_file.write(prekernel + prg)
-
-
-# const gpuDebugBuffer = device.createBuffer({ size: buf_0.size, usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ });
-
-# commandEncoder.copyBufferToBuffer(buf_0, 0, gpuDebugBuffer, 0, buf_0.size);        
-        
-# await gpuDebugBuffer.mapAsync(GPUMapMode.READ);
-# const debugBuffer = new Float32Array(gpuDebugBuffer.size/4);
-# debugBuffer.set(new Float32Array(gpuDebugBuffer.getMappedRange()));
-# gpuDebugBuffer.unmap();
