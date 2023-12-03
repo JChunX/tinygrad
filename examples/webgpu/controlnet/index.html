@@ -122,7 +122,6 @@
             <button id="clear" hidden>Clear Scribble</button>
         </label>
 
-        <!-- <img id="imagePreview" style="width: 200px; height: 200px;" /> -->
         <canvas id="inputCanvas" width="512" height="512"></canvas>
 
         <input id="btnRunNet" type="button" value="Run" disabled>
@@ -367,10 +366,16 @@
         function convertToScribble(canvas) {
             const ctx = canvas.getContext('2d');
             const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            // hack: fill rgb channels with alpha channel
+            for (let i = 0; i < imgData.data.length; i += 4) {
+                imgData.data[i] = imgData.data[i + 3];
+                imgData.data[i + 1] = imgData.data[i + 3];
+                imgData.data[i + 2] = imgData.data[i + 3];
+            }
             let src = cv.matFromImageData(imgData);
             let dst = new cv.Mat();
             cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
-            cv.threshold(src, dst, 128, 255, cv.THRESH_BINARY_INV);
+            cv.threshold(src, dst, 128, 255, cv.THRESH_BINARY);
             cv.imshow('controlCanvas', dst);
             return dst;
         }
@@ -379,6 +384,8 @@
             let control_scribble = convertToScribble(canvas)
 
             let control_tensor = new Float32Array(3 * 512 * 512);
+            let rows = control_scribble.rows;
+            let cols = control_scribble.cols;
             for (let i = 0; i < rows; i++) {
                 for (let j = 0; j < cols; j++) {
                     let dstIndex = i * cols + j;
@@ -619,12 +626,12 @@
                 paint = false;
             }
 
-        function sketch(event) {
-            if (!paint || document.getElementById("constraintSelect").value != "scribble") return;
-            ctx.beginPath();
-            ctx.lineWidth = 7;
-            ctx.lineCap = 'round';
-            ctx.strokeStyle = 'black';
+            function sketch(event) {
+                if (!paint || document.getElementById("constraintSelect").value != "scribble") return;
+                inputCtx.beginPath();
+                inputCtx.lineWidth = 7;
+                inputCtx.lineCap = 'round';
+                inputCtx.strokeStyle = 'black';
 
                 inputCtx.moveTo(coord.x, coord.y);
 
@@ -641,7 +648,6 @@
 
             var clear = document.getElementById("clear");
             clear.addEventListener("click", clearCanvas);
-        });
     </script>
 </body>
 
