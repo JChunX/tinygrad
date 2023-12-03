@@ -87,41 +87,39 @@
     <h1 id="sdTitle">ControlNet on WebGPU</h1>
     <div id="mybox">
         <label>
-            Prompt:
-            <input id="promptText" type="text" placeholder="Enter your prompt here"
-                value="a horse sized cat eating a bagel">
-        </label>
-
-        <label>
-            Steps: <span id="stepValue">3</span>
-            <input id="stepRange" type="range" min="3" max="20" value="3" step="1">
-        </label>
-
-        <label>
-            Guidance: <span id="guidanceValue">7.5</span>
-            <input id="guidanceRange" type="range" min="3" max="15" value="7.5" step="0.1">
-        </label>
-
-        <label>
-            Conditioning scale: <span id="conditioningScaleValue">1.0</span>
-            <input id="conditioningScale" type="range" min="0" max="2" value="1.0" step="0.1">
-        </label>
-
-        <label>
             Constraint:
-            <select id="constraintSelect">
+            <select id="constraintSelect" onchange="modelSelect()">
+                <option value="default">Select a Constraint</option>
                 <option value="canedge">Canny Edge Map</option>
-                <option value="houghline">Hough Line Map</option>
-                <option value="hed">HED Map</option>
                 <option value="scribble">Scribble</option>
-                <option value="fakescribble">Fake Scribble</option>
-                <option value="pose">Pose</option>
             </select>
         </label>
 
         <label>
+            Prompt:
+            <input id="promptText" type="text" placeholder="Enter your prompt here" value="a painting of a cat"
+                disabled>
+        </label>
+
+        <label>
+            Steps: <span id="stepValue">3</span>
+            <input id="stepRange" type="range" min="3" max="20" value="3" step="1" disabled>
+        </label>
+
+        <label>
+            Guidance: <span id="guidanceValue">7.5</span>
+            <input id="guidanceRange" type="range" min="3" max="15" value="7.5" step="0.1" disabled>
+        </label>
+
+        <label>
+            Conditioning scale: <span id="conditioningScaleValue">1.0</span>
+            <input id="conditioningScale" type="range" min="0" max="2" value="1.0" step="0.1" disabled>
+        </label>
+
+        <label>
             Constraint image:
-            <input id="imageUpload" type="file" accept="image/*" onchange="previewImage()">
+            <input id="imageUpload" hidden type="file" accept="image/*" onchange="previewImage()">
+            <button id="clear" hidden>Clear Scribble</button>
         </label>
 
         <!-- <img id="imagePreview" style="width: 200px; height: 200px;" /> -->
@@ -152,7 +150,7 @@
 
                 oFReader.onload = function (oFREvent) {
                     var img = new Image();
-                    img.onload = function() {
+                    img.onload = function () {
                         var canvas = document.getElementById('inputCanvas');
                         var ctx = canvas.getContext('2d');
 
@@ -265,6 +263,41 @@
             });
         }
 
+        const loadNet = async (modelConstraint) => {
+            const modelDlTitle = document.getElementById("modelDlTitle");
+
+            const progress = (loaded, total) => {
+                document.getElementById("modelDlProgressBar").value = (loaded / total) * 100
+                document.getElementById("modelDlProgressValue").innerHTML = Math.trunc((loaded / total) * 100) + "%"
+            }
+
+            const device = await getDevice();
+
+            let models = ["textModel", "diffusor", "decoder"];
+
+            safetensorsName = './net.safetensors';
+            metadataLength = await getMetadataLength(safetensorsName);
+            metadata = await getMetadata(safetensorsName, metadataLength);
+            console.log("Metadata: " + JSON.stringify(metadata));
+
+
+            nets = await timer(() => Promise.all([
+                textModel().setup(device, safetensorsName, metadata, metadataLength),
+                diffusor().setup(device, safetensorsName, metadata, metadataLength),
+                decoder().setup(device, safetensorsName, metadata, metadataLength)
+            ]).then((loadedModels) => loadedModels.reduce((acc, model, index) => { acc[models[index]] = model; return acc; }, {})), "(compilation)")
+
+            progress(1, 1);
+
+            modelDlTitle.innerHTML = "Model ready"
+            setTimeout(() => {
+                document.getElementById("modelDlProgressBar").style.display = "none";
+                document.getElementById("modelDlProgressValue").style.display = "none";
+                document.getElementById("divStepProgress").style.display = "flex";
+            }, 1000);
+            document.getElementById("btnRunNet").disabled = false;
+        }
+
         window.addEventListener('load', async function () {
             if (!navigator.gpu) {
                 document.getElementById("wgpuError").style.display = "";
@@ -276,6 +309,10 @@
 
             const ctx = document.getElementById("canvas").getContext("2d", { willReadFrequently: true });
             let labels, nets, safetensorParts, metadata, safetensorsName, metadataLength;
+
+            document.addEventListener('mousedown', startPainting);
+            document.addEventListener('mouseup', stopPainting);
+            document.addEventListener('mousemove', sketch);
 
             const getDevice = async () => {
                 const adapter = await navigator.gpu.requestAdapter();
@@ -320,14 +357,14 @@
             };
 
             const progressCallback = (part, loaded, total) => {
-                    totalLoaded += loaded;
+                totalLoaded += loaded;
 
-                    if (!partSize[part]) {
-                        totalSize += total;
-                        partSize[part] = true;
-                    }
+                if (!partSize[part]) {
+                    totalSize += total;
+                    partSize[part] = true;
+                }
 
-                    progress(totalLoaded, totalSize);
+                progress(totalLoaded, totalSize);
             };
 
             const getMetadataLength = async (file) => {
@@ -342,40 +379,40 @@
                 });
             };
 
-            const loadNet = async () => {
-                const modelDlTitle = document.getElementById("modelDlTitle");
+            // const loadNet = async (modelConstraint) => {
+            //     const modelDlTitle = document.getElementById("modelDlTitle");
 
-                const progress = (loaded, total) => {
-                    document.getElementById("modelDlProgressBar").value = (loaded/total) * 100
-                    document.getElementById("modelDlProgressValue").innerHTML = Math.trunc((loaded/total) * 100) + "%"
-                }
+            //     const progress = (loaded, total) => {
+            //         document.getElementById("modelDlProgressBar").value = (loaded / total) * 100
+            //         document.getElementById("modelDlProgressValue").innerHTML = Math.trunc((loaded / total) * 100) + "%"
+            //     }
 
-                const device = await getDevice();
+            //     const device = await getDevice();
 
-                let models = ["textModel", "diffusor", "decoder"];
+            //     let models = ["textModel", "diffusor", "decoder"];
 
-                safetensorsName = './net.safetensors';
-                metadataLength = await getMetadataLength(safetensorsName);
-                metadata = await getMetadata(safetensorsName, metadataLength);
-                console.log("Metadata: " + JSON.stringify(metadata));
+            //     safetensorsName = './net.safetensors';
+            //     metadataLength = await getMetadataLength(safetensorsName);
+            //     metadata = await getMetadata(safetensorsName, metadataLength);
+            //     console.log("Metadata: " + JSON.stringify(metadata));
 
 
-                nets = await timer(() => Promise.all([
-                    textModel().setup(device, safetensorsName, metadata, metadataLength),
-                    diffusor().setup(device, safetensorsName, metadata, metadataLength),
-                    decoder().setup(device, safetensorsName, metadata, metadataLength)
-                ]).then((loadedModels) => loadedModels.reduce((acc, model, index) => { acc[models[index]] = model; return acc; }, {})), "(compilation)")
+            //     nets = await timer(() => Promise.all([
+            //         textModel().setup(device, safetensorsName, metadata, metadataLength),
+            //         diffusor().setup(device, safetensorsName, metadata, metadataLength),
+            //         decoder().setup(device, safetensorsName, metadata, metadataLength)
+            //     ]).then((loadedModels) => loadedModels.reduce((acc, model, index) => { acc[models[index]] = model; return acc; }, {})), "(compilation)")
 
-                progress(1, 1);
+            //     progress(1, 1);
 
-                modelDlTitle.innerHTML = "Model ready"
-                setTimeout(() => {
-                    document.getElementById("modelDlProgressBar").style.display = "none";
-                    document.getElementById("modelDlProgressValue").style.display = "none";
-                    document.getElementById("divStepProgress").style.display = "flex";
-                }, 1000);
-                document.getElementById("btnRunNet").disabled = false;
-            }
+            //     modelDlTitle.innerHTML = "Model ready"
+            //     setTimeout(() => {
+            //         document.getElementById("modelDlProgressBar").style.display = "none";
+            //         document.getElementById("modelDlProgressValue").style.display = "none";
+            //         document.getElementById("divStepProgress").style.display = "flex";
+            //     }, 1000);
+            //     document.getElementById("btnRunNet").disabled = false;
+            // }
 
             function runStableDiffusion(control, prompt, steps, guidance, conditioning_scale) {
                 return new Promise(async (resolve, reject) => {
@@ -423,8 +460,8 @@
                     console.log("Timesteps: " + timesteps);
 
                     const alphaCumprods = await readRangeFromFile(
-                        safetensorsName, 
-                        metadata['alphas_cumprod']['data_offsets'][0] + 8 + metadataLength, 
+                        safetensorsName,
+                        metadata['alphas_cumprod']['data_offsets'][0] + 8 + metadataLength,
                         metadata['alphas_cumprod']['data_offsets'][1] + 8 + metadataLength);
                     let alphasCumprod = new Float32Array(alphaCumprods.buffer);
 
@@ -450,13 +487,13 @@
                     for (let i = timesteps.length - 1; i >= 0; i--) {
                         let timestep = new Float32Array([timesteps[i]]);
                         let x_prev = await timer(() => nets["diffusor"](
-                            control_tensor, 
-                            unconditional_context, 
-                            context, 
-                            latent, 
-                            timestep, 
-                            new Float32Array([alphas[i]]), 
-                            new Float32Array([alphas_prev[i]]), 
+                            control_tensor,
+                            unconditional_context,
+                            context,
+                            latent,
+                            timestep,
+                            new Float32Array([alphas[i]]),
+                            new Float32Array([alphas_prev[i]]),
                             new Float32Array([guidance]),
                             new Float32Array([conditioning_scale]),
                         ));
@@ -507,8 +544,76 @@
                 guidanceValue.textContent = guidanceSlider.value;
             });
 
-            loadNet();
+
+            //loadNet();
         });
+
+        //after selecting model variant, load the model, enable all other options
+        function modelSelect() {
+            modelVariant = document.getElementById("constraintSelect").value;
+            loadNet(modelVariant);
+            document.getElementById("promptText").disabled = false;
+            document.getElementById("stepRange").disabled = false;
+            document.getElementById("guidanceRange").disabled = false;
+            document.getElementById("conditioningScale").disabled = false;
+
+            //model variant specific options
+            if (modelVariant == "canedge") {
+                document.getElementById("imageUpload").hidden = false;
+                // make clear button for scribble invisible
+                document.getElementById("clear").hidden = true;
+                clearCanvas();
+            }
+            else if (modelVariant == "scribble") {
+                //make constraint image upload invisible
+                document.getElementById("imageUpload").hidden = true;
+                //visible button
+                document.getElementById("clear").hidden = false;
+            }
+        }
+
+        //use preview canvas as drawing canvas
+        //adapted from https://www.geeksforgeeks.org/how-to-draw-with-mouse-in-html-5-canvas/
+        var canvas = document.getElementById('inputCanvas');
+        const ctx = canvas.getContext('2d');
+        let coord = { x: 0, y: 0 };
+        let paint = false;
+
+        function getPosition(event) {
+            coord.x = event.clientX - canvas.offsetLeft;
+            coord.y = event.clientY - canvas.offsetTop + window.scrollY;
+        }
+
+        function startPainting(event) {
+            paint = true;
+            getPosition(event);
+        }
+        function stopPainting() {
+            paint = false;
+        }
+
+        function sketch(event) {
+            if (!paint || document.getElementById("constraintSelect").value != "scribble") return;
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = 'black';
+
+            ctx.moveTo(coord.x, coord.y);
+
+            getPosition(event);
+
+            ctx.lineTo(coord.x, coord.y);
+
+            ctx.stroke();
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        var clear = document.getElementById("clear");
+        clear.addEventListener("click", clearCanvas);
     </script>
 </body>
 
