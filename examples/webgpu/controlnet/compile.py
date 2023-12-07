@@ -42,51 +42,7 @@ def convert_f32_to_f16(input_file, output_file):
     f.write(metadata_length_bytes)
     f.write(metadata_json_bytes)
     float16_values.tofile(f)
-
-def split_safetensor(fn):
-  _, json_len, metadata = safe_load_metadata(fn)
-  # text_model_offset = 3772703308
-  chunk_size = 536870912
-
-  for k in metadata:
-    # safetensor is in fp16
-    # if (metadata[k]["data_offsets"][0] < text_model_offset):
-    metadata[k]["data_offsets"][0] = int(metadata[k]["data_offsets"][0]/2)
-    metadata[k]["data_offsets"][1] = int(metadata[k]["data_offsets"][1]/2)
-  
-  last_offset = 0
-  part_end_offsets = []
-
-  for k in metadata:
-    offset = metadata[k]['data_offsets'][0]
-
-    # if offset == text_model_offset:
-    #   break
-
-    part_offset = offset - last_offset
     
-    if (part_offset >= chunk_size):
-      part_end_offsets.append(8+json_len+offset)
-      last_offset = offset
-
-  # text_model_start = int(text_model_offset/2)
-  net_bytes = bytes(open(fn, 'rb').read())
-  # part_end_offsets.append(text_model_start+8+json_len)
-  cur_pos = 0
-  
-  for i, end_pos in enumerate(part_end_offsets):
-    with open(f'./net_part{i}.safetensors', "wb+") as f:
-      if i < len(part_end_offsets)-1:
-        f.write(net_bytes[cur_pos:end_pos])
-      else:
-        f.write(net_bytes[cur_pos:])
-      cur_pos = end_pos
-
-  # with open(f'./net_textmodel.safetensors', "wb+") as f:
-  #   f.write(net_bytes[text_model_start+8+json_len:])
-  
-  return part_end_offsets
-
 # look into render bundles
 
 FILENAME_DIFFUSION = Path(__file__).parents[3] / "weights/sd-v1-4.ckpt"
@@ -94,10 +50,10 @@ FILENAME_DIFFUSION = Path(__file__).parents[3] / "weights/sd-v1-4.ckpt"
 def get_controlnet_url_file(variant):
   if variant == "canny":
     return ("https://huggingface.co/lllyasviel/sd-controlnet-canny/resolve/main/diffusion_pytorch_model.bin", 
-            Path(__file__).parents[3] + "/sd-controlnet-canny.bin")
+            os.path.join(str(Path(__file__).parents[3]), "weights/sd-controlnet-canny.bin"))
   elif variant == "scribble":
     return ("https://huggingface.co/lllyasviel/sd-controlnet-scribble/resolve/main/diffusion_pytorch_model.bin", 
-            Path(__file__).parents[3] + "/sd-controlnet-scribble.bin")
+            os.path.join(str(Path(__file__).parents[3]), "weights/sd-controlnet-scribble.bin"))
   else:
     raise ValueError(f"Unknown variant: {variant}")
 
@@ -106,6 +62,7 @@ if __name__ == "__main__":
   parser.add_argument('--remoteweights', action='store_true', help="Use safetensors from Huggingface, or from local")
   parser.add_argument('--weights_dir', type=str, default=os.path.dirname(__file__), help="Path to weights directory")
   parser.add_argument('--variant', type=str, default='canny', help="Variant of ControlNet to use")
+  parser.add_argument('--dtype', type=str, default='f32', help="Data type to use for weights")
   args = parser.parse_args()
   Device.DEFAULT = "WEBGPU"
   
@@ -167,11 +124,23 @@ if __name__ == "__main__":
     state = get_state_dict(model)
     weights = {id(x.lazydata.realized): name for name, x in state.items()}
     
-    kernel_code = '\n\n'.join([f"const {key} = `{code.replace(key, 'main')}`;" for key, code in functions.items()])
+    
+    if args.dtype == 'f16':
+      kernel_code = '\n\n'.join([f"const {key} = `enanble f16;\n{code.replace(key, 'main')}`;" for key, code in functions.items()])
+      kernel_code = kernel_code.replace('f32', 'f16')
+    else:
+      kernel_code = '\n\n'.join([f"const {key} = `{code.replace(key, 'main')}`;" for key, code in functions.items()])
+      
     kernel_names = ', '.join([name for (name, _, _, _) in statements])
     
     # Creates bind groups and compute pass
-    kernel_calls = '\n    '.join([f"addComputePass(device, commandEncoder, piplines[{i}], [{', '.join(args)}], {global_size});" for i, (_name, args, global_size, _local_size) in enumerate(statements) ])
+    nskip = 2
+    kernel_calls = [f"addComputePass(device, passEncoder, piplines[{i}], [{', '.join(args)}], {global_size});" for i, (_name, args, global_size, _local_size) in enumerate(statements) ]
+    # every 3rd kernel call, we inject passEncoder.end() and passEncoder = commandEncoder.beginComputePass()
+    kernel_calls = [f"passEncoder.end();\n    passEncoder = commandEncoder.beginComputePass();\n    {kernel_call}" if (i % nskip == 0 and i > 0 and i < len(kernel_calls)-1) else kernel_call for i , kernel_call in enumerate(kernel_calls)]
+    # add one last end() call
+    kernel_calls.append("passEncoder.end();")
+    kernel_calls = '\n    '.join(kernel_calls)
     
     # Allocate GPU IO buffers
     bufs =  '\n  '.join([f"const {name} = " + (f"createEmptyBuf(device, {size});" if _key not in weights else f"await createWeightBuf(device, {size}, filename, metadata['{weights[_key]}'], metadataLength)") + ";"  for name,(size,dtype,_key) in bufs.items()])
@@ -199,6 +168,8 @@ if __name__ == "__main__":
         const commandEncoder = device.createCommandEncoder();
 
         {input_writer}
+        
+        var passEncoder = commandEncoder.beginComputePass();
 
         {kernel_calls}
         commandEncoder.copyBufferToBuffer(output0, 0, gpuReadBuffer, 0, output0.size);
@@ -229,7 +200,10 @@ if __name__ == "__main__":
     if step.name == "diffusor":
       state = get_state_dict(model)
       ensure_nonzero_state(state)
-      safe_save(state, os.path.join(args.weights_dir, "net_{}.safetensors".format(args.variant)))
+      fp32_dir = os.path.join(args.weights_dir, "net_{}.safetensors".format(args.variant))
+      safe_save(state, fp32_dir)
+      if args.dtype == "f16":
+        convert_f32_to_f16(fp32_dir, os.path.join(args.weights_dir, "net_f16_{}.safetensors".format(args.variant)))
     
   prekernel = f"""
     window.MODEL_BASE_URL= "{base_url}";
@@ -238,53 +212,6 @@ if __name__ == "__main__":
       const metadata = JSON.parse(new TextDecoder("utf8").decode(safetensorBuffer.subarray(8, 8 + metadataLength)));
       return Object.fromEntries(Object.entries(metadata).filter(([k, v]) => k !== "__metadata__").map(([k, v]) => [k, {{...v, data_offsets: v.data_offsets.map(x => 8 + metadataLength + x)}}]));
     }};
-
-  const getTensorBuffer = (safetensorParts, tensorMetadata, key) => {{
-    // Dynamically compute start offsets in bytes
-    let partStartOffsets = [];
-    let totalLength = 0;
-
-    for (let part of safetensorParts) {{
-        partStartOffsets.push(totalLength);
-        totalLength += part.length; // part.length is already in bytes
-    }}
-
-    let selectedPart = 0;
-    let correctedOffsets = tensorMetadata.data_offsets;
-
-    for (let i = 0; i < partStartOffsets.length; i++) {{
-        let start = partStartOffsets[i];
-        let prevOffset = (i === 0) ? 0 : partStartOffsets[i - 1];
-
-        if (tensorMetadata.data_offsets[0] < start) {{
-            selectedPart = i;
-            correctedOffsets = [correctedOffsets[0] - prevOffset, correctedOffsets[1] - prevOffset];
-            break;
-        }}
-    }}
-
-    let allZero = true;
-    let out = safetensorParts[selectedPart].subarray(...correctedOffsets);
-
-    for (let i = 0; i < out.length; i++) {{
-        if (out[i] !== 0) {{
-            allZero = false;
-            break;
-        }}
-    }}
-
-    if (allZero) {{
-        console.log("Error: weight '" + key + "' is all zero.");
-    }}
-
-    return out;
-  }};
-
-
-  const getWeight = (safetensors, key) => {{
-    let uint8Data = getTensorBuffer(safetensors, getTensorMetadata(safetensors[0])[key], key);
-    return new Float32Array(uint8Data.buffer, uint8Data.byteOffset, uint8Data.byteLength / Float32Array.BYTES_PER_ELEMENT);
-  }}
 
   const createEmptyBuf = (device, size) => {{
       return device.createBuffer({{size, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.COPY_DST }});
@@ -335,14 +262,15 @@ if __name__ == "__main__":
     return buf;
   }};
 
-  const addComputePass = (device, commandEncoder, pipeline, bufs, workgroup) => {{
+  const addComputePass = (device, passEncoder, pipeline, bufs, workgroup) => {{
     const bindGroup = device.createBindGroup({{layout: pipeline.getBindGroupLayout(0), entries: bufs.map((buffer, index) => ({{ binding: index, resource: {{ buffer }} }}))}});
-    const passEncoder = commandEncoder.beginComputePass();
+    // const passEncoder = commandEncoder.beginComputePass();
     passEncoder.setPipeline(pipeline);
     passEncoder.setBindGroup(0, bindGroup);
     passEncoder.dispatchWorkgroups(...workgroup);
-    passEncoder.end();
+    // passEncoder.end();
   }};"""
 
-  with open(os.path.join(os.path.dirname(__file__), "net.js"), "w") as text_file:
+  output_js = f"net_{args.dtype}.js"
+  with open(os.path.join(os.path.dirname(__file__), output_js), "w") as text_file:
     text_file.write(prekernel + prg)
