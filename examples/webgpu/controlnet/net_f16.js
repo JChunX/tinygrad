@@ -7,7 +7,7 @@
     };
 
   const createEmptyBuf = (device, size) => {
-      return device.createBuffer({size+size%4, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.COPY_DST });
+      return device.createBuffer({size: size+size%4, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.COPY_DST });
   };
   
   const readRangeFromFile = async (file, start, end) => {
@@ -35,21 +35,21 @@
     return [];
   };
   
-  const readWeightsFromFile = async (filename, tensorMetaData, metadataLength) => {
-    const dataOffsets = tensorMetaData.data_offsets;
-    const data = await readRangeFromFile(
-      filename, 
-      dataOffsets[0] + 8 + metadataLength,
-      dataOffsets[1] + 8 + metadataLength
-    );
-    return data;
-  };
+  const readWeightsFromFile = async (filename, tensorMetaData, metadataLength) => {{
+      const dataOffsets = tensorMetaData.data_offsets;
+      const data = await readRangeFromFile(
+        filename, 
+        dataOffsets[0]/2 + 8 + metadataLength,
+        dataOffsets[1]/2 + 8 + metadataLength
+      );
+      return data;
+    }};
 
   const createWeightBuf = async (device, size, filename, tensorMetaData, metadataLength) => {
     
     let data = await readWeightsFromFile(filename, tensorMetaData, metadataLength);
 
-    const buf = device.createBuffer({ mappedAtCreation: true, size+size%4, usage: GPUBufferUsage.STORAGE });
+    const buf = device.createBuffer({ mappedAtCreation: true, size: size+size%4, usage: GPUBufferUsage.STORAGE });
     new Uint8Array(buf.getMappedRange()).set(data);
     buf.unmap();
     return buf;
