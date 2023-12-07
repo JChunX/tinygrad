@@ -90,8 +90,10 @@
             Constraint:
             <select id="constraintSelect">
                 <option value="default">Select a Constraint</option>
-                <option value="canedge">Canny Edge Map</option>
-                <option value="scribble">Scribble</option>
+                <option value="canedge">Canny Edge Map(f32)</option>
+                <option value="scribble">Scribble(f32)</option>
+                <option value="canedgef16">Canny Edge Map(f16)</option>
+                <option value="scribblef16">Scribble(f16)</option>
             </select>
         </label>
 
@@ -142,6 +144,7 @@
 
     <script>
         let nets, metadata, safetensorsName, metadataLength;
+        var f16 = false;
 
         function previewImage() {
             var fileInput = document.getElementById('imageUpload');
@@ -321,11 +324,52 @@
             const canvas = document.getElementById('inputCanvas');
 
             if (modelVariant == "canedge") {
-                return getCannyControl(canvas);
+                return getCannyControl(canvas, f16);
             }
             else if (modelVariant == "scribble") {
-                return getScribbleControl(canvas);
+                return getScribbleControl(canvas, f16);
             }
+        }
+
+        function float32ToFloat16(float32) {
+            let float32View = new Float32Array(1);
+            let int32View = new Int32Array(float32View.buffer);
+
+            float32View[0] = float32;
+            let f32 = int32View[0];
+
+            let f16 = 0;
+            switch ((f32 >> 23) & 0xff) {
+                case 0x00: // Zero / Denormal
+                    f16 = (f32 >> 16) & 0x8000;
+                    break;
+                case 0xff: // Infinity / NaN
+                    f16 = ((f32 >> 16) & 0x8000) | 0x7c00 | (f32 & 0x007fffff ? 0x0200 : 0x0);
+                    break;
+                default: // Normal
+                    f16 = ((f32 >> 16) & 0x8000) | ((((f32 & 0x7fffffff) >> 13) - 0x1c000) & 0x7fff);
+                    break;
+            }
+            return f16;
+        }
+
+        function float16ToFloat32(uint16) {
+            let t1 = uint16 & 0x7fff;         // Non-sign bits
+            let t2 = uint16 & 0x8000;         // Sign bit
+            let t3 = uint16 & 0x7c00;         // Exponent
+
+            t1 <<= 13;                        // Align mantissa on MSB
+            t2 <<= 16;                        // Shift sign bit into position
+
+            t1 += 0x38000000;                 // Adjust bias
+
+            t1 = (t3 === 0 ? 0 : t1);         // Denormals-as-zero
+            t1 |= t2;                         // Re-insert sign bit
+
+            let float32View = new Float32Array(1);
+            let int32View = new Int32Array(float32View.buffer);
+            int32View[0] = t1;
+            return float32View[0];
         }
 
         function convertToCanny(canvas, cannyHigh, cannyLow) {
@@ -341,7 +385,7 @@
             return dst;
         }
 
-        function getCannyControl(canvas) {
+        function getCannyControl(canvas, f16) {
             // TODO: move canny parameters to gui
             let canny_high = 200
             let canny_low = 100
@@ -351,14 +395,14 @@
             const rows = control_canny.rows;
             const cols = control_canny.cols;
 
-            let control_tensor = new Float32Array(3 * 512 * 512);
+            let control_tensor = f16 ? new UInt16Array(3 * 512 * 512) : new Float32Array(3 * 512 * 512);
             for (let i = 0; i < rows; i++) {
                 for (let j = 0; j < cols; j++) {
                     let dstIndex = i * cols + j;
                     let value = control_canny.ucharPtr(i, j)[0] / 255.0;
-                    control_tensor[0 * 512 * 512 + dstIndex] = value; 
-                    control_tensor[1 * 512 * 512 + dstIndex] = value;
-                    control_tensor[2 * 512 * 512 + dstIndex] = value;
+                    control_tensor[0 * 512 * 512 + dstIndex] = f16 ? float32ToFloat16(value) : value;
+                    control_tensor[1 * 512 * 512 + dstIndex] = f16 ? float32ToFloat16(value) : value;
+                    control_tensor[2 * 512 * 512 + dstIndex] = f16 ? float32ToFloat16(value) : value;
                 }
             }
             return control_tensor;
@@ -381,19 +425,19 @@
             return dst;
         }
 
-        function getScribbleControl(canvas) {
+        function getScribbleControl(canvas, f16) {
             let control_scribble = convertToScribble(canvas)
 
-            let control_tensor = new Float32Array(3 * 512 * 512);
+            let control_tensor = f16 ? new UInt16Array(3 * 512 * 512) : new Float32Array(3 * 512 * 512);
             let rows = control_scribble.rows;
             let cols = control_scribble.cols;
             for (let i = 0; i < rows; i++) {
                 for (let j = 0; j < cols; j++) {
                     let dstIndex = i * cols + j;
                     let value = control_scribble.ucharPtr(i, j)[0] / 255.0;
-                    control_tensor[0 * 512 * 512 + dstIndex] = value; 
-                    control_tensor[1 * 512 * 512 + dstIndex] = value;
-                    control_tensor[2 * 512 * 512 + dstIndex] = value;
+                    control_tensor[0 * 512 * 512 + dstIndex] = f16 ? float32ToFloat16(value) : value;
+                    control_tensor[1 * 512 * 512 + dstIndex] = f16 ? float32ToFloat16(value) : value;
+                    control_tensor[2 * 512 * 512 + dstIndex] = f16 ? float32ToFloat16(value) : value;
                 }
             }
             return control_tensor;
@@ -422,9 +466,16 @@
             }
             else if (modelVariant == "scribble") {
                 return "./net_scribble.safetensors";
+            } else if (modelVariant == "canedgef16") {
+                f16 = true;
+                return "./net_canny_f16.safetensors";
+            }
+            else if (modelVariant == "scribblef16") {
+                f16 = true;
+                return "./net_scribble_f16.safetensors";
             }
         }
- 
+
         window.addEventListener('load', async function () {
             if (!navigator.gpu) {
                 document.getElementById("wgpuError").style.display = "";
@@ -458,7 +509,7 @@
                         safetensorsName,
                         metadata['alphas_cumprod']['data_offsets'][0] + 8 + metadataLength,
                         metadata['alphas_cumprod']['data_offsets'][1] + 8 + metadataLength);
-                    let alphasCumprod = new Float32Array(alphaCumprods.buffer);
+                    let alphasCumprod = f16 ? new UInt16Array(alphaCumprods.buffer) : new Float32Array(alphaCumprods.buffer);
 
                     let alphas = [];
 
@@ -473,24 +524,28 @@
                     }
 
                     let inpSize = 4 * 64 * 64;
-                    latent = new Float32Array(inpSize);
+                    latent = f16 ? new UInt16Array(inpSize) : new Float32Array(inpSize);
 
                     for (let i = 0; i < inpSize; i++) {
                         latent[i] = Math.sqrt(-2.0 * Math.log(Math.random())) * Math.cos(2.0 * Math.PI * Math.random());
                     }
 
                     for (let i = timesteps.length - 1; i >= 0; i--) {
-                        let timestep = new Float32Array([timesteps[i]]);
+                        let timestep = f16 ? new UInt16Array([float32ToFloat16(timesteps[i])]) : new Float32Array([timesteps[i]]);
+                        let alpha_i = f16 ? new UInt16Array([float32ToFloat16(alphas[i])]) : new Float32Array([alphas[i]]);
+                        let alpha_i_prev = f16 ? new UInt16Array([float32ToFloat16(alphas_prev[i])]) : new Float32Array([alphas_prev[i]]);
+                        let guidance_i = f16 ? new UInt16Array([float32ToFloat16(guidance)]) : new Float32Array([guidance]);
+                        let conditioning_scale_i = f16 ? new UInt16Array([float32ToFloat16(conditioning_scale)]) : new Float32Array([conditioning_scale]);
                         let x_prev = await timer(() => nets["diffusor"](
                             control_tensor,
                             unconditional_context,
                             context,
                             latent,
                             timestep,
-                            new Float32Array([alphas[i]]),
-                            new Float32Array([alphas_prev[i]]),
-                            new Float32Array([guidance]),
-                            new Float32Array([conditioning_scale]),
+                            alpha_i,
+                            alpha_i_prev,
+                            guidance_i,
+                            conditioning_scale_i,
                         ));
                         latent = x_prev;
                         document.getElementById("progressBar").value = ((steps - i) / steps) * 100
@@ -514,11 +569,19 @@
 
                     for (let j = 0; j < 512; j++) {
                         for (let k = 0; k < 512; k++) {
-                            pixels.push(image[pixelCounter])
-                            pixels.push(image[pixelCounter + 1])
-                            pixels.push(image[pixelCounter + 2])
-                            pixels.push(255)
-                            pixelCounter += 3
+                            if (f16) {
+                                pixels.push(float16ToFloat32(image[pixelCounter]))
+                                pixels.push(float16ToFloat32(image[pixelCounter + 1]))
+                                pixels.push(float16ToFloat32(image[pixelCounter + 2]))
+                                pixels.push(255)
+                                pixelCounter += 3
+                            } else {
+                                pixels.push(image[pixelCounter])
+                                pixels.push(image[pixelCounter + 1])
+                                pixels.push(image[pixelCounter + 2])
+                                pixels.push(255)
+                                pixelCounter += 3
+                            }
                         }
                     }
 
@@ -589,66 +652,66 @@
             document.getElementById("guidanceRange").disabled = false;
             document.getElementById("conditioningScale").disabled = false;
 
-                //model variant specific options
-                if (modelVariant == "canedge") {
-                    document.getElementById("imageUpload").hidden = false;
-                    // make clear button for scribble invisible
-                    document.getElementById("clear").hidden = true;
-                    clearCanvas();
-                }
-                else if (modelVariant == "scribble") {
-                    //make constraint image upload invisible
-                    document.getElementById("imageUpload").hidden = true;
-                    //visible button
-                    document.getElementById("clear").hidden = false;
-                }
+            //model variant specific options
+            if (modelVariant == "canedge" || modelVariant == "canedgef16") {
+                document.getElementById("imageUpload").hidden = false;
+                // make clear button for scribble invisible
+                document.getElementById("clear").hidden = true;
+                clearCanvas();
             }
-
-            //model select handler on change
-            document.getElementById("constraintSelect").addEventListener("change", modelSelect);
-
-            //use preview canvas as drawing canvas
-            //adapted from https://www.geeksforgeeks.org/how-to-draw-with-mouse-in-html-5-canvas/
-            var inputCanvas = document.getElementById('inputCanvas');
-            const inputCtx = inputCanvas.getContext('2d');
-            let coord = { x: 0, y: 0 };
-            let paint = false;
-
-            function getPosition(event) {
-                coord.x = event.clientX - inputCanvas.offsetLeft;
-                coord.y = event.clientY - inputCanvas.offsetTop + window.scrollY;
+            else if (modelVariant == "scribble" || modelVariant == "scribblef16") {
+                //make constraint image upload invisible
+                document.getElementById("imageUpload").hidden = true;
+                //visible button
+                document.getElementById("clear").hidden = false;
             }
+        }
 
-            function startPainting(event) {
-                paint = true;
-                getPosition(event);
-            }
-            function stopPainting() {
-                paint = false;
-            }
+        //model select handler on change
+        document.getElementById("constraintSelect").addEventListener("change", modelSelect);
 
-            function sketch(event) {
-                if (!paint || document.getElementById("constraintSelect").value != "scribble") return;
-                inputCtx.beginPath();
-                inputCtx.lineWidth = 7;
-                inputCtx.lineCap = 'round';
-                inputCtx.strokeStyle = 'black';
+        //use preview canvas as drawing canvas
+        //adapted from https://www.geeksforgeeks.org/how-to-draw-with-mouse-in-html-5-canvas/
+        var inputCanvas = document.getElementById('inputCanvas');
+        const inputCtx = inputCanvas.getContext('2d');
+        let coord = { x: 0, y: 0 };
+        let paint = false;
 
-                inputCtx.moveTo(coord.x, coord.y);
+        function getPosition(event) {
+            coord.x = event.clientX - inputCanvas.offsetLeft;
+            coord.y = event.clientY - inputCanvas.offsetTop + window.scrollY;
+        }
 
-                getPosition(event);
+        function startPainting(event) {
+            paint = true;
+            getPosition(event);
+        }
+        function stopPainting() {
+            paint = false;
+        }
 
-                inputCtx.lineTo(coord.x, coord.y);
+        function sketch(event) {
+            if (!paint || document.getElementById("constraintSelect").value != "scribble") return;
+            inputCtx.beginPath();
+            inputCtx.lineWidth = 7;
+            inputCtx.lineCap = 'round';
+            inputCtx.strokeStyle = 'black';
 
-                inputCtx.stroke();
-            }
+            inputCtx.moveTo(coord.x, coord.y);
 
-            function clearCanvas() {
-                inputCtx.clearRect(0, 0, canvas.width, canvas.height);
-            }
+            getPosition(event);
 
-            var clear = document.getElementById("clear");
-            clear.addEventListener("click", clearCanvas);
+            inputCtx.lineTo(coord.x, coord.y);
+
+            inputCtx.stroke();
+        }
+
+        function clearCanvas() {
+            inputCtx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        var clear = document.getElementById("clear");
+        clear.addEventListener("click", clearCanvas);
     </script>
 </body>
 
