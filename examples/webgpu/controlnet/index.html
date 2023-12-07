@@ -326,10 +326,10 @@
         function getControlTensor(modelVariant) {
             const canvas = document.getElementById('inputCanvas');
 
-            if (modelVariant == "canedge") {
+            if (modelVariant == "canedge" || modelVariant == "canedgef16") {
                 return getCannyControl(canvas, f16);
             }
-            else if (modelVariant == "scribble") {
+            else if (modelVariant == "scribble" || modelVariant == "scribblef16") {
                 return getScribbleControl(canvas, f16);
             }
         }
@@ -398,7 +398,7 @@
             const rows = control_canny.rows;
             const cols = control_canny.cols;
 
-            let control_tensor = f16 ? new UInt16Array(3 * 512 * 512) : new Float32Array(3 * 512 * 512);
+            let control_tensor = f16 ? new Uint16Array(3 * 512 * 512) : new Float32Array(3 * 512 * 512);
             for (let i = 0; i < rows; i++) {
                 for (let j = 0; j < cols; j++) {
                     let dstIndex = i * cols + j;
@@ -431,7 +431,7 @@
         function getScribbleControl(canvas, f16) {
             let control_scribble = convertToScribble(canvas)
 
-            let control_tensor = f16 ? new UInt16Array(3 * 512 * 512) : new Float32Array(3 * 512 * 512);
+            let control_tensor = f16 ? new Uint16Array(3 * 512 * 512) : new Float32Array(3 * 512 * 512);
             let rows = control_scribble.rows;
             let cols = control_scribble.cols;
             for (let i = 0; i < rows; i++) {
@@ -470,11 +470,9 @@
             else if (modelVariant == "scribble") {
                 return "./net_scribble.safetensors";
             } else if (modelVariant == "canedgef16") {
-                f16 = true;
                 return "./net_f16_canny.safetensors";
             }
             else if (modelVariant == "scribblef16") {
-                f16 = true;
                 return "./net_f16_scribble.safetensors";
             }
         }
@@ -512,7 +510,7 @@
                         safetensorsName,
                         metadata['alphas_cumprod']['data_offsets'][0] + 8 + metadataLength,
                         metadata['alphas_cumprod']['data_offsets'][1] + 8 + metadataLength);
-                    let alphasCumprod = f16 ? new UInt16Array(alphaCumprods.buffer) : new Float32Array(alphaCumprods.buffer);
+                    let alphasCumprod = f16 ? new Uint16Array(alphaCumprods.buffer) : new Float32Array(alphaCumprods.buffer);
 
                     let alphas = [];
 
@@ -527,18 +525,18 @@
                     }
 
                     let inpSize = 4 * 64 * 64;
-                    latent = f16 ? new UInt16Array(inpSize) : new Float32Array(inpSize);
+                    latent = f16 ? new Uint16Array(inpSize) : new Float32Array(inpSize);
 
                     for (let i = 0; i < inpSize; i++) {
                         latent[i] = Math.sqrt(-2.0 * Math.log(Math.random())) * Math.cos(2.0 * Math.PI * Math.random());
                     }
 
                     for (let i = timesteps.length - 1; i >= 0; i--) {
-                        let timestep = f16 ? new UInt16Array([float32ToFloat16(timesteps[i])]) : new Float32Array([timesteps[i]]);
-                        let alpha_i = f16 ? new UInt16Array([float32ToFloat16(alphas[i])]) : new Float32Array([alphas[i]]);
-                        let alpha_i_prev = f16 ? new UInt16Array([float32ToFloat16(alphas_prev[i])]) : new Float32Array([alphas_prev[i]]);
-                        let guidance_i = f16 ? new UInt16Array([float32ToFloat16(guidance)]) : new Float32Array([guidance]);
-                        let conditioning_scale_i = f16 ? new UInt16Array([float32ToFloat16(conditioning_scale)]) : new Float32Array([conditioning_scale]);
+                        let timestep = f16 ? new Uint16Array([float32ToFloat16(timesteps[i])]) : new Float32Array([timesteps[i]]);
+                        let alpha_i = f16 ? new Uint16Array([float32ToFloat16(alphas[i])]) : new Float32Array([alphas[i]]);
+                        let alpha_i_prev = f16 ? new Uint16Array([float32ToFloat16(alphas_prev[i])]) : new Float32Array([alphas_prev[i]]);
+                        let guidance_i = f16 ? new Uint16Array([float32ToFloat16(guidance)]) : new Float32Array([guidance]);
+                        let conditioning_scale_i = f16 ? new Uint16Array([float32ToFloat16(conditioning_scale)]) : new Float32Array([conditioning_scale]);
                         let x_prev = await timer(() => nets["diffusor"](
                             control_tensor,
                             unconditional_context,
@@ -647,7 +645,7 @@
         }
 
         //after selecting model variant, load the model, enable all other options
-        function modelSelect() {
+        async function modelSelect() {
             const modelVariant = document.getElementById("constraintSelect").value;
             if (modelVariant == "canedgef16" || modelVariant == "scribblef16") {
                 f16 = true;
@@ -656,7 +654,12 @@
                 f16 = false;
                 js.src = "./net_f32.js";
             }
+            // allow for 2 seconds to load js
+            
             head.appendChild(js);
+            // sleep for a few second to allow js to load
+            await new Promise(r => setTimeout(r, 1000));
+            
             loadNet(modelVariant);
             document.getElementById("promptText").disabled = false;
             document.getElementById("stepRange").disabled = false;
@@ -702,7 +705,7 @@
         }
 
         function sketch(event) {
-            if (!paint || document.getElementById("constraintSelect").value != "scribble") return;
+            if (!paint || (document.getElementById("constraintSelect").value != "scribble" && document.getElementById("constraintSelect").value != "scribblef16") ) return;
             inputCtx.beginPath();
             inputCtx.lineWidth = 7;
             inputCtx.lineCap = 'round';

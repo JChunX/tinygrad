@@ -65,8 +65,8 @@
   };
   var textModel = function() {
   
-    const E_77_772_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+    const E_77_772_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -85,8 +85,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(49408))+(gidx1*(64))+(lidx2*(4))+(3)] = ((1.0h)-(f16(val3<val4)+f16(val4<val3)));
 }`;
 
-const r_77_16_193_16_64_3_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_16_193_16_64_3_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -124,8 +124,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(148224))+(gidx1*(9264))+gidx2+(lidx3*(579))+(386)] = acc2;
 }`;
 
-const r_77_77 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_77 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @compute @workgroup_size(1) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 77 */
@@ -136,8 +136,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[gidx0] = (acc0+((-1.0h)));
 }`;
 
-const E_77_77 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_77_77 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -149,8 +149,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(77))+gidx1] = ((1.0h)-(f16(val0<val1)+f16(val1<val0)));
 }`;
 
-const r_77_16_16_77_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_16_16_77_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -175,8 +175,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(768))+(gidx1*(48))+(lidx2*(3))+(2)] = acc2;
 }`;
 
-const r_1848_32_193 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1848_32_193 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -192,8 +192,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = (acc0+val1);
 }`;
 
-const r_77_16_48 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_16_48 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -217,8 +217,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_77_16_48n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_16_48n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -245,8 +245,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_77_16_16_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_77_16_16_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -273,8 +273,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(768))+(gidx1*(48))+(lidx2*(3))+(2)] = (((val2-val3)*val4*val7)+val10);
 }`;
 
-const r_77_16_16_192_3_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_16_16_192_3_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -315,8 +315,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(768))+(gidx1*(48))+(lidx2*(3))+(2)] = (acc2+val18);
 }`;
 
-const r_77_77n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_77n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @compute @workgroup_size(1) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 77 */
@@ -327,8 +327,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[gidx0] = (acc0+((-2.0h)));
 }`;
 
-const E_77_77n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_77_77n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -337,11 +337,11 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   let gidx1 = i32(gindex.x); /* 77 */
   var  val0 = f16(data1[gidx1]);
   var  val1 = f16(data2[gidx0]);
-  data0[(gidx0*(77))+gidx1] = select((0.0h),(-0x1.fffffep+127h),((1.0h)-f16(val0<val1))!=0.);
+  data0[(gidx0*(77))+gidx1] = select((0.0h),(65504.0h),((1.0h)-f16(val0<val1))!=0.);
 }`;
 
-const r_77_77_4_16_3_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_77_4_16_3_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -388,14 +388,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(77))+gidx1+(lidx2*(17787))+(11858)] = ((acc2*(0.125h))+val24);
 }`;
 
-const r_231_4_77 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_231_4_77 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(4) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 231 */
   let lidx1 = i32(lindex.x); /* 4 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (77); ridx0++) {
     var  val0 = f16(data1[(gidx0*(308))+(lidx1*(77))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -404,8 +404,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4))+lidx1] = acc0;
 }`;
 
-const E_77_77_4_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_77_77_4_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -424,8 +424,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(924))+gidx1+(lidx2*(231))+(154)] = exp2(((val2-val5)*(1.4426950408889634h)));
 }`;
 
-const r_231_4_77n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_231_4_77n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(4) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -439,8 +439,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4))+lidx1] = acc0;
 }`;
 
-const E_231_77_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_231_77_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -453,8 +453,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(308))+gidx1+(lidx2*(77))] = (val0/val1);
 }`;
 
-const r_3_77_4_16_77_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_3_77_4_16_77_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -484,8 +484,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(19712))+(gidx1*(64))+(lidx2*(4928))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_77_16_16_192_3_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_16_16_192_3_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -530,8 +530,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(768))+(gidx1*(48))+(lidx2*(3))+(2)] = (val18+(acc2+val21));
 }`;
 
-const r_77_64_16_192_3_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_64_16_192_3_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -575,8 +575,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(3072))+(gidx1*(48))+(lidx2*(3))+(2)] = (alu2*((1.0h)/((1.0h)+exp2((alu2*(1.702h)*((-1.4426950408889634h)))))));
 }`;
 
-const r_77_16_16_768_3_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_16_16_768_3_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1325,8 +1325,8 @@ commandEncoder.copyBufferToBuffer(gpuWriteBuffer0, 0, input0, 0, gpuWriteBuffer0
   
   var diffusor = function() {
   
-    const E_n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+    const E_n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(1) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -1334,8 +1334,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[0] = sqrt(val0);
 }`;
 
-const E_n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(1) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -1343,8 +1343,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[0] = sqrt(((1.0h)-val0));
 }`;
 
-const r_2_80_8_8_16_4_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_80_8_8_16_4_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1464,8 +1464,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(16384))+(gidx2*(512))+(lidx3*(64))+(lidx4*(4))+(12291)] = acc15;
 }`;
 
-const E_2_32_20_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_32_20_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1486,8 +1486,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(40960))+((gidx2/(4))*(2048))+((gidx2%(4))*(64))+(lidx4*(256))+(lidx5*(4))+(3)] = (val3+val4);
 }`;
 
-const r_320_32_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_320_32_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -1504,8 +1504,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const r_64_16_10 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_10 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -1529,8 +1529,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_2_2_5_16_8_64_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_2_5_16_8_64_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1591,8 +1591,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(5120))+(gidx1*(2560))+(gidx2*(32))+(lidx3*(160))+(lidx4*(4))+(3)] = acc3;
 }`;
 
-const r_64_16_10n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_10n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -1616,8 +1616,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_40_64_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_40_64_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1650,8 +1650,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_80_8_8_16_320_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_80_8_8_16_320_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1771,8 +1771,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(16384))+(gidx2*(512))+(lidx3*(64))+(lidx4*(4))+(12291)] = acc15;
 }`;
 
-const r_160_16_10 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_16_10 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @compute @workgroup_size(16) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -1794,8 +1794,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_5_8_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_5_8_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1813,8 +1813,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+(lidx1*(4))+(3)] = sin(((1.5707963267948966h)-(val0*exp2((((-9.210340371976184h))*(val4+((-1.0h)))*(0.00625h)*(1.4426950408889634h))))));
 }`;
 
-const E_5_8_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_5_8_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1832,8 +1832,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+(lidx1*(4))+(3)] = sin((val0*exp2((((-9.210340371976184h))*(val4+((-1.0h)))*(0.00625h)*(1.4426950408889634h)))));
 }`;
 
-const E_5_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_5_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1854,8 +1854,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(64))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_80_4_8_40_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_80_4_8_40_4 = `enable f16;
+
 var<workgroup> temp: array<f16,128>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -1915,8 +1915,8 @@ var<workgroup> temp: array<f16,128>;
   }
 }`;
 
-const r_80_4_8_160_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_80_4_8_160_4 = `enable f16;
+
 var<workgroup> temp: array<f16,128>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -1967,8 +1967,8 @@ var<workgroup> temp: array<f16,128>;
   }
 }`;
 
-const E_10_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_10_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -1993,8 +1993,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_20_4_8_160_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_20_4_8_160_4 = `enable f16;
+
 var<workgroup> temp: array<f16,128>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -2050,8 +2050,8 @@ var<workgroup> temp: array<f16,128>;
   }
 }`;
 
-const r_2_4_10_8_16_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_10_8_16_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2075,8 +2075,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(5120))+(gidx1*(1280))+(gidx2*(16))+(lidx3*(160))+lidx4] = acc0;
 }`;
 
-const r_2_2_5_16_8_64_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_2_5_16_8_64_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2139,8 +2139,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(5120))+(gidx1*(2560))+(gidx2*(32))+(lidx3*(160))+(lidx4*(4))+(3)] = acc3;
 }`;
 
-const E_80_64_2_4_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_64_2_4_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2169,8 +2169,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(1310720))+(lidx3*(4096))+(lidx4*(4))+(3)] = (((val3+val4+val5)-val6)*val7*val8);
 }`;
 
-const E_2_40_64_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_40_64_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2195,8 +2195,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const E_2_32_20_4_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_32_20_4_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2222,8 +2222,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(40960))+((gidx2/(4))*(2048))+((gidx2%(4))*(64))+(lidx4*(256))+(lidx5*(4))+(3)] = (val3+(val7+val8));
 }`;
 
-const r_2_2_5_16_8_64_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_2_5_16_8_64_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2303,8 +2303,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(5120))+(gidx1*(2560))+(gidx2*(32))+(lidx3*(160))+(lidx4*(4))+(3)] = acc3;
 }`;
 
-const E_80_64_2_4_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_64_2_4_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2336,8 +2336,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(1310720))+(lidx3*(4096))+(lidx4*(4))+(3)] = (((val3+val4+(val8+val9))-val10)*val11);
 }`;
 
-const E_80_64_2_4_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_64_2_4_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2360,8 +2360,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(1310720))+(lidx3*(4096))+(lidx4*(4))+(3)] = ((val3*val4)+val5);
 }`;
 
-const r_2_10_64_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_10_64_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2455,8 +2455,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(131072))+(gidx2*(64))+(lidx3*(16384))+(lidx4*(4))+(12291)] = acc15;
 }`;
 
-const E_64_80_2_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_80_2_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2477,8 +2477,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(20480))+(gidx1*(4))+(lidx2*(1310720))+(lidx3*(1280))+lidx4+(960)] = (val3+val4);
 }`;
 
-const r_64_32_80_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_32_80_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -2516,8 +2516,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (acc3*(0.003125h));
 }`;
 
-const r_64_32_80_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_32_80_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2576,8 +2576,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = sqrt(((1.0h)/((acc3*(0.003125h))+(1e-05h))));
 }`;
 
-const E_256_5_8_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_256_5_8_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2639,8 +2639,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(10240))+(gidx1*(64))+(lidx2*(1280))+(lidx3*(4))+(963)] = (((val15-val19)*val23*val27)+val31);
 }`;
 
-const r_256_5_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_5_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2733,8 +2733,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(10240))+(gidx1*(64))+(lidx2*(1280))+(lidx3*(4))+(963)] = acc15;
 }`;
 
-const r_2_8_128_64_8_16_10_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_128_64_8_16_10_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2828,14 +2828,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(134217728))+(gidx1*(16777216))+((gidx2/(64))*(131072))+((gidx2%(64))*(64))+(lidx4*(16384))+(lidx5*(4))+(12291)] = (acc15*(0.15811388300841897h));
 }`;
 
-const r_2048_32_1024_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2048_32_1024_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 2048 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (1024); ridx0++) {
     var  val0 = f16(data1[(gidx0*(131072))+(lidx1*(4096))+(ridx0*(4))]);
     var  val1 = f16(data1[(gidx0*(131072))+(lidx1*(4096))+(ridx0*(4))+(1)]);
@@ -2850,8 +2850,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_8192_64_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_8192_64_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2871,8 +2871,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = exp2(((val3-val4)*(1.4426950408889634h)));
 }`;
 
-const r_2048_32_1024_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2048_32_1024_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -2889,8 +2889,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_8192_64_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_8192_64_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -2910,8 +2910,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (val3/val4);
 }`;
 
-const r_2_2_64_5_4_16_2_1024_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_2_64_5_4_16_2_1024_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3006,8 +3006,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(655360))+((gidx2/(5))*(2560))+((gidx2%(5))*(8))+(lidx4*(163840))+(lidx5*(160))+(lidx6*(4))+(123)] = acc15;
 }`;
 
-const r_2_128_5_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_128_5_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3123,8 +3123,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(10240))+(gidx2*(64))+(lidx3*(1280))+(lidx4*(4))+(963)] = (acc15+val35+val51);
 }`;
 
-const E_1848_32_2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_1848_32_2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3137,8 +3137,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1+(59136)] = val1;
 }`;
 
-const r_77_5_2_16_192_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_5_2_16_192_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3183,8 +3183,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(640))+(gidx1*(64))+(lidx2*(320))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_2_64_77_8_16_10_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_64_77_8_16_10_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3230,14 +3230,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2523136))+(gidx1*(4928))+gidx2+(lidx3*(315392))+(lidx4*(308))+(231)] = (acc3*(0.15811388300841897h));
 }`;
 
-const r_2048_32_77 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2048_32_77 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 2048 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (77); ridx0++) {
     var  val0 = f16(data1[(gidx0*(2464))+(lidx1*(77))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -3246,8 +3246,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_512_77_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_512_77_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3269,8 +3269,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(9856))+gidx1+(lidx2*(308))+(231)] = exp2(((val3-val7)*(1.4426950408889634h)));
 }`;
 
-const r_2048_32_77n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2048_32_77n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -3284,8 +3284,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_2048_77_32 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2048_77_32 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3298,8 +3298,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2464))+gidx1+(lidx2*(77))] = (val0/val1);
 }`;
 
-const r_2_2_64_5_4_16_2_77_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_2_64_5_4_16_2_77_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3370,8 +3370,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(655360))+((gidx2/(5))*(2560))+((gidx2%(5))*(8))+(lidx4*(163840))+(lidx5*(160))+(lidx6*(4))+(123)] = acc15;
 }`;
 
-const r_256_40_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_40_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3464,8 +3464,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(64))+(lidx2*(10240))+(lidx3*(4))+(7683)] = acc15;
 }`;
 
-const E_256_80_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_256_80_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3494,8 +3494,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(16))+(lidx2*(5120))+lidx3+(3840)] = ((val3+val4)*((0.5h)*alu3*((1.0h)+(((2.0h)*((1.0h)/((1.0h)+exp2(((2.0h)*(alu3*(0.7978845608h)*((1.0h)+((0.044715h)*alu3*alu3)))*((-1.4426950408889634h)))))))-(1.0h)))));
 }`;
 
-const r_256_5_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_5_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3588,8 +3588,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(10240))+(gidx1*(64))+(lidx2*(1280))+(lidx3*(4))+(963)] = acc15;
 }`;
 
-const E_80_64_2_4_16_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_64_2_4_16_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3615,8 +3615,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(1310720))+(lidx3*(4096))+(lidx4*(4))+(3)] = (val3+val4+val8);
 }`;
 
-const E_80_64_2_4_16_4n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_64_2_4_16_4n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3651,8 +3651,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(1310720))+(lidx3*(4096))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9+(val13+val14)));
 }`;
 
-const E_2_4_640_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_4_640_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3687,8 +3687,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(327680))+(gidx2*(64))+(lidx3*(40960))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9+(val13+val14)));
 }`;
 
-const r_2_4_10_8_16_64_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_10_8_16_64_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3715,8 +3715,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(5120))+(gidx1*(1280))+(gidx2*(16))+(lidx3*(160))+lidx4] = acc0;
 }`;
 
-const r_4_5_16_8_64_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_5_16_8_64_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3774,8 +3774,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2560))+(gidx1*(32))+(lidx2*(160))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_2_40_64_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_40_64_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3806,8 +3806,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_80_8_8_16_320_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_80_8_8_16_320_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3932,8 +3932,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(16384))+(gidx2*(512))+(lidx3*(64))+(lidx4*(4))+(12291)] = (acc15+val57);
 }`;
 
-const E_20480_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_20480_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3954,8 +3954,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_80_64_2_4_16_4n5 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_64_2_4_16_4n5 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -3987,8 +3987,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(1310720))+(lidx3*(4096))+(lidx4*(4))+(3)] = ((((val3+val7)-val8)*val9*val10)+val11);
 }`;
 
-const r_2_10_64_8_16_80_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_10_64_8_16_80_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -4121,8 +4121,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(131072))+(gidx2*(64))+(lidx3*(16384))+(lidx4*(4))+(12291)] = (acc15+val35+(val51+val67));
 }`;
 
-const r_2_80_2_16_8_320_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_80_2_16_8_320_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -4254,8 +4254,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(4096))+(gidx2*(512))+(lidx3*(32))+(lidx4*(4))+(3075)] = (acc15+val66);
 }`;
 
-const r_64_16_640 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_640 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -4279,8 +4279,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_64_16_640n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_640n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -4307,8 +4307,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_40_16_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_40_16_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -4339,8 +4339,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_40_4_8_160_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_4_8_160_4 = `enable f16;
+
 var<workgroup> temp: array<f16,128>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -4396,8 +4396,8 @@ var<workgroup> temp: array<f16,128>;
   }
 }`;
 
-const r_2_160_2_16_8_320_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_8_320_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -4527,8 +4527,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(4096))+(gidx2*(512))+(lidx3*(32))+(lidx4*(4))+(3075)] = (acc15+val57+val61);
 }`;
 
-const r_64_16_1280 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_1280 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -4552,8 +4552,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_64_16_1280n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_1280n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -4580,8 +4580,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_80_16_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_80_16_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -4612,8 +4612,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_160_2_16_8_640_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_8_640_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -4733,8 +4733,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(4096))+(gidx2*(512))+(lidx3*(32))+(lidx4*(4))+(3075)] = acc15;
 }`;
 
-const r_2_20_16_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -4855,8 +4855,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = (acc15+val35+(val51+val55));
 }`;
 
-const E_160_16_2_4_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_160_16_2_4_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -4883,8 +4883,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4096))+(gidx1*(64))+(lidx2*(655360))+(lidx3*(1024))+(lidx4*(4))+(3)] = (((val3-val4)*val5*val6)+val7);
 }`;
 
-const r_2_20_16_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -4978,8 +4978,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = acc15;
 }`;
 
-const E_16_160_2_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16_160_2_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5000,8 +5000,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(4))+(lidx2*(655360))+(lidx3*(2560))+lidx4+(1920)] = (val3+val4);
 }`;
 
-const r_2048_16_40 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2048_16_40 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -5025,8 +5025,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_2048_16_40n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2048_16_40n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -5053,8 +5053,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_64_10_8_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_10_8_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5116,8 +5116,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(20480))+(gidx1*(64))+(lidx2*(2560))+(lidx3*(4))+(1923)] = (((val15-val19)*val23*val27)+val31);
 }`;
 
-const r_64_10_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_10_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5210,8 +5210,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(20480))+(gidx1*(64))+(lidx2*(2560))+(lidx3*(4))+(1923)] = acc15;
 }`;
 
-const r_2_8_32_16_8_16_20_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_32_16_8_16_20_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5305,14 +5305,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8388608))+(gidx1*(1048576))+((gidx2/(16))*(32768))+((gidx2%(16))*(64))+(lidx4*(4096))+(lidx5*(4))+(3075)] = (acc15*(0.11180339887498948h));
 }`;
 
-const r_512_32_256_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_512_32_256_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 512 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (256); ridx0++) {
     var  val0 = f16(data1[(gidx0*(32768))+(lidx1*(1024))+(ridx0*(4))]);
     var  val1 = f16(data1[(gidx0*(32768))+(lidx1*(1024))+(ridx0*(4))+(1)]);
@@ -5327,8 +5327,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_2048_16_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2048_16_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5348,8 +5348,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = exp2(((val3-val4)*(1.4426950408889634h)));
 }`;
 
-const r_512_32_256_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_512_32_256_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -5366,8 +5366,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_2048_16_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2048_16_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5387,8 +5387,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = (val3/val4);
 }`;
 
-const r_2_4_16_5_2_16_4_256_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_16_5_2_16_4_256_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5483,8 +5483,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(163840))+((gidx2/(5))*(5120))+((gidx2%(5))*(16))+(lidx4*(81920))+(lidx5*(320))+(lidx6*(4))+(243)] = acc15;
 }`;
 
-const r_2_32_10_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_32_10_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5600,8 +5600,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(20480))+(gidx2*(64))+(lidx3*(2560))+(lidx4*(4))+(1923)] = (acc15+val35+val51);
 }`;
 
-const r_77_10_2_16_192_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_10_2_16_192_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5646,8 +5646,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1280))+(gidx1*(64))+(lidx2*(640))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_2_16_77_8_16_20_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_16_77_8_16_20_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5693,14 +5693,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(630784))+(gidx1*(4928))+gidx2+(lidx3*(78848))+(lidx4*(308))+(231)] = (acc3*(0.11180339887498948h));
 }`;
 
-const r_512_32_77 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_512_32_77 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 512 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (77); ridx0++) {
     var  val0 = f16(data1[(gidx0*(2464))+(lidx1*(77))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -5709,8 +5709,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_128_77_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_128_77_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5732,8 +5732,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(9856))+gidx1+(lidx2*(308))+(231)] = exp2(((val3-val7)*(1.4426950408889634h)));
 }`;
 
-const r_512_32_77n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_512_32_77n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -5747,8 +5747,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_512_77_32 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_512_77_32 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5761,8 +5761,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2464))+gidx1+(lidx2*(77))] = (val0/val1);
 }`;
 
-const r_2_4_16_5_2_16_4_77_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_16_5_2_16_4_77_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5833,8 +5833,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(163840))+((gidx2/(5))*(5120))+((gidx2%(5))*(16))+(lidx4*(81920))+(lidx5*(320))+(lidx6*(4))+(243)] = acc15;
 }`;
 
-const r_64_80_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_80_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5927,8 +5927,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(64))+(lidx2*(20480))+(lidx3*(4))+(15363)] = acc15;
 }`;
 
-const E_64_160_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_160_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -5957,8 +5957,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(16))+(lidx2*(10240))+lidx3+(7680)] = ((val3+val4)*((0.5h)*alu3*((1.0h)+(((2.0h)*((1.0h)/((1.0h)+exp2(((2.0h)*(alu3*(0.7978845608h)*((1.0h)+((0.044715h)*alu3*alu3)))*((-1.4426950408889634h)))))))-(1.0h)))));
 }`;
 
-const r_64_10_8_16_640_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_10_8_16_640_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6051,8 +6051,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(20480))+(gidx1*(64))+(lidx2*(2560))+(lidx3*(4))+(1923)] = acc15;
 }`;
 
-const E_160_16_2_4_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_160_16_2_4_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6078,8 +6078,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4096))+(gidx1*(64))+(lidx2*(655360))+(lidx3*(1024))+(lidx4*(4))+(3)] = (val3+val4+val8);
 }`;
 
-const r_2_20_16_8_16_80_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_80_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6173,8 +6173,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = acc15;
 }`;
 
-const r_2_20_16_8_16_160_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_160_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6317,8 +6317,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = (acc15+val35+(val51+val55+(val71+val75)));
 }`;
 
-const r_2_20_16_8_16_160_4_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_160_4_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6434,8 +6434,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = (acc15+val35+val51);
 }`;
 
-const r_2_160_2_16_8_640_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_8_640_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6565,8 +6565,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(4096))+(gidx2*(512))+(lidx3*(32))+(lidx4*(4))+(3075)] = (acc15+val57+val61);
 }`;
 
-const r_2_160_2_16_8_640_4_4_3_3n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_8_640_4_4_3_3n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6691,8 +6691,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(4096))+(gidx2*(512))+(lidx3*(32))+(lidx4*(4))+(3075)] = (acc15+val57);
 }`;
 
-const E_10240_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_10240_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6713,8 +6713,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_2_20_16_8_16_160_4_4_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_160_4_4_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6847,8 +6847,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = (acc15+val35+(val51+val67));
 }`;
 
-const r_2_80_2_16_4_640_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_80_2_16_4_640_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -6980,8 +6980,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(2048))+(lidx2*(1024))+(lidx3*(16))+(lidx4*(4))+(771)] = (acc15+val66);
 }`;
 
-const r_64_16_320 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_320 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -7005,8 +7005,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_64_16_320n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_320n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -7033,8 +7033,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_80_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_80_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7065,8 +7065,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_80_4_8_160_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_80_4_8_160_4n1 = `enable f16;
+
 var<workgroup> temp: array<f16,128>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -7122,8 +7122,8 @@ var<workgroup> temp: array<f16,128>;
   }
 }`;
 
-const r_2_160_2_16_4_640_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_4_640_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7253,8 +7253,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(2048))+(lidx2*(1024))+(lidx3*(16))+(lidx4*(4))+(771)] = (acc15+val57+val61);
 }`;
 
-const E_2_160_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_160_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7285,8 +7285,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_160_2_16_4_1280_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_4_1280_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7406,8 +7406,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(2048))+(lidx2*(1024))+(lidx3*(16))+(lidx4*(4))+(771)] = acc15;
 }`;
 
-const r_2_40_4_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7528,8 +7528,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = (acc15+val35+(val51+val55));
 }`;
 
-const E_320_4_2_4_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_320_4_2_4_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7556,8 +7556,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1024))+(gidx1*(64))+(lidx2*(327680))+(lidx3*(256))+(lidx4*(4))+(3)] = (((val3-val4)*val5*val6)+val7);
 }`;
 
-const r_2_40_4_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7651,8 +7651,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = acc15;
 }`;
 
-const E_4_320_2_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_4_320_2_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7673,8 +7673,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(4))+(lidx2*(327680))+(lidx3*(5120))+lidx4+(3840)] = (val3+val4);
 }`;
 
-const r_512_16_80 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_512_16_80 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -7698,8 +7698,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_512_16_80n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_512_16_80n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -7726,8 +7726,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_16_20_8_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16_20_8_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7789,8 +7789,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = (((val15-val19)*val23*val27)+val31);
 }`;
 
-const r_16_20_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_16_20_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7883,8 +7883,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = acc15;
 }`;
 
-const r_2_8_8_4_8_16_40_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_8_4_8_16_40_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -7978,14 +7978,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(524288))+(gidx1*(65536))+((gidx2/(4))*(8192))+((gidx2%(4))*(64))+(lidx4*(1024))+(lidx5*(4))+(771)] = (acc15*(0.07905694150420949h));
 }`;
 
-const r_128_32_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_32_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 128 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (64); ridx0++) {
     var  val0 = f16(data1[(gidx0*(8192))+(lidx1*(256))+(ridx0*(4))]);
     var  val1 = f16(data1[(gidx0*(8192))+(lidx1*(256))+(ridx0*(4))+(1)]);
@@ -8000,8 +8000,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_512_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_512_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8021,8 +8021,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = exp2(((val3-val4)*(1.4426950408889634h)));
 }`;
 
-const r_128_32_64_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_32_64_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -8039,8 +8039,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_512_4_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_512_4_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8060,8 +8060,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = (val3/val4);
 }`;
 
-const r_2_8_4_5_16_8_64_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_4_5_16_8_64_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8155,8 +8155,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(40960))+((gidx2/(5))*(10240))+((gidx2%(5))*(32))+(lidx4*(640))+(lidx5*(4))+(483)] = acc15;
 }`;
 
-const r_2_8_20_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_20_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8272,8 +8272,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(40960))+(gidx2*(64))+(lidx3*(5120))+(lidx4*(4))+(3843)] = (acc15+val35+val51);
 }`;
 
-const r_77_20_2_16_192_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_77_20_2_16_192_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8318,8 +8318,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2560))+(gidx1*(64))+(lidx2*(1280))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_2_4_77_8_16_40_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_77_8_16_40_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8365,14 +8365,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(157696))+(gidx1*(4928))+gidx2+(lidx3*(19712))+(lidx4*(308))+(231)] = (acc3*(0.07905694150420949h));
 }`;
 
-const r_128_32_77 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_32_77 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 128 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (77); ridx0++) {
     var  val0 = f16(data1[(gidx0*(2464))+(lidx1*(77))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -8381,8 +8381,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_32_77_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_77_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8404,8 +8404,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(9856))+gidx1+(lidx2*(308))+(231)] = exp2(((val3-val7)*(1.4426950408889634h)));
 }`;
 
-const r_128_32_77n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_32_77n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -8419,8 +8419,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_128_77_32 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_128_77_32 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8433,8 +8433,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2464))+gidx1+(lidx2*(77))] = (val0/val1);
 }`;
 
-const r_2_8_4_5_16_8_77_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_4_5_16_8_77_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8504,8 +8504,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(40960))+((gidx2/(5))*(10240))+((gidx2%(5))*(32))+(lidx4*(640))+(lidx5*(4))+(483)] = acc15;
 }`;
 
-const r_16_160_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_16_160_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8598,8 +8598,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(64))+(lidx2*(40960))+(lidx3*(4))+(30723)] = acc15;
 }`;
 
-const E_16_320_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16_320_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8628,8 +8628,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(16))+(lidx2*(20480))+lidx3+(15360)] = ((val3+val4)*((0.5h)*alu3*((1.0h)+(((2.0h)*((1.0h)/((1.0h)+exp2(((2.0h)*(alu3*(0.7978845608h)*((1.0h)+((0.044715h)*alu3*alu3)))*((-1.4426950408889634h)))))))-(1.0h)))));
 }`;
 
-const r_16_20_8_16_1280_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_16_20_8_16_1280_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8722,8 +8722,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = acc15;
 }`;
 
-const E_320_4_2_4_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_320_4_2_4_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8749,8 +8749,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1024))+(gidx1*(64))+(lidx2*(327680))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+val4+val8);
 }`;
 
-const r_2_40_4_8_16_160_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_160_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8844,8 +8844,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = acc15;
 }`;
 
-const r_2_40_4_8_16_320_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_320_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -8988,8 +8988,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = (acc15+val35+(val51+val55+(val71+val75)));
 }`;
 
-const r_2_40_4_8_16_320_4_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_320_4_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -9105,8 +9105,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = (acc15+val35+val51);
 }`;
 
-const r_2_160_2_16_4_1280_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_4_1280_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -9236,8 +9236,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(2048))+(lidx2*(1024))+(lidx3*(16))+(lidx4*(4))+(771)] = (acc15+val57+val61);
 }`;
 
-const r_2_160_2_16_4_1280_4_4_3_3n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_4_1280_4_4_3_3n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -9362,8 +9362,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(2048))+(lidx2*(1024))+(lidx3*(16))+(lidx4*(4))+(771)] = (acc15+val57);
 }`;
 
-const E_5120_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_5120_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -9384,8 +9384,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_2_40_4_8_16_320_4_4_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_320_4_4_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -9518,8 +9518,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = (acc15+val35+(val51+val67));
 }`;
 
-const r_2_40_8_8_2_1280_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_8_2_1280_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -9646,8 +9646,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(8))+(lidx4*(4))+(195)] = acc15;
 }`;
 
-const r_2_40_8_8_2_1280_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_8_2_1280_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -9779,8 +9779,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(8))+(lidx4*(4))+(195)] = (acc15+val66);
 }`;
 
-const r_64_16_160 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_160 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -9804,8 +9804,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_64_16_160n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_160n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -9832,8 +9832,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_160_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_160_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -9863,8 +9863,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_40_8_8_2_1280_4_4_3_3n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_8_2_1280_4_4_3_3n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -9994,8 +9994,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(8))+(lidx4*(4))+(195)] = (acc15+val57+val61);
 }`;
 
-const r_2_40_8_8_2_1280_4_4_3_3n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_8_2_1280_4_4_3_3n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10115,8 +10115,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(8))+(lidx4*(4))+(195)] = acc15;
 }`;
 
-const r_2_40_8_8_2_1280_4_4_3_3n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_8_2_1280_4_4_3_3n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10258,8 +10258,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(8))+(lidx4*(4))+(195)] = (val69+(acc15+val73));
 }`;
 
-const r_2_40_8_8_2_1280_4_4_3_3n5 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_8_2_1280_4_4_3_3n5 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10428,8 +10428,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(8))+(lidx4*(4))+(195)] = (val69+val73+(val89+val93)+(acc15+val97));
 }`;
 
-const r_2_40_8_8_2_1280_4_4_3_3n6 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_8_2_1280_4_4_3_3n6 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10554,8 +10554,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(8))+(lidx4*(4))+(195)] = (acc15+val57);
 }`;
 
-const E_1280_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_1280_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10576,8 +10576,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_320_2_4_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_320_2_4_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10603,8 +10603,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(256))+(lidx1*(81920))+(lidx2*(64))+(lidx3*(4))+(3)] = (((val3-val4)*val5*val6)+val7);
 }`;
 
-const r_2_40_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10697,8 +10697,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(4))+(195)] = acc15;
 }`;
 
-const E_320_2_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_320_2_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10718,8 +10718,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4))+(lidx1*(81920))+(lidx2*(5120))+lidx3+(3840)] = (val3+val4);
 }`;
 
-const r_128_16_80 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_16_80 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -10743,8 +10743,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_128_16_80n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_16_80n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -10771,8 +10771,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_4_20_8_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_4_20_8_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10834,8 +10834,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = (((val15-val19)*val23*val27)+val31);
 }`;
 
-const r_4_20_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_20_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -10928,8 +10928,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = acc15;
 }`;
 
-const r_2_8_2_8_16_40_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_2_8_16_40_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11023,15 +11023,15 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(4096))+(gidx2*(2048))+(lidx3*(256))+(lidx4*(4))+(195)] = (acc15*(0.07905694150420949h));
 }`;
 
-const r_1024_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1024_16_4 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(16) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 1024 */
   let lidx1 = i32(lindex.x); /* 16 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (4); ridx0++) {
     var  val0 = f16(data1[(gidx0*(64))+(lidx1*(4))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -11040,7 +11040,7 @@ var<workgroup> temp: array<f16,16>;
   temp[lidx1] = acc0;
   workgroupBarrier();
   if (bool(f16(lidx1<(1)))) {
-    var  acc1 = -0x1.fffffep+127h;
+    var  acc1 = 65504.0h;
     for(var ridx1 = (0); ridx1 < (16); ridx1++) {
       var  val1 = f16(temp[ridx1]);
       var  alu1 = max(val1,acc1);
@@ -11050,8 +11050,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_128_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_128_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11070,8 +11070,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(512))+(lidx1*(64))+(lidx2*(4))+(3)] = exp2(((val3-val4)*(1.4426950408889634h)));
 }`;
 
-const r_1024_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1024_16_4n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -11095,8 +11095,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_128_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_128_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11115,8 +11115,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(512))+(lidx1*(64))+(lidx2*(4))+(3)] = (val3/val4);
 }`;
 
-const r_2_8_5_16_8_16_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_5_16_8_16_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11210,8 +11210,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(10240))+(gidx2*(32))+(lidx3*(640))+(lidx4*(4))+(483)] = acc15;
 }`;
 
-const r_2_2_20_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_2_20_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11327,8 +11327,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(40960))+(gidx2*(64))+(lidx3*(5120))+(lidx4*(4))+(3843)] = (acc15+val35+val51);
 }`;
 
-const r_2_77_8_16_40_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_77_8_16_40_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11373,14 +11373,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(39424))+gidx1+(lidx2*(4928))+(lidx3*(308))+(231)] = (acc3*(0.07905694150420949h));
 }`;
 
-const r_32_32_77 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_32_77 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 32 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (77); ridx0++) {
     var  val0 = f16(data1[(gidx0*(2464))+(lidx1*(77))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -11389,8 +11389,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_8_77_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_8_77_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11412,8 +11412,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(9856))+gidx1+(lidx2*(308))+(231)] = exp2(((val3-val7)*(1.4426950408889634h)));
 }`;
 
-const r_32_32_77n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_32_77n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -11427,8 +11427,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_32_77_32 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_77_32 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11441,8 +11441,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2464))+gidx1+(lidx2*(77))] = (val0/val1);
 }`;
 
-const r_2_8_5_16_8_77_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_5_16_8_77_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11512,8 +11512,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(10240))+(gidx2*(32))+(lidx3*(640))+(lidx4*(4))+(483)] = acc15;
 }`;
 
-const r_4_160_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_160_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11606,8 +11606,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(64))+(lidx2*(40960))+(lidx3*(4))+(30723)] = acc15;
 }`;
 
-const E_4_320_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_4_320_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11636,8 +11636,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(16))+(lidx2*(20480))+lidx3+(15360)] = ((val3+val4)*((0.5h)*alu3*((1.0h)+(((2.0h)*((1.0h)/((1.0h)+exp2(((2.0h)*(alu3*(0.7978845608h)*((1.0h)+((0.044715h)*alu3*alu3)))*((-1.4426950408889634h)))))))-(1.0h)))));
 }`;
 
-const r_4_20_8_16_1280_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_20_8_16_1280_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11730,8 +11730,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = acc15;
 }`;
 
-const E_320_2_4_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_320_2_4_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11756,8 +11756,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(256))+(lidx1*(81920))+(lidx2*(64))+(lidx3*(4))+(3)] = (val3+val4+val8);
 }`;
 
-const r_2_40_8_16_320_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_16_320_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -11872,8 +11872,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(4))+(195)] = (acc15+val35+val51);
 }`;
 
-const r_2_40_8_16_320_4_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_16_320_4_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -12027,8 +12027,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(4))+(195)] = (acc15+val35+(val51+val67)+(val83+val87));
 }`;
 
-const r_80_8_8_16_4_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_80_8_8_16_4_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -12147,8 +12147,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = acc15;
 }`;
 
-const r_4_64_8_8_16_3_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_64_8_8_16_3_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -12289,8 +12289,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1048576))+(gidx1*(4096))+(gidx2*(64))+(lidx3*(512))+(lidx4*(4))+(786435)] = (alu19*((1.0h)/((1.0h)+exp2((alu19*((-1.4426950408889634h)))))));
 }`;
 
-const r_4_64_8_8_16_16_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_64_8_8_16_16_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -12431,8 +12431,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1048576))+(gidx1*(4096))+(gidx2*(64))+(lidx3*(512))+(lidx4*(4))+(786435)] = (alu19*((1.0h)/((1.0h)+exp2((alu19*((-1.4426950408889634h)))))));
 }`;
 
-const r_8_32_4_8_16_16_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_32_4_8_16_16_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -12580,8 +12580,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(262144))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(196611)] = (alu17*((1.0h)/((1.0h)+exp2((alu17*((-1.4426950408889634h)))))));
 }`;
 
-const r_8_32_4_8_16_32_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_32_4_8_16_32_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -12722,8 +12722,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(262144))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(196611)] = (alu19*((1.0h)/((1.0h)+exp2((alu19*((-1.4426950408889634h)))))));
 }`;
 
-const r_32_16_2_8_16_32_4_3_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_16_2_8_16_32_4_3_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -12845,8 +12845,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(49152))+(gidx1*(1024))+(gidx2*(64))+(lidx3*(128))+(lidx4*(4))+(32771)] = (alu13*((1.0h)/((1.0h)+exp2((alu13*((-1.4426950408889634h)))))));
 }`;
 
-const r_32_16_2_8_16_96_4_3_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_16_2_8_16_96_4_3_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -12961,8 +12961,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(49152))+(gidx1*(1024))+(gidx2*(64))+(lidx3*(128))+(lidx4*(4))+(32771)] = (alu15*((1.0h)/((1.0h)+exp2((alu15*((-1.4426950408889634h)))))));
 }`;
 
-const r_64_8_8_16_96_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_8_8_16_96_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13109,8 +13109,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = (alu17*((1.0h)/((1.0h)+exp2((alu17*((-1.4426950408889634h)))))));
 }`;
 
-const r_80_8_8_16_256_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_80_8_8_16_256_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13229,8 +13229,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = acc15;
 }`;
 
-const E_32_20_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_20_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13258,8 +13258,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9));
 }`;
 
-const r_160_32_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_32_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -13276,8 +13276,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const r_32_16_10 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_16_10 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -13301,8 +13301,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_2_5_16_8_64_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_5_16_8_64_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13381,8 +13381,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2560))+(gidx1*(32))+(lidx2*(160))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_32_16_10n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_16_10n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -13406,8 +13406,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_40_64_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13438,8 +13438,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (((val3+val4+(val8+val9))-val10)*val11);
 }`;
 
-const E_40_64_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13465,8 +13465,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_80_8_8_16_320_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_80_8_8_16_320_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13585,8 +13585,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = acc15;
 }`;
 
-const r_4_10_8_16_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_10_8_16_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13609,8 +13609,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1280))+(gidx1*(16))+(lidx2*(160))+lidx3] = acc0;
 }`;
 
-const r_2_5_16_8_64_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_5_16_8_64_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13672,8 +13672,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2560))+(gidx1*(32))+(lidx2*(160))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_40_64_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13701,8 +13701,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (((val3+val4+val5)-val6)*val7*val8);
 }`;
 
-const E_40_64_8_16_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13726,8 +13726,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const E_4_640_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_4_640_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13761,8 +13761,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(64))+(lidx2*(40960))+(lidx3*(4))+(3)] = (val3+val4+(val8+val9)+(val13+val14));
 }`;
 
-const r_4_10_8_16_64_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_10_8_16_64_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13788,8 +13788,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1280))+(gidx1*(16))+(lidx2*(160))+lidx3] = acc0;
 }`;
 
-const r_2_5_16_8_64_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_5_16_8_64_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13847,8 +13847,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2560))+(gidx1*(32))+(lidx2*(160))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_40_64_8_16_4n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13874,8 +13874,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (((val3-val4)*val5*val6)+val7);
 }`;
 
-const r_10_64_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_10_64_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13968,8 +13968,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(12291)] = acc15;
 }`;
 
-const E_32_80_32_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_80_32_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -13989,8 +13989,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(4))+(lidx2*(1280))+lidx3+(960)] = (val3+val4);
 }`;
 
-const r_32_32_80_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_32_80_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -14028,8 +14028,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (acc3*(0.003125h));
 }`;
 
-const r_32_32_80_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_32_80_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14088,8 +14088,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = sqrt(((1.0h)/((acc3*(0.003125h))+(1e-05h))));
 }`;
 
-const E_128_5_8_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_128_5_8_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14151,8 +14151,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(10240))+(gidx1*(64))+(lidx2*(1280))+(lidx3*(4))+(963)] = (((val15-val19)*val23*val27)+val31);
 }`;
 
-const r_128_5_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_5_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14245,8 +14245,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(10240))+(gidx1*(64))+(lidx2*(1280))+(lidx3*(4))+(963)] = acc15;
 }`;
 
-const r_8_128_64_8_16_10_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_128_64_8_16_10_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14340,14 +14340,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16777216))+(gidx1*(131072))+(gidx2*(64))+(lidx3*(16384))+(lidx4*(4))+(12291)] = (acc15*(0.15811388300841897h));
 }`;
 
-const r_1024_32_1024_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1024_32_1024_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 1024 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (1024); ridx0++) {
     var  val0 = f16(data1[(gidx0*(131072))+(lidx1*(4096))+(ridx0*(4))]);
     var  val1 = f16(data1[(gidx0*(131072))+(lidx1*(4096))+(ridx0*(4))+(1)]);
@@ -14362,8 +14362,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_4096_64_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_4096_64_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14383,8 +14383,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = exp2(((val3-val4)*(1.4426950408889634h)));
 }`;
 
-const r_1024_32_1024_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1024_32_1024_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -14401,8 +14401,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_4096_64_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_4096_64_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14422,8 +14422,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (val3/val4);
 }`;
 
-const r_2_64_5_4_16_2_1024_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_64_5_4_16_2_1024_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14518,8 +14518,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(2560))+(gidx2*(8))+(lidx3*(163840))+(lidx4*(160))+(lidx5*(4))+(123)] = acc15;
 }`;
 
-const r_128_5_8_16_80_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_5_8_16_80_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14634,8 +14634,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(10240))+(gidx1*(64))+(lidx2*(1280))+(lidx3*(4))+(963)] = (acc15+val35+val51);
 }`;
 
-const r_2_64_77_4_16_2_10_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_64_77_4_16_2_10_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14682,14 +14682,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2523136))+(gidx1*(9856))+(gidx2*(2))+(lidx3*(630784))+(lidx4*(616))+lidx5+(462)] = (acc3*(0.15811388300841897h));
 }`;
 
-const r_1024_32_154 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1024_32_154 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 1024 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (154); ridx0++) {
     var  val0 = f16(data1[(gidx0*(4928))+(lidx1*(154))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -14698,8 +14698,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_256_77_32_2_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_256_77_32_2_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14722,8 +14722,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(19712))+(gidx1*(2))+(lidx2*(616))+lidx3+(462)] = exp2(((val3-val7)*(1.4426950408889634h)));
 }`;
 
-const r_1024_32_154n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1024_32_154n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -14737,8 +14737,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_1024_77_32_2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_1024_77_32_2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14752,8 +14752,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4928))+(gidx1*(2))+(lidx2*(154))+lidx3] = (val0/val1);
 }`;
 
-const r_2_64_5_4_16_2_154_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_64_5_4_16_2_154_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14824,8 +14824,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(2560))+(gidx2*(8))+(lidx3*(163840))+(lidx4*(160))+(lidx5*(4))+(123)] = acc15;
 }`;
 
-const r_128_40_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_40_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14918,8 +14918,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(64))+(lidx2*(10240))+(lidx3*(4))+(7683)] = acc15;
 }`;
 
-const E_128_80_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_128_80_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -14948,8 +14948,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(16))+(lidx2*(5120))+lidx3+(3840)] = ((val3+val4)*((0.5h)*alu3*((1.0h)+(((2.0h)*((1.0h)/((1.0h)+exp2(((2.0h)*(alu3*(0.7978845608h)*((1.0h)+((0.044715h)*alu3*alu3)))*((-1.4426950408889634h)))))))-(1.0h)))));
 }`;
 
-const r_128_5_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_5_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15042,8 +15042,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(10240))+(gidx1*(64))+(lidx2*(1280))+(lidx3*(4))+(963)] = acc15;
 }`;
 
-const E_40_64_8_16_4n5 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n5 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15068,8 +15068,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (val3+val4+val8);
 }`;
 
-const r_10_64_8_16_80_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_10_64_8_16_80_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15167,8 +15167,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(12291)] = (acc15+val35);
 }`;
 
-const E_40_64_8_16_4n6 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n6 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15202,8 +15202,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (val3+val4+(val8+val9)+(val13+val14));
 }`;
 
-const E_10240_32_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_10240_32_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15224,8 +15224,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_40_64_8_16_4n7 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n7 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15260,8 +15260,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_5_16_8_64_4_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_5_16_8_64_4_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15338,8 +15338,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2560))+(gidx1*(32))+(lidx2*(160))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_40_64_8_16_4n8 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n8 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15373,8 +15373,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (((val3+val7+(val11+val12))-val13)*val14);
 }`;
 
-const E_40_64_8_16_4n9 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n9 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15396,8 +15396,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = ((val3*val4)+val5);
 }`;
 
-const r_10_64_8_16_80_4_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_10_64_8_16_80_4_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15551,8 +15551,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(12291)] = (acc15+val35+(val51+val67+(val83+val87)));
 }`;
 
-const r_80_2_16_8_320_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_80_2_16_8_320_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15683,8 +15683,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4096))+(gidx1*(512))+(lidx2*(32))+(lidx3*(4))+(3075)] = (acc15+val66);
 }`;
 
-const r_32_256_40 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_40 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -15708,8 +15708,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const r_32_256_40n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_40n1 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -15736,8 +15736,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const E_40_16_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_16_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15767,8 +15767,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_160_2_16_8_320_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_2_16_8_320_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15897,8 +15897,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4096))+(gidx1*(512))+(lidx2*(32))+(lidx3*(4))+(3075)] = (acc15+val57+val61);
 }`;
 
-const r_32_256_80 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_80 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -15922,8 +15922,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const r_32_256_80n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_80n1 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -15950,8 +15950,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const E_80_16_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_16_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -15981,8 +15981,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_160_2_16_8_640_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_2_16_8_640_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16101,8 +16101,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4096))+(gidx1*(512))+(lidx2*(32))+(lidx3*(4))+(3075)] = acc15;
 }`;
 
-const r_20_16_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_20_16_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16222,8 +16222,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3075)] = (acc15+val35+(val51+val55));
 }`;
 
-const E_80_16_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_16_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16249,8 +16249,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = (((val3-val4)*val5*val6)+val7);
 }`;
 
-const r_20_16_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_20_16_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16343,8 +16343,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3075)] = acc15;
 }`;
 
-const E_8_160_32_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_8_160_32_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16364,8 +16364,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(4))+(lidx2*(2560))+lidx3+(1920)] = (val3+val4);
 }`;
 
-const r_1024_16_40 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1024_16_40 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -16389,8 +16389,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_1024_16_40n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1024_16_40n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -16417,8 +16417,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_32_10_8_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_10_8_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16480,8 +16480,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(20480))+(gidx1*(64))+(lidx2*(2560))+(lidx3*(4))+(1923)] = (((val15-val19)*val23*val27)+val31);
 }`;
 
-const r_32_10_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_10_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16574,8 +16574,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(20480))+(gidx1*(64))+(lidx2*(2560))+(lidx3*(4))+(1923)] = acc15;
 }`;
 
-const r_8_32_16_8_16_20_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_32_16_8_16_20_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16669,14 +16669,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1048576))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = (acc15*(0.11180339887498948h));
 }`;
 
-const r_256_32_256_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_32_256_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 256 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (256); ridx0++) {
     var  val0 = f16(data1[(gidx0*(32768))+(lidx1*(1024))+(ridx0*(4))]);
     var  val1 = f16(data1[(gidx0*(32768))+(lidx1*(1024))+(ridx0*(4))+(1)]);
@@ -16691,8 +16691,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_1024_16_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_1024_16_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16712,8 +16712,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = exp2(((val3-val4)*(1.4426950408889634h)));
 }`;
 
-const r_256_32_256_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_32_256_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -16730,8 +16730,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_1024_16_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_1024_16_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16751,8 +16751,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = (val3/val4);
 }`;
 
-const r_4_16_5_2_16_4_256_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_16_5_2_16_4_256_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16847,8 +16847,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(5120))+(gidx2*(16))+(lidx3*(81920))+(lidx4*(320))+(lidx5*(4))+(243)] = acc15;
 }`;
 
-const r_32_10_8_16_160_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_10_8_16_160_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -16963,8 +16963,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(20480))+(gidx1*(64))+(lidx2*(2560))+(lidx3*(4))+(1923)] = (acc15+val35+val51);
 }`;
 
-const r_2_16_77_4_16_2_20_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_16_77_4_16_2_20_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17011,14 +17011,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(630784))+(gidx1*(9856))+(gidx2*(2))+(lidx3*(157696))+(lidx4*(616))+lidx5+(462)] = (acc3*(0.11180339887498948h));
 }`;
 
-const r_256_32_154 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_32_154 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 256 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (154); ridx0++) {
     var  val0 = f16(data1[(gidx0*(4928))+(lidx1*(154))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -17027,8 +17027,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_64_77_32_2_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_77_32_2_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17051,8 +17051,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(19712))+(gidx1*(2))+(lidx2*(616))+lidx3+(462)] = exp2(((val3-val7)*(1.4426950408889634h)));
 }`;
 
-const r_256_32_154n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_32_154n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -17066,8 +17066,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_256_77_32_2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_256_77_32_2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17081,8 +17081,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4928))+(gidx1*(2))+(lidx2*(154))+lidx3] = (val0/val1);
 }`;
 
-const r_4_16_5_2_16_4_154_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_16_5_2_16_4_154_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17153,8 +17153,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(5120))+(gidx2*(16))+(lidx3*(81920))+(lidx4*(320))+(lidx5*(4))+(243)] = acc15;
 }`;
 
-const r_32_80_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_80_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17247,8 +17247,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(64))+(lidx2*(20480))+(lidx3*(4))+(15363)] = acc15;
 }`;
 
-const E_32_160_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_160_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17277,8 +17277,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(16))+(lidx2*(10240))+lidx3+(7680)] = ((val3+val4)*((0.5h)*alu3*((1.0h)+(((2.0h)*((1.0h)/((1.0h)+exp2(((2.0h)*(alu3*(0.7978845608h)*((1.0h)+((0.044715h)*alu3*alu3)))*((-1.4426950408889634h)))))))-(1.0h)))));
 }`;
 
-const r_32_10_8_16_640_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_10_8_16_640_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17371,8 +17371,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(20480))+(gidx1*(64))+(lidx2*(2560))+(lidx3*(4))+(1923)] = acc15;
 }`;
 
-const E_80_16_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_16_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17397,8 +17397,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = (val3+val4+val8);
 }`;
 
-const r_20_16_8_16_80_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_20_16_8_16_80_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17491,8 +17491,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3075)] = acc15;
 }`;
 
-const r_20_16_8_16_160_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_20_16_8_16_160_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17634,8 +17634,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3075)] = (acc15+val35+(val51+val55+(val71+val75)));
 }`;
 
-const r_20_16_8_16_160_4_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_20_16_8_16_160_4_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17750,8 +17750,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3075)] = (acc15+val35+val51);
 }`;
 
-const r_160_2_16_8_640_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_2_16_8_640_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -17880,8 +17880,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4096))+(gidx1*(512))+(lidx2*(32))+(lidx3*(4))+(3075)] = (acc15+val57+val61);
 }`;
 
-const r_160_2_16_8_640_4_4_3_3n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_2_16_8_640_4_4_3_3n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18005,8 +18005,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4096))+(gidx1*(512))+(lidx2*(32))+(lidx3*(4))+(3075)] = (acc15+val57);
 }`;
 
-const E_5120_32_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_5120_32_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18027,8 +18027,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_20_16_8_16_160_4_4_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_20_16_8_16_160_4_4_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18160,8 +18160,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3075)] = (acc15+val35+(val51+val67));
 }`;
 
-const r_80_2_16_4_640_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_80_2_16_4_640_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18292,8 +18292,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(1024))+(lidx2*(16))+(lidx3*(4))+(771)] = (acc15+val66);
 }`;
 
-const r_32_256_20 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_20 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -18317,8 +18317,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const r_32_256_20n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_20n1 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -18345,8 +18345,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const E_80_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_80_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18376,8 +18376,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_160_2_16_4_640_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_2_16_4_640_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18506,8 +18506,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(1024))+(lidx2*(16))+(lidx3*(4))+(771)] = (acc15+val57+val61);
 }`;
 
-const E_160_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_160_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18537,8 +18537,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_160_2_16_4_1280_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_2_16_4_1280_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18657,8 +18657,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(1024))+(lidx2*(16))+(lidx3*(4))+(771)] = acc15;
 }`;
 
-const r_40_4_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_4_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18778,8 +18778,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(771)] = (acc15+val35+(val51+val55));
 }`;
 
-const E_160_4_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_160_4_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18805,8 +18805,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = (((val3-val4)*val5*val6)+val7);
 }`;
 
-const r_40_4_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_4_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18899,8 +18899,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(771)] = acc15;
 }`;
 
-const E_2_320_32_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_32_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -18920,8 +18920,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(4))+(lidx2*(5120))+lidx3+(3840)] = (val3+val4);
 }`;
 
-const r_256_16_80 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_16_80 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -18945,8 +18945,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_256_16_80n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_16_80n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -18973,8 +18973,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_8_20_8_16_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_8_20_8_16_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19036,8 +19036,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = (((val15-val19)*val23*val27)+val31);
 }`;
 
-const r_8_20_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_20_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19130,8 +19130,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = acc15;
 }`;
 
-const r_8_8_4_8_16_40_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_8_4_8_16_40_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19225,15 +19225,15 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(65536))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = (acc15*(0.07905694150420949h));
 }`;
 
-const r_2048_16_16 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2048_16_16 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(16) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 2048 */
   let lidx1 = i32(lindex.x); /* 16 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (16); ridx0++) {
     var  val0 = f16(data1[(gidx0*(256))+(lidx1*(16))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -19242,7 +19242,7 @@ var<workgroup> temp: array<f16,16>;
   temp[lidx1] = acc0;
   workgroupBarrier();
   if (bool(f16(lidx1<(1)))) {
-    var  acc1 = -0x1.fffffep+127h;
+    var  acc1 = 65504.0h;
     for(var ridx1 = (0); ridx1 < (16); ridx1++) {
       var  val1 = f16(temp[ridx1]);
       var  alu1 = max(val1,acc1);
@@ -19252,8 +19252,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_256_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_256_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19273,8 +19273,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = exp2(((val3-val4)*(1.4426950408889634h)));
 }`;
 
-const r_2048_16_16n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2048_16_16n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -19298,8 +19298,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_256_4_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_256_4_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19319,8 +19319,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = (val3/val4);
 }`;
 
-const r_8_4_5_16_8_64_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_4_5_16_8_64_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19414,8 +19414,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(10240))+(gidx2*(32))+(lidx3*(640))+(lidx4*(4))+(483)] = acc15;
 }`;
 
-const r_8_20_8_16_320_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_20_8_16_320_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19530,8 +19530,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = (acc15+val35+val51);
 }`;
 
-const r_2_4_77_4_16_2_40_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_77_4_16_2_40_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19578,14 +19578,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(157696))+(gidx1*(9856))+(gidx2*(2))+(lidx3*(39424))+(lidx4*(616))+lidx5+(462)] = (acc3*(0.07905694150420949h));
 }`;
 
-const r_64_32_154 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_32_154 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 64 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (154); ridx0++) {
     var  val0 = f16(data1[(gidx0*(4928))+(lidx1*(154))+ridx0]);
     var  alu0 = max(val0,acc0);
@@ -19594,8 +19594,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_16_77_32_2_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16_77_32_2_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19618,8 +19618,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(19712))+(gidx1*(2))+(lidx2*(616))+lidx3+(462)] = exp2(((val3-val7)*(1.4426950408889634h)));
 }`;
 
-const r_64_32_154n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_32_154n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -19633,8 +19633,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_64_77_32_2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_77_32_2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19648,8 +19648,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4928))+(gidx1*(2))+(lidx2*(154))+lidx3] = (val0/val1);
 }`;
 
-const r_8_4_5_16_8_154_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_4_5_16_8_154_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19719,8 +19719,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(10240))+(gidx2*(32))+(lidx3*(640))+(lidx4*(4))+(483)] = acc15;
 }`;
 
-const r_8_160_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_160_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19813,8 +19813,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(64))+(lidx2*(40960))+(lidx3*(4))+(30723)] = acc15;
 }`;
 
-const E_8_320_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_8_320_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19843,8 +19843,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(16))+(lidx2*(20480))+lidx3+(15360)] = ((val3+val4)*((0.5h)*alu3*((1.0h)+(((2.0h)*((1.0h)/((1.0h)+exp2(((2.0h)*(alu3*(0.7978845608h)*((1.0h)+((0.044715h)*alu3*alu3)))*((-1.4426950408889634h)))))))-(1.0h)))));
 }`;
 
-const r_8_20_8_16_1280_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_20_8_16_1280_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19937,8 +19937,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(40960))+(gidx1*(64))+(lidx2*(5120))+(lidx3*(4))+(3843)] = acc15;
 }`;
 
-const E_160_4_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_160_4_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -19963,8 +19963,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = (val3+val4+val8);
 }`;
 
-const r_40_4_8_16_160_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_4_8_16_160_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -20057,8 +20057,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(771)] = acc15;
 }`;
 
-const r_40_4_8_16_320_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_4_8_16_320_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -20200,8 +20200,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(771)] = (acc15+val35+(val51+val55+(val71+val75)));
 }`;
 
-const r_40_4_8_16_320_4_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_4_8_16_320_4_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -20316,8 +20316,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(771)] = (acc15+val35+val51);
 }`;
 
-const r_160_2_16_4_1280_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_2_16_4_1280_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -20446,8 +20446,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(1024))+(lidx2*(16))+(lidx3*(4))+(771)] = (acc15+val57+val61);
 }`;
 
-const r_160_2_16_4_1280_4_4_3_3n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_160_2_16_4_1280_4_4_3_3n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -20571,8 +20571,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(1024))+(lidx2*(16))+(lidx3*(4))+(771)] = (acc15+val57);
 }`;
 
-const E_2560_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2560_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -20593,8 +20593,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_40_4_8_16_320_4_4_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_4_8_16_320_4_4_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -20726,8 +20726,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(771)] = (acc15+val35+(val51+val67));
 }`;
 
-const r_40_8_8_2_1280_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_8_8_2_1280_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -20853,8 +20853,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(256))+(lidx2*(8))+(lidx3*(4))+(195)] = acc15;
 }`;
 
-const r_40_8_8_2_1280_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_8_8_2_1280_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -20985,8 +20985,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(256))+(lidx2*(8))+(lidx3*(4))+(195)] = (acc15+val66);
 }`;
 
-const r_32_256_10 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_10 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -21010,8 +21010,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const r_32_256_10n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_10n1 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -21038,8 +21038,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const E_160_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_160_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21068,8 +21068,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(512))+(lidx1*(64))+(lidx2*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_40_8_8_2_1280_4_4_3_3n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_8_8_2_1280_4_4_3_3n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21198,8 +21198,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(256))+(lidx2*(8))+(lidx3*(4))+(195)] = (acc15+val57+val61);
 }`;
 
-const r_40_8_8_2_1280_4_4_3_3n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_8_8_2_1280_4_4_3_3n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21318,8 +21318,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(256))+(lidx2*(8))+(lidx3*(4))+(195)] = acc15;
 }`;
 
-const r_40_8_8_2_1280_4_4_3_3n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_8_8_2_1280_4_4_3_3n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21460,8 +21460,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(256))+(lidx2*(8))+(lidx3*(4))+(195)] = (val69+(acc15+val73));
 }`;
 
-const r_40_8_8_2_1280_4_4_3_3n5 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_8_8_2_1280_4_4_3_3n5 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21629,8 +21629,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(256))+(lidx2*(8))+(lidx3*(4))+(195)] = (val69+val73+(val89+val93)+(acc15+val97));
 }`;
 
-const r_40_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21729,8 +21729,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(lidx1*(256))+(lidx2*(4))+(195)] = ((acc15+val35)*val36);
 }`;
 
-const E_2_320_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21765,8 +21765,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(3)] = (val3+val7+(val11+val15));
 }`;
 
-const r_2_40_8_16_640_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_16_640_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21859,8 +21859,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(4))+(195)] = acc15;
 }`;
 
-const E_2_4_80_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_4_80_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21896,8 +21896,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(40960))+(gidx2*(64))+(lidx3*(5120))+(lidx4*(4))+(3)] = (val3+val7+(val11+val15));
 }`;
 
-const E_2_320_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -21927,8 +21927,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_40_8_8_2_2560_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_8_2_2560_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22058,8 +22058,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(8))+(lidx4*(4))+(195)] = (acc15+val57+val61);
 }`;
 
-const E_2_320_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22087,8 +22087,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(3)] = (val3+val4+(val8+val9));
 }`;
 
-const E_160_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_160_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22114,8 +22114,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(512))+(lidx1*(64))+(lidx2*(4))+(3)] = (val3+val4+(val8+val9));
 }`;
 
-const E_2_320_8_16_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_8_16_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22148,8 +22148,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(3)] = (val3+val4+(val8+val9)+val13);
 }`;
 
-const E_2560_32_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2560_32_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22170,8 +22170,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_2560_32_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2560_32_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22192,8 +22192,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_160_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_160_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22212,8 +22212,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(512))+(lidx1*(64))+(lidx2*(4))+(3)] = (val3+val4);
 }`;
 
-const E_2_320_8_16_4n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_8_16_4n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22239,8 +22239,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(163840))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(3)] = (val3+val4+val8);
 }`;
 
-const r_2_40_8_16_640_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_8_16_640_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22360,8 +22360,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(81920))+(gidx1*(2048))+(lidx2*(256))+(lidx3*(4))+(195)] = (acc15+val35+(val51+val55));
 }`;
 
-const r_2_160_2_16_4_1280_4_4_3_3n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_4_1280_4_4_3_3n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22475,8 +22475,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(2048))+(lidx2*(1024))+(lidx3*(16))+(lidx4*(4))+(771)] = acc15;
 }`;
 
-const r_40_4_8_16_320_4_4_4n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_40_4_8_16_320_4_4_4n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22576,8 +22576,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(771)] = ((acc15+val35)*val36);
 }`;
 
-const E_2_320_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22610,8 +22610,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+val4+(val8+val12));
 }`;
 
-const E_2_4_320_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_4_320_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22644,8 +22644,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(163840))+(gidx2*(64))+(lidx3*(20480))+(lidx4*(4))+(3)] = (val3+val4+(val8+val12));
 }`;
 
-const E_2_320_4_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_4_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22676,8 +22676,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_160_2_16_4_2560_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_4_2560_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22807,8 +22807,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(2048))+(lidx2*(1024))+(lidx3*(16))+(lidx4*(4))+(771)] = (acc15+val57+val61);
 }`;
 
-const r_2_40_4_8_16_640_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_640_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -22929,8 +22929,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = (acc15+val35+(val51+val55));
 }`;
 
-const r_2_40_4_8_16_640_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_640_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23024,8 +23024,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = acc15;
 }`;
 
-const E_2_320_4_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_4_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23061,8 +23061,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9+(val13+val14)));
 }`;
 
-const E_2_320_4_8_16_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_320_4_8_16_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23087,8 +23087,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+val7);
 }`;
 
-const E_10240_32_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_10240_32_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23109,8 +23109,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_2_240_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_240_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23146,8 +23146,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(491520))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9+(val13+val14)));
 }`;
 
-const r_20_4_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_20_4_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23247,8 +23247,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(771)] = ((acc15+val35)*val36);
 }`;
 
-const E_2_240_4_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_240_4_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23273,8 +23273,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(491520))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+val7);
 }`;
 
-const E_7680_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_7680_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23295,8 +23295,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_7680_32_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_7680_32_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23317,8 +23317,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_64_16_960 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_960 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -23342,8 +23342,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_64_16_960n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_960n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -23370,8 +23370,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_240_4_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_240_4_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23402,8 +23402,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(491520))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_160_2_16_4_1920_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_4_1920_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23533,8 +23533,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(2048))+(lidx2*(1024))+(lidx3*(16))+(lidx4*(4))+(771)] = (acc15+val57+val61);
 }`;
 
-const r_2_40_4_8_16_480_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_480_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23655,8 +23655,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = (acc15+val35+(val51+val55));
 }`;
 
-const r_2_40_4_8_16_480_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_40_4_8_16_480_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23750,8 +23750,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(327680))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(771)] = acc15;
 }`;
 
-const r_2_320_2_16_8_1280_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_320_2_16_8_1280_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23865,8 +23865,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(4096))+(gidx2*(512))+(lidx3*(32))+(lidx4*(4))+(3075)] = acc15;
 }`;
 
-const r_20_16_8_16_160_4_4_4n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_20_16_8_16_160_4_4_4n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -23966,8 +23966,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3075)] = ((acc15+val35)*val36);
 }`;
 
-const E_2_240_16_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_240_16_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24000,8 +24000,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1966080))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (val3+val4+(val8+val12));
 }`;
 
-const r_2_4_15_8_16_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_15_8_16_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24035,8 +24035,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(7680))+(gidx1*(1920))+(gidx2*(16))+(lidx3*(240))+lidx4] = acc0;
 }`;
 
-const r_64_16_15 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_15 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -24060,8 +24060,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_2_4_5_8_16_64_3_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_5_8_16_64_3_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24145,8 +24145,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(7680))+(gidx1*(1920))+(gidx2*(48))+(lidx3*(240))+(lidx4*(3))+(2)] = acc2;
 }`;
 
-const r_64_16_15n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_15n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -24170,8 +24170,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_240_16_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_240_16_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24208,8 +24208,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1966080))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (((val3+val4+(val8+val12))-val13)*val14);
 }`;
 
-const E_2_240_16_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_240_16_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24236,8 +24236,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1966080))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_160_2_16_8_1920_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_8_1920_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24367,8 +24367,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(4096))+(gidx2*(512))+(lidx3*(32))+(lidx4*(4))+(3075)] = (acc15+val57+val61);
 }`;
 
-const r_2_20_16_8_16_480_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_480_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24489,8 +24489,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = (acc15+val35+(val51+val55));
 }`;
 
-const r_2_20_16_8_16_480_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_480_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24584,8 +24584,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = acc15;
 }`;
 
-const E_2_160_16_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_160_16_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24621,8 +24621,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9+(val13+val14)));
 }`;
 
-const E_2_160_16_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_160_16_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24647,8 +24647,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (val3+val7);
 }`;
 
-const E_20480_32_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_20480_32_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24669,8 +24669,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_2_160_16_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_160_16_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24706,8 +24706,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_160_2_16_8_1280_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_8_1280_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24837,8 +24837,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(4096))+(gidx2*(512))+(lidx3*(32))+(lidx4*(4))+(3075)] = (acc15+val57+val61);
 }`;
 
-const r_2_20_16_8_16_320_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_320_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -24959,8 +24959,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = (acc15+val35+(val51+val55));
 }`;
 
-const r_2_20_16_8_16_320_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_320_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25054,8 +25054,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = acc15;
 }`;
 
-const E_2_120_16_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_120_16_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25091,8 +25091,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(983040))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9+(val13+val14)));
 }`;
 
-const r_10_16_8_16_80_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_10_16_8_16_80_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25192,8 +25192,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3075)] = ((acc15+val35)*val36);
 }`;
 
-const E_2_120_16_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_120_16_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25218,8 +25218,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(983040))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (val3+val7);
 }`;
 
-const E_15360_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_15360_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25240,8 +25240,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_15360_32_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_15360_32_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25262,8 +25262,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_64_16_1920 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_1920 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -25287,8 +25287,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_64_16_1920n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_1920n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -25315,8 +25315,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_120_16_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_120_16_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25347,8 +25347,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(983040))+(gidx1*(8192))+(gidx2*(64))+(lidx3*(1024))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_160_2_16_8_960_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_2_16_8_960_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25478,8 +25478,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(4096))+(gidx2*(512))+(lidx3*(32))+(lidx4*(4))+(3075)] = (acc15+val57+val61);
 }`;
 
-const r_2_20_16_8_16_240_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_240_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25600,8 +25600,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = (acc15+val35+(val51+val55));
 }`;
 
-const r_2_20_16_8_16_240_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_20_16_8_16_240_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25695,8 +25695,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(655360))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3075)] = acc15;
 }`;
 
-const r_2_160_8_8_16_640_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_160_8_8_16_640_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25810,8 +25810,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2621440))+(gidx1*(16384))+(gidx2*(512))+(lidx3*(64))+(lidx4*(4))+(12291)] = acc15;
 }`;
 
-const r_10_64_8_16_80_4_4_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_10_64_8_16_80_4_4_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25911,8 +25911,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(12291)] = ((acc15+val35)*val36);
 }`;
 
-const E_2_120_64_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_120_64_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -25945,8 +25945,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(3932160))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (val3+val4+(val8+val12));
 }`;
 
-const r_2_10_64_8_16_240_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_10_64_8_16_240_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26040,8 +26040,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(131072))+(gidx2*(64))+(lidx3*(16384))+(lidx4*(4))+(12291)] = acc15;
 }`;
 
-const r_2_4_30_8_16_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_30_8_16_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26075,8 +26075,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(15360))+(gidx1*(3840))+(gidx2*(16))+(lidx3*(480))+lidx4] = acc0;
 }`;
 
-const r_64_16_30 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_30 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -26100,8 +26100,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_2_4_10_8_16_64_3_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_10_8_16_64_3_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26185,8 +26185,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(15360))+(gidx1*(3840))+(gidx2*(48))+(lidx3*(480))+(lidx4*(3))+(2)] = acc2;
 }`;
 
-const r_64_16_30n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_30n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -26210,8 +26210,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_120_64_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_120_64_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26248,8 +26248,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(3932160))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (((val3+val4+(val8+val12))-val13)*val14);
 }`;
 
-const E_2_120_64_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_120_64_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26276,8 +26276,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(3932160))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_80_8_8_16_960_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_80_8_8_16_960_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26397,8 +26397,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(16384))+(gidx2*(512))+(lidx3*(64))+(lidx4*(4))+(12291)] = acc15;
 }`;
 
-const r_2_4_10_8_16_64_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_4_10_8_16_64_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26427,8 +26427,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(5120))+(gidx1*(1280))+(gidx2*(16))+(lidx3*(160))+lidx4] = acc0;
 }`;
 
-const E_2_80_64_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_80_64_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26464,8 +26464,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2621440))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9+(val13+val14)));
 }`;
 
-const E_10240_32_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_10240_32_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26486,8 +26486,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_2_80_64_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_80_64_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26512,8 +26512,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2621440))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (val3+val7);
 }`;
 
-const E_40960_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40960_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26534,8 +26534,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_2_10_64_8_16_160_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_10_64_8_16_160_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26629,8 +26629,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(131072))+(gidx2*(64))+(lidx3*(16384))+(lidx4*(4))+(12291)] = acc15;
 }`;
 
-const E_40960_32_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40960_32_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26651,8 +26651,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_640_32_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_640_32_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -26669,8 +26669,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const r_64_16_20 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_20 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -26694,8 +26694,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const r_8_5_8_16_64_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_5_8_16_64_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26753,8 +26753,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2560))+(gidx1*(64))+(lidx2*(320))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_64_16_20n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_16_20n1 = `enable f16;
+
 var<workgroup> temp: array<f16,16>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -26778,8 +26778,8 @@ var<workgroup> temp: array<f16,16>;
   }
 }`;
 
-const E_2_80_64_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_80_64_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26815,8 +26815,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2621440))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_2_80_8_8_16_640_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_80_8_8_16_640_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26936,8 +26936,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(16384))+(gidx2*(512))+(lidx3*(64))+(lidx4*(4))+(12291)] = acc15;
 }`;
 
-const E_40_64_8_16_4n10 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_40_64_8_16_4n10 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26964,8 +26964,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (val3+val4+(val8+val9));
 }`;
 
-const E_2_80_64_8_16_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_80_64_8_16_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -26992,8 +26992,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2621440))+(gidx1*(32768))+(gidx2*(64))+(lidx3*(4096))+(lidx4*(4))+(3)] = (val3+val4+val8);
 }`;
 
-const E_2_32_20_4_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2_32_20_4_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -27021,8 +27021,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1310720))+(gidx1*(40960))+((gidx2/(4))*(2048))+((gidx2%(4))*(64))+(lidx4*(256))+(lidx5*(4))+(3)] = (val3+val4+(val8+val9));
 }`;
 
-const r_2_8_8_16_320_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2_8_8_16_320_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -27141,8 +27141,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = acc15;
 }`;
 
-const E_64_4_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_4_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -27180,8 +27180,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(64))+(lidx1*(4096))+(lidx2*(4))+(3)] = ((val3-(val4*(alu3+(val10*((val14+val9)-alu3)))))/val15);
 }`;
 
-const E_64_4_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_4_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31170,8 +31170,8 @@ commandEncoder.copyBufferToBuffer(gpuWriteBuffer8, 0, input8, 0, gpuWriteBuffer8
   
   var decoder = function() {
   
-    const E_128_32_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+    const E_128_32_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -31187,8 +31187,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = ((5.489980785067252h)*val3);
 }`;
 
-const r_32_32_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_32_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31266,8 +31266,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(12291)] = (fma(val15,val31,fma(val11,val27,fma(val7,val23,fma(val3,val19,acc15))))+val35);
 }`;
 
-const r_128_8_8_16_4_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_8_8_16_4_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31391,8 +31391,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = (acc15+val57);
 }`;
 
-const r_256_32_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_256_32_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -31409,8 +31409,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const r_32_256 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -31431,8 +31431,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const r_4_4_8_16_64_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_4_8_16_64_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31490,8 +31490,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_32_256n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256n1 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -31512,8 +31512,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const E_64_64_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_64_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31543,8 +31543,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_128_8_8_16_512_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_8_8_16_512_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31663,8 +31663,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = acc15;
 }`;
 
-const r_4_16_8_16_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_16_8_16_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31685,8 +31685,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(16))+(lidx2*(256))+lidx3] = acc0;
 }`;
 
-const r_4_4_8_16_64_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_4_8_16_64_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31746,8 +31746,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_64_64_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_64_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31779,8 +31779,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const E_32_32_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_32_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31806,8 +31806,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(65536))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+(val7+val8));
 }`;
 
-const r_4_4_8_16_64_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_4_8_16_64_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31884,8 +31884,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_64_64_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_64_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31916,8 +31916,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (((val3+(val7+val8))-val9)*val10*val11);
 }`;
 
-const E_64_64_8_16_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_64_8_16_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -31937,8 +31937,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (val3+val4);
 }`;
 
-const r_16_64_8_16_128_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_16_64_8_16_128_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32036,8 +32036,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(12291)] = (acc15+val35);
 }`;
 
-const r_128_64_8_16_128_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_64_8_16_128_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32130,14 +32130,14 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(12291)] = (acc15*(0.044194173824159216h));
 }`;
 
-const r_128_32_1024_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_32_1024_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
   let gidx0 = i32(gindex.x); /* 128 */
   let lidx1 = i32(lindex.x); /* 32 */
-  var  acc0 = -0x1.fffffep+127h;
+  var  acc0 = 65504.0h;
   for(var ridx0 = (0); ridx0 < (1024); ridx0++) {
     var  val0 = f16(data1[(gidx0*(131072))+(lidx1*(4096))+(ridx0*(4))]);
     var  val1 = f16(data1[(gidx0*(131072))+(lidx1*(4096))+(ridx0*(4))+(1)]);
@@ -32152,8 +32152,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_512_64_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_512_64_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32173,8 +32173,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = exp2(((val3-val4)*(1.4426950408889634h)));
 }`;
 
-const r_128_32_1024_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_32_1024_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -32191,8 +32191,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const E_512_64_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_512_64_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32212,8 +32212,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (val3/val4);
 }`;
 
-const r_128_8_8_16_1024_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_8_8_16_1024_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32306,8 +32306,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(2048))+(lidx3*(4))+(1539)] = acc15;
 }`;
 
-const r_16_64_8_16_128_4_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_16_64_8_16_128_4_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32444,8 +32444,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(12291)] = (val47+(val63+val67)+(acc15+val71));
 }`;
 
-const r_16_64_8_16_128_4_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_16_64_8_16_128_4_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32538,8 +32538,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(12291)] = acc15;
 }`;
 
-const r_4_16_8_16_64_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_16_8_16_64_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32565,8 +32565,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(16))+(lidx2*(256))+lidx3] = acc0;
 }`;
 
-const r_128_8_8_16_512_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_8_8_16_512_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32731,8 +32731,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = ((val69+(acc15+val73)+(val89+val93))-val94);
 }`;
 
-const r_4_4_8_16_64_4_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_4_8_16_64_4_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32828,8 +32828,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2048))+(gidx1*(64))+(lidx2*(256))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_64_64_8_16_4n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_64_8_16_4n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32857,8 +32857,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_128_8_8_16_512_4_4_3_3n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_8_8_16_512_4_4_3_3n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -32982,8 +32982,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = (acc15+val57);
 }`;
 
-const E_16384_32_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16384_32_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33004,8 +33004,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(128))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const E_64_64_8_16_4n5 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_64_8_16_4n5 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33029,8 +33029,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_128_8_8_16_512_4_4_3_3n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_8_8_16_512_4_4_3_3n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33193,8 +33193,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(512))+(lidx2*(64))+(lidx3*(4))+(12291)] = (val69+(val85+val89)+(acc15+val93));
 }`;
 
-const r_128_16_2_8_16_512_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_16_2_8_16_512_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33313,8 +33313,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(65536))+(gidx1*(1024))+(gidx2*(64))+(lidx3*(128))+(lidx4*(4))+(49155)] = (acc15+val51);
 }`;
 
-const r_1024_32_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_1024_32_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -33331,8 +33331,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const r_32_256_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_4 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -33356,8 +33356,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const r_4_16_8_16_64_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_16_8_16_64_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33415,8 +33415,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_32_256_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_4n1 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -33440,8 +33440,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const E_64_256_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_256_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33471,8 +33471,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_128_16_2_8_16_512_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_16_2_8_16_512_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33592,8 +33592,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(65536))+(gidx1*(1024))+(gidx2*(64))+(lidx3*(128))+(lidx4*(4))+(49155)] = acc15;
 }`;
 
-const r_4_64_8_16_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_64_8_16_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33614,8 +33614,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(16))+(lidx2*(1024))+lidx3] = acc0;
 }`;
 
-const r_4_16_8_16_64_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_16_8_16_64_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33675,8 +33675,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_64_256_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_256_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33708,8 +33708,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const E_32_128_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_128_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33735,8 +33735,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(262144))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+(val7+val8));
 }`;
 
-const r_4_16_8_16_64_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_16_8_16_64_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33813,8 +33813,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_64_256_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_256_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33845,8 +33845,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(3)] = (((val3+(val7+val8))-val9)*val10*val11);
 }`;
 
-const E_64_256_8_16_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_256_8_16_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -33870,8 +33870,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_128_16_2_8_16_512_4_4_3_3n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_16_2_8_16_512_4_4_3_3n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34035,8 +34035,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(65536))+(gidx1*(1024))+(gidx2*(64))+(lidx3*(128))+(lidx4*(4))+(49155)] = (val69+(val85+val89)+(acc15+val93));
 }`;
 
-const r_4_64_8_16_64_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_64_8_16_64_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34062,8 +34062,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(16))+(lidx2*(1024))+lidx3] = acc0;
 }`;
 
-const r_128_16_2_8_16_512_4_4_3_3n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_16_2_8_16_512_4_4_3_3n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34229,8 +34229,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(65536))+(gidx1*(1024))+(gidx2*(64))+(lidx3*(128))+(lidx4*(4))+(49155)] = ((val69+(acc15+val73)+(val89+val93))-val94);
 }`;
 
-const r_4_16_8_16_64_4_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_16_8_16_64_4_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34326,8 +34326,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8192))+(gidx1*(64))+(lidx2*(1024))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_64_256_8_16_4n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_256_8_16_4n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34355,8 +34355,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(131072))+(gidx1*(64))+(lidx2*(16384))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_128_16_2_8_16_512_4_4_3_3n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_16_2_8_16_512_4_4_3_3n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34481,8 +34481,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(65536))+(gidx1*(1024))+(gidx2*(64))+(lidx3*(128))+(lidx4*(4))+(49155)] = (acc15+val57);
 }`;
 
-const E_32768_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32768_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34503,8 +34503,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(256))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_128_32_4_8_16_512_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_128_32_4_8_16_512_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34623,8 +34623,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(262144))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(196611)] = (acc15+val51);
 }`;
 
-const r_8_1024_8_16_128_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8_1024_8_16_128_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34717,8 +34717,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2097152))+(gidx1*(64))+(lidx2*(262144))+(lidx3*(4))+(196611)] = acc15;
 }`;
 
-const r_4096_32_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4096_32_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -34735,8 +34735,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const r_32_256_16 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_16 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -34760,8 +34760,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const r_4_64_8_16_64_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_64_8_16_64_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34819,8 +34819,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_32_256_16n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_16n1 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -34844,8 +34844,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const E_64_1024_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_64_1024_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34875,8 +34875,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(524288))+(gidx1*(64))+(lidx2*(65536))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_64_32_4_8_16_512_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_32_4_8_16_512_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -34996,8 +34996,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(262144))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(196611)] = acc15;
 }`;
 
-const r_4_128_8_16_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_128_8_16_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35018,8 +35018,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(16))+(lidx2*(2048))+lidx3] = acc0;
 }`;
 
-const r_32_256_8 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_8 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -35043,8 +35043,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const r_4_32_8_16_64_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_32_8_16_64_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35104,8 +35104,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(2048))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_32_256_8n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_8n1 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -35129,8 +35129,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const E_32_1024_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_1024_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35162,8 +35162,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(524288))+(gidx1*(64))+(lidx2*(65536))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_64_32_4_8_16_256_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_32_4_8_16_256_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35283,8 +35283,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(262144))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(196611)] = acc15;
 }`;
 
-const E_32_256_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_256_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35312,8 +35312,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(524288))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9));
 }`;
 
-const r_2048_32_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_2048_32_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -35330,8 +35330,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const r_4_32_8_16_64_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_32_8_16_64_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35410,8 +35410,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(2048))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_32_1024_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_1024_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35442,8 +35442,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(524288))+(gidx1*(64))+(lidx2*(65536))+(lidx3*(4))+(3)] = (((val3+val4+(val8+val9))-val10)*val11);
 }`;
 
-const E_32_1024_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_1024_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35469,8 +35469,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(524288))+(gidx1*(64))+(lidx2*(65536))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const E_32_1024_8_16_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_1024_8_16_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35504,8 +35504,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(524288))+(gidx1*(64))+(lidx2*(65536))+(lidx3*(4))+(3)] = (val3+val4+(val8+val9)+(val13+val14));
 }`;
 
-const E_4_8192_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_4_8192_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35539,8 +35539,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4194304))+(gidx1*(64))+(lidx2*(524288))+(lidx3*(4))+(3)] = (val3+val4+(val8+val9)+(val13+val14));
 }`;
 
-const r_4_128_8_16_64_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_128_8_16_64_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35566,8 +35566,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(16))+(lidx2*(2048))+lidx3] = acc0;
 }`;
 
-const r_4_32_8_16_64_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_32_8_16_64_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35625,8 +35625,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(16384))+(gidx1*(64))+(lidx2*(2048))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_32_1024_8_16_4n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_1024_8_16_4n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35656,8 +35656,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(524288))+(gidx1*(64))+(lidx2*(65536))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_64_32_4_8_16_256_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_32_4_8_16_256_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35782,8 +35782,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(262144))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(196611)] = (acc15+val57);
 }`;
 
-const E_32768_128_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32768_128_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35804,8 +35804,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(512))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_64_64_8_8_16_256_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_64_8_8_16_256_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -35924,8 +35924,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1048576))+(gidx1*(4096))+(gidx2*(64))+(lidx3*(512))+(lidx4*(4))+(786435)] = (acc15+val51);
 }`;
 
-const r_4_4096_8_16_64_4_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_4096_8_16_64_4_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36018,8 +36018,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8388608))+(gidx1*(64))+(lidx2*(1048576))+(lidx3*(4))+(786435)] = acc15;
 }`;
 
-const r_8192_32_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_8192_32_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {
@@ -36036,8 +36036,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32))+lidx1] = acc0;
 }`;
 
-const r_32_256_32 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_32 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -36061,8 +36061,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const r_4_128_8_16_64_4_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_128_8_16_64_4_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36120,8 +36120,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(65536))+(gidx1*(64))+(lidx2*(8192))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const r_32_256_32n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_256_32n1 = `enable f16;
+
 var<workgroup> temp: array<f16,256>;
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
@@ -36145,8 +36145,8 @@ var<workgroup> temp: array<f16,256>;
   }
 }`;
 
-const E_32_4096_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_4096_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36176,8 +36176,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2097152))+(gidx1*(64))+(lidx2*(262144))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_32_64_8_8_16_256_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_64_8_8_16_256_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36297,8 +36297,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1048576))+(gidx1*(4096))+(gidx2*(64))+(lidx3*(512))+(lidx4*(4))+(786435)] = acc15;
 }`;
 
-const r_4_256_8_16_64_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_256_8_16_64_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36319,8 +36319,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(16))+(lidx2*(4096))+lidx3] = acc0;
 }`;
 
-const r_4_64_8_16_64_4_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_64_8_16_64_4_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36380,8 +36380,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_16_4096_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16_4096_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36413,8 +36413,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2097152))+(gidx1*(64))+(lidx2*(262144))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_32_64_8_8_16_128_4_4_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_64_8_8_16_128_4_4_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36534,8 +36534,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1048576))+(gidx1*(4096))+(gidx2*(64))+(lidx3*(512))+(lidx4*(4))+(786435)] = acc15;
 }`;
 
-const E_32_512_4_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32_512_4_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36563,8 +36563,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1048576))+(gidx1*(2048))+(gidx2*(64))+(lidx3*(256))+(lidx4*(4))+(3)] = (val3+val4+(val8+val9));
 }`;
 
-const r_4_64_8_16_64_4_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_64_8_16_64_4_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36643,8 +36643,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(64))+(lidx2*(4096))+(lidx3*(4))+(3)] = acc3;
 }`;
 
-const E_16_4096_8_16_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16_4096_8_16_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36675,8 +36675,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2097152))+(gidx1*(64))+(lidx2*(262144))+(lidx3*(4))+(3)] = (((val3+val4+(val8+val9))-val10)*val11);
 }`;
 
-const E_16_4096_8_16_4n2 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16_4096_8_16_4n2 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36702,8 +36702,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2097152))+(gidx1*(64))+(lidx2*(262144))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const E_16_4096_8_16_4n3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16_4096_8_16_4n3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36737,8 +36737,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2097152))+(gidx1*(64))+(lidx2*(262144))+(lidx3*(4))+(3)] = (val3+val4+(val8+val9)+(val13+val14));
 }`;
 
-const E_4_16384_8_16_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_4_16384_8_16_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36772,8 +36772,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(8388608))+(gidx1*(64))+(lidx2*(1048576))+(lidx3*(4))+(3)] = (val3+val4+(val8+val9)+(val13+val14));
 }`;
 
-const r_4_256_8_16_64_4n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_4_256_8_16_64_4n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36799,8 +36799,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(32768))+(gidx1*(16))+(lidx2*(4096))+lidx3] = acc0;
 }`;
 
-const E_16_4096_8_16_4n4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_16_4096_8_16_4n4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36830,8 +36830,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(2097152))+(gidx1*(64))+(lidx2*(262144))+(lidx3*(4))+(3)] = (alu3*((1.0h)/((1.0h)+exp2((alu3*((-1.4426950408889634h)))))));
 }`;
 
-const r_32_64_8_8_16_128_4_4_3_3n1 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_32_64_8_8_16_128_4_4_3_3n1 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36956,8 +36956,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1048576))+(gidx1*(4096))+(gidx2*(64))+(lidx3*(512))+(lidx4*(4))+(786435)] = (acc15+val57);
 }`;
 
-const E_32768_256_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_32768_256_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -36978,8 +36978,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(1024))+(lidx1*(4))+(3)] = (val3+val7);
 }`;
 
-const r_64_8_8_16_128_4_3_3_3 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const r_64_8_8_16_128_4_3_3_3 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @group(0) @binding(2) var<storage,read_write> data2: array<f16>;
@@ -37081,8 +37081,8 @@ fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
   data0[(gidx0*(4096))+(gidx1*(64))+(lidx2*(512))+(lidx3*(4))+(524291)] = (acc11+val47);
 }`;
 
-const E_2048_32_3_4 = `enanble f16;
-fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }
+const E_2048_32_3_4 = `enable f16;
+
 @group(0) @binding(0) var<storage,read_write> data0: array<f16>;
 @group(0) @binding(1) var<storage,read_write> data1: array<f16>;
 @compute @workgroup_size(3,32) fn main(@builtin(workgroup_id) gindex: vec3<u32>, @builtin(local_invocation_id) lindex: vec3<u32>) {

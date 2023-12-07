@@ -142,9 +142,13 @@ if __name__ == "__main__":
     
     
     if args.dtype == 'f16':
-      kernel_code = '\n\n'.join([f"const {key} = `enanble f16;\n{code.replace(key, 'main')}`;" for key, code in functions.items()])
+      kernel_code = '\n\n'.join([f"const {key} = `enable f16;\n{code.replace(key, 'main')}`;" for key, code in functions.items()])
       kernel_code = kernel_code.replace('f32', 'f16')
       kernel_code = replace_float_literals(kernel_code)
+      # replace -0x1.fffffep+127h with 65504.0h
+      kernel_code = kernel_code.replace('-0x1.fffffep+127h', '65504.0h')
+      # remove all "fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }"
+      kernel_code = re.sub(r'fn nan\(\) -> f16 \{ let bits = 0xffffffffu; return bitcast<f16>\(bits\); \}', '', kernel_code)
     else:
       kernel_code = '\n\n'.join([f"const {key} = `{code.replace(key, 'main')}`;" for key, code in functions.items()])
       
