@@ -1,5 +1,6 @@
 import os
 import struct
+import re
 
 import argparse
 from collections import namedtuple
@@ -56,6 +57,21 @@ def get_controlnet_url_file(variant):
             os.path.join(str(Path(__file__).parents[3]), "weights/sd-controlnet-scribble.bin"))
   else:
     raise ValueError(f"Unknown variant: {variant}")
+  
+def replace_float_literals(kernel_code):
+  # Define the regex pattern for floating point literals
+  float_literal_pattern = r"""
+      /0[fh]/ |                           # Match 0 followed by 'f' or 'h'
+      /[1-9][0-9]*[fh]/ |                 # Match a non-zero digit followed by any digits and 'f' or 'h'
+      /[0-9]*\.[0-9]+([eE][+-]?[0-9]+)?[fh]?/ |   # Match floating point literals with optional exponent
+      /[0-9]+\.[0-9]*([eE][+-]?[0-9]+)?[fh]?/ |   # Match floating point literals with optional exponent
+      /[0-9]+[eE][+-]?[0-9]+[fh]?/              # Match literals with exponent
+  """
+
+  # Replace 'f' with 'h' in the matched literals
+  replaced_code = re.sub(r'(\d+(\.\d+)?(e[+-]?\d+)?)[f]', r'\1h', kernel_code, flags=re.IGNORECASE|re.VERBOSE)
+
+  return replaced_code
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='Compile ControlNet', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -128,6 +144,7 @@ if __name__ == "__main__":
     if args.dtype == 'f16':
       kernel_code = '\n\n'.join([f"const {key} = `enanble f16;\n{code.replace(key, 'main')}`;" for key, code in functions.items()])
       kernel_code = kernel_code.replace('f32', 'f16')
+      kernel_code = replace_float_literals(kernel_code)
     else:
       kernel_code = '\n\n'.join([f"const {key} = `{code.replace(key, 'main')}`;" for key, code in functions.items()])
       
@@ -146,10 +163,17 @@ if __name__ == "__main__":
     bufs =  '\n  '.join([f"const {name} = " + (f"createEmptyBuf(device, {size});" if _key not in weights else f"await createWeightBuf(device, {size}, filename, metadata['{weights[_key]}'], metadataLength)") + ";"  for name,(size,dtype,_key) in bufs.items()])
     
     # Allocate Stage buffer for input
-    gpu_write_bufs =  '\n  '.join([f"const gpuWriteBuffer{i} = device.createBuffer({{size:input{i}.size, usage: GPUBufferUsage.COPY_SRC | GPUBufferUsage.MAP_WRITE }});" for i,(_,value) in enumerate(special_names.items()) if "output" not in value])
+    gpu_write_bufs =  '\n  '.join([f"const gpuWriteBuffer{i} = device.createBuffer({{size:input{i}.size+input{i}.size%4, usage: GPUBufferUsage.COPY_SRC | GPUBufferUsage.MAP_WRITE }});" for i,(_,value) in enumerate(special_names.items()) if "output" not in value])
     
-    # Write input data to GPU
-    input_writer = '\n  '.join([f"await gpuWriteBuffer{i}.mapAsync(GPUMapMode.WRITE);\n  new Float32Array(gpuWriteBuffer{i}.getMappedRange()).set(" + f'data{i});' + f"\n  gpuWriteBuffer{i}.unmap();\ncommandEncoder.copyBufferToBuffer(gpuWriteBuffer{i}, 0, input{i}, 0, gpuWriteBuffer{i}.size);"  for i,(_,value) in enumerate(special_names.items()) if value != "output0"])
+    if args.dtype == 'f16':
+      input_writer = '\n  '.join([f"await gpuWriteBuffer{i}.mapAsync(GPUMapMode.WRITE);\n  new Uint16Array(gpuWriteBuffer{i}.getMappedRange()).set(" + f'data{i});' + f"\n  gpuWriteBuffer{i}.unmap();\ncommandEncoder.copyBufferToBuffer(gpuWriteBuffer{i}, 0, input{i}, 0, gpuWriteBuffer{i}.size);"  for i,(_,value) in enumerate(special_names.items()) if value != "output0"])
+      result_writer = """const resultBuffer = new Uint16Array(gpuReadBuffer.size/2);
+        resultBuffer.set(new Uint16Array(gpuReadBuffer.getMappedRange()));"""
+    else:
+      input_writer = '\n  '.join([f"await gpuWriteBuffer{i}.mapAsync(GPUMapMode.WRITE);\n  new Float32Array(gpuWriteBuffer{i}.getMappedRange()).set(" + f'data{i});' + f"\n  gpuWriteBuffer{i}.unmap();\ncommandEncoder.copyBufferToBuffer(gpuWriteBuffer{i}, 0, input{i}, 0, gpuWriteBuffer{i}.size);"  for i,(_,value) in enumerate(special_names.items()) if value != "output0"])
+      result_writer = """const resultBuffer = new Float32Array(gpuReadBuffer.size/4);
+        resultBuffer.set(new Float32Array(gpuReadBuffer.getMappedRange()));"""
+    
     return f"""\n  var {step.name} = function() {{
   
     {kernel_code}
@@ -159,7 +183,7 @@ if __name__ == "__main__":
       {bufs}
       
       {gpu_write_bufs}
-      const gpuReadBuffer = device.createBuffer({{ size: output0.size, usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ }});
+      const gpuReadBuffer = device.createBuffer({{ size: output0.size+output0.size%4, usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ }});
 
       const kernels = [{kernel_names}];
       const piplines = await Promise.all(kernels.map(name => device.createComputePipelineAsync({{layout: "auto", compute: {{ module: device.createShaderModule({{ code: name }}), entryPoint: "main" }}}})));
@@ -177,8 +201,7 @@ if __name__ == "__main__":
         device.queue.submit([gpuCommands]);
 
         await gpuReadBuffer.mapAsync(GPUMapMode.READ);
-        const resultBuffer = new Float32Array(gpuReadBuffer.size/4);
-        resultBuffer.set(new Float32Array(gpuReadBuffer.getMappedRange()));
+        {result_writer}
         gpuReadBuffer.unmap();
         return resultBuffer;
       }}
@@ -200,10 +223,12 @@ if __name__ == "__main__":
     if step.name == "diffusor":
       state = get_state_dict(model)
       ensure_nonzero_state(state)
-      fp32_dir = os.path.join(args.weights_dir, "net_{}.safetensors".format(args.variant))
-      safe_save(state, fp32_dir)
+      f32_dir = os.path.join(args.weights_dir, "net_{}.safetensors".format(args.variant))
+      safe_save(state, f32_dir)
       if args.dtype == "f16":
-        convert_f32_to_f16(fp32_dir, os.path.join(args.weights_dir, "net_f16_{}.safetensors".format(args.variant)))
+        f16_dir = os.path.join(args.weights_dir, "net_f16_{}.safetensors".format(args.variant))
+        if not os.path.exists(f16_dir):
+          convert_f32_to_f16(f32_dir, f16_dir)
     
   prekernel = f"""
     window.MODEL_BASE_URL= "{base_url}";
@@ -214,7 +239,7 @@ if __name__ == "__main__":
     }};
 
   const createEmptyBuf = (device, size) => {{
-      return device.createBuffer({{size, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.COPY_DST }});
+      return device.createBuffer({{size+size%4, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.COPY_DST }});
   }};
   
   const readRangeFromFile = async (file, start, end) => {{
@@ -256,7 +281,7 @@ if __name__ == "__main__":
     
     let data = await readWeightsFromFile(filename, tensorMetaData, metadataLength);
 
-    const buf = device.createBuffer({{ mappedAtCreation: true, size, usage: GPUBufferUsage.STORAGE }});
+    const buf = device.createBuffer({{ mappedAtCreation: true, size+size%4, usage: GPUBufferUsage.STORAGE }});
     new Uint8Array(buf.getMappedRange()).set(data);
     buf.unmap();
     return buf;
