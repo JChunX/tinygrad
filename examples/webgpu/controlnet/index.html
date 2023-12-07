@@ -78,7 +78,7 @@
         window.clipTokenizer = new ClipTokenizer();
     </script>
     <script src="./f16_to_f32.js"></script>
-    <script src="./net.js"></script>
+    <!-- <script src="./net.js"></script> -->
     <script async src="https://docs.opencv.org/master/opencv.js"></script>
 </head>
 
@@ -145,6 +145,9 @@
     <script>
         let nets, metadata, safetensorsName, metadataLength;
         var f16 = false;
+        var head = document.getElementsByTagName('head')[0];
+        var js = document.createElement("script");
+        js.type = "text/javascript";
 
         function previewImage() {
             var fileInput = document.getElementById('imageUpload');
@@ -257,7 +260,7 @@
         const getDevice = async () => {
             const adapter = await navigator.gpu.requestAdapter();
             const requiredLimits = {};
-            const maxBufferSizeInSDModel = 4294967292; // ~4GB
+            const maxBufferSizeInSDModel = 2147483644; // ~4GB
             requiredLimits.maxStorageBufferBindingSize = maxBufferSizeInSDModel;
             requiredLimits.maxBufferSize = maxBufferSizeInSDModel;
 
@@ -467,11 +470,9 @@
             else if (modelVariant == "scribble") {
                 return "./net_scribble.safetensors";
             } else if (modelVariant == "canedgef16") {
-                f16 = true;
                 return "./net_canny_f16.safetensors";
             }
             else if (modelVariant == "scribblef16") {
-                f16 = true;
                 return "./net_scribble_f16.safetensors";
             }
         }
@@ -646,6 +647,14 @@
         //after selecting model variant, load the model, enable all other options
         function modelSelect() {
             const modelVariant = document.getElementById("constraintSelect").value;
+            if (modelVariant == "canedgef16" || modelVariant == "scribblef16") {
+                f16 = true;
+                js.src = "./net_f16.js";
+            } else {
+                f16 = false;
+                js.src = "./net_f32.js";
+            }
+            head.appendChild(js);
             loadNet(modelVariant);
             document.getElementById("promptText").disabled = false;
             document.getElementById("stepRange").disabled = false;
