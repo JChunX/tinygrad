@@ -375,6 +375,22 @@
             return float32View[0];
         }
 
+        function convertArrayToFloat16(array) {
+            let uint16Array = new Uint16Array(array.length);
+            for (let i = 0; i < array.length; i++) {
+                uint16Array[i] = float32ToFloat16(array[i]);
+            }
+            return uint16Array;
+        }
+
+        function convertArrayToFloat32(uint16Array) {
+            let float32Array = new Float32Array(uint16Array.length);
+            for (let i = 0; i < uint16Array.length; i++) {
+                float32Array[i] = float16ToFloat32(uint16Array[i]);
+            }
+            return float32Array;
+        }
+
         function convertToCanny(canvas, cannyHigh, cannyLow) {
 
             const ctx = canvas.getContext('2d');
@@ -444,23 +460,6 @@
                 }
             }
             return control_tensor;
-
-            // const data = imgData.data;
-
-            // const rows = imgData.height;
-            // const cols = imgData.width;
-
-            // let control_tensor = new Float32Array(3 * 512 * 512);
-            // for (let i = 0; i < rows; i++) {
-            //     for (let j = 0; j < cols; j++) {
-            //         let dstIndex = i * cols + j;
-            //         let value = data[4 * dstIndex + 3] / 255.0;
-            //         control_tensor[0 * 512 * 512 + dstIndex] = value;
-            //         control_tensor[1 * 512 * 512 + dstIndex] = value;
-            //         control_tensor[2 * 512 * 512 + dstIndex] = value;
-            //     }
-            // }
-            // return control_tensor;
         }
 
         function getSafeTensorName(modelVariant) {
@@ -498,6 +497,14 @@
                     let context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP(prompt)));
                     let unconditional_context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP("")));
 
+                    if (f16) {
+                        context = convertArrayToFloat16(context);
+                        unconditional_context = convertArrayToFloat16(unconditional_context);
+                    }
+
+                    // let context = f16 ? new Uint16Array(118272) : new Float32Array(118272);
+                    // let unconditional_context = f16 ? new Uint16Array(59136) : new Float32Array(59136);
+
                     let timesteps = [];
 
                     for (let i = 1; i < 1000; i += (1000 / steps)) {
@@ -506,11 +513,21 @@
 
                     console.log("Timesteps: " + timesteps);
 
-                    const alphaCumprods = await readRangeFromFile(
-                        safetensorsName,
-                        metadata['alphas_cumprod']['data_offsets'][0] + 8 + metadataLength,
-                        metadata['alphas_cumprod']['data_offsets'][1] + 8 + metadataLength);
-                    let alphasCumprod = f16 ? new Uint16Array(alphaCumprods.buffer) : new Float32Array(alphaCumprods.buffer);
+                    let alphasCumprod = null;
+                    if (f16) {
+                        const alphaCumprods = await readRangeFromFile(
+                            safetensorsName,
+                            metadata['alphas_cumprod']['data_offsets'][0]/2 + 8 + metadataLength,
+                            metadata['alphas_cumprod']['data_offsets'][1]/2 + 8 + metadataLength);
+                        alphasCumprod = new Uint16Array(alphaCumprods.buffer);
+                    }
+                    else {
+                        const alphaCumprods = await readRangeFromFile(
+                            safetensorsName,
+                            metadata['alphas_cumprod']['data_offsets'][0] + 8 + metadataLength,
+                            metadata['alphas_cumprod']['data_offsets'][1] + 8 + metadataLength);
+                        alphasCumprod = new Float32Array(alphaCumprods.buffer);
+                    }
 
                     let alphas = [];
 
@@ -518,23 +535,27 @@
                         alphas.push(alphasCumprod[Math.floor(t)]);
                     }
 
-                    alphas_prev = [1.0];
+                    alphas_prev = f16 ? [float32ToFloat16(1.0)] : [1.0];
 
                     for (let i = 0; i < alphas.length - 1; i++) {
                         alphas_prev.push(alphas[i]);
                     }
 
                     let inpSize = 4 * 64 * 64;
-                    latent = f16 ? new Uint16Array(inpSize) : new Float32Array(inpSize);
+                    latent = new Float32Array(inpSize);
 
                     for (let i = 0; i < inpSize; i++) {
                         latent[i] = Math.sqrt(-2.0 * Math.log(Math.random())) * Math.cos(2.0 * Math.PI * Math.random());
                     }
 
+                    if (f16) {
+                        latent = convertArrayToFloat16(latent);
+                    }
+
                     for (let i = timesteps.length - 1; i >= 0; i--) {
                         let timestep = f16 ? new Uint16Array([float32ToFloat16(timesteps[i])]) : new Float32Array([timesteps[i]]);
-                        let alpha_i = f16 ? new Uint16Array([float32ToFloat16(alphas[i])]) : new Float32Array([alphas[i]]);
-                        let alpha_i_prev = f16 ? new Uint16Array([float32ToFloat16(alphas_prev[i])]) : new Float32Array([alphas_prev[i]]);
+                        let alpha_i = f16 ? new Uint16Array([alphas[i]]) : new Float32Array([alphas[i]]);
+                        let alpha_i_prev = f16 ? new Uint16Array([alphas_prev[i]]) : new Float32Array([alphas_prev[i]]);
                         let guidance_i = f16 ? new Uint16Array([float32ToFloat16(guidance)]) : new Float32Array([guidance]);
                         let conditioning_scale_i = f16 ? new Uint16Array([float32ToFloat16(conditioning_scale)]) : new Float32Array([conditioning_scale]);
                         let x_prev = await timer(() => nets["diffusor"](

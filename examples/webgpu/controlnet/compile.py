@@ -146,16 +146,17 @@ if __name__ == "__main__":
       kernel_code = kernel_code.replace('f32', 'f16')
       kernel_code = replace_float_literals(kernel_code)
       # replace -0x1.fffffep+127h with 65504.0h
-      kernel_code = kernel_code.replace('-0x1.fffffep+127h', '65504.0h')
-      # remove all "fn nan() -> f16 { let bits = 0xffffffffu; return bitcast<f16>(bits); }"
-      kernel_code = re.sub(r'fn nan\(\) -> f16 \{ let bits = 0xffffffffu; return bitcast<f16>\(bits\); \}', '', kernel_code)
+      kernel_code = kernel_code.replace('-0x1.fffffep+127h', '-65504.0h')
+      # replace all nan() decls
+      kernel_code = re.sub(r'fn nan\(\) -> f16 \{ let bits = 0xffffffffu; return bitcast<f16>\(bits\); \}', 
+                           '', kernel_code)
     else:
       kernel_code = '\n\n'.join([f"const {key} = `{code.replace(key, 'main')}`;" for key, code in functions.items()])
       
     kernel_names = ', '.join([name for (name, _, _, _) in statements])
     
     # Creates bind groups and compute pass
-    nskip = 2
+    nskip = 1
     kernel_calls = [f"addComputePass(device, passEncoder, piplines[{i}], [{', '.join(args)}], {global_size});" for i, (_name, args, global_size, _local_size) in enumerate(statements) ]
     # every 3rd kernel call, we inject passEncoder.end() and passEncoder = commandEncoder.beginComputePass()
     kernel_calls = [f"passEncoder.end();\n    passEncoder = commandEncoder.beginComputePass();\n    {kernel_call}" if (i % nskip == 0 and i > 0 and i < len(kernel_calls)-1) else kernel_call for i , kernel_call in enumerate(kernel_calls)]
