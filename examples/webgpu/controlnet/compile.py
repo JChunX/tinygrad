@@ -13,6 +13,7 @@ from tinygrad.ops import Device
 from tinygrad.nn.state import load_state_dict, torch_load, get_state_dict, safe_save, safe_load_metadata
 from tinygrad.tensor import Tensor
 from extra.export_model import jit_model, compile_net
+from tinygrad.helpers import Context, getenv
 
 from examples.stable_diffusion import (
   StableDiffusion,
@@ -134,22 +135,28 @@ if __name__ == "__main__":
     return state_dict
   
   def compile_step(model, step: Step):
-    run, special_names = jit_model(step, *step.input)
-    functions, statements, bufs, _ = compile_net(run, special_names)
-    
-    state = get_state_dict(model)
-    weights = {id(x.lazydata.realized): name for name, x in state.items()}
+    with Context(BEAM=getenv("LATEBEAM")):
+      run, special_names = jit_model(step, *step.input)
+      functions, statements, bufs, _ = compile_net(run, special_names)
+      
+      state = get_state_dict(model)
+      weights = {id(x.lazydata.realized): name for name, x in state.items()}
     
     
     if args.dtype == 'f16':
       kernel_code = '\n\n'.join([f"const {key} = `enable f16;\n{code.replace(key, 'main')}`;" for key, code in functions.items()])
       kernel_code = kernel_code.replace('f32', 'f16')
       kernel_code = replace_float_literals(kernel_code)
-      # replace -0x1.fffffep+127h with 65504.0h
-      kernel_code = kernel_code.replace('-0x1.fffffep+127h', '-65504.0h')
+      # replace -0x1.fffffep+127h with -f16 max val
+      kernel_code = kernel_code.replace('-0x1.fffffep+127h', '-60000.0h')
       # replace all nan() decls
       kernel_code = re.sub(r'fn nan\(\) -> f16 \{ let bits = 0xffffffffu; return bitcast<f16>\(bits\); \}', 
                            '', kernel_code)
+      # clipping
+      kernel_code = re.sub(r'f16\((data[0-9])\[(.*?)\]\)', r'max(-65000.0h, min(65000.0h, f16(\1[\2])))', kernel_code)
+      
+      kernel_code = re.sub(r"data([0-9])\[(.*?)\] = (.*?);", r"data\1[\2] = max(-65000.0h, min(65000.0h, \3));", kernel_code)
+
     else:
       kernel_code = '\n\n'.join([f"const {key} = `{code.replace(key, 'main')}`;" for key, code in functions.items()])
       

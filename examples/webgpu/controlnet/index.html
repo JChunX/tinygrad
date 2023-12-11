@@ -494,16 +494,16 @@
             function runStableDiffusion(control_tensor, prompt, steps, guidance, conditioning_scale) {
                 return new Promise(async (resolve, reject) => {
 
-                    let context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP(prompt)));
-                    let unconditional_context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP("")));
+                    // let context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP(prompt)));
+                    // let unconditional_context = await timer(() => nets["textModel"](clipTokenizer.encodeForCLIP("")));
 
-                    if (f16) {
-                        context = convertArrayToFloat16(context);
-                        unconditional_context = convertArrayToFloat16(unconditional_context);
-                    }
+                    // if (f16) {
+                    //     context = convertArrayToFloat16(context);
+                    //     unconditional_context = convertArrayToFloat16(unconditional_context);
+                    // }
 
-                    // let context = f16 ? new Uint16Array(118272) : new Float32Array(118272);
-                    // let unconditional_context = f16 ? new Uint16Array(59136) : new Float32Array(59136);
+                    let context = f16 ? new Uint16Array(118272) : new Float32Array(118272);
+                    let unconditional_context = f16 ? new Uint16Array(59136) : new Float32Array(59136);
 
                     let timesteps = [];
 

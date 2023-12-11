@@ -734,7 +734,6 @@ if __name__ == "__main__":
       t.set_description("%3d %3d" % (index, timestep))
       with Timing("step in ", enabled=args.timing, on_exit=lambda _: f", using {GlobalCounters.mem_used/1e9:.2f} GB"):
         tid = Tensor([index])
-        print(canny_condition.shape)
         latent = run(model, canny_condition, unconditional_context, context, latent, Tensor(
           [timestep]), alphas[tid], alphas_prev[tid], Tensor([args.guidance]), Tensor([args.conditioning_scale]))
         if args.timing: Device[Device.DEFAULT].synchronize()
