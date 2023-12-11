@@ -32750,6 +32750,8 @@ commandEncoder.copyBufferToBuffer(gpuWriteBuffer8, 0, input8, 0, gpuWriteBuffer8
     passEncoder.end();
     passEncoder = commandEncoder.beginComputePass();
     addComputePass(device, passEncoder, piplines[1372], [buf_1, input6], [1, 1, 1]);
+    passEncoder.end();
+    passEncoder = commandEncoder.beginComputePass();
     addComputePass(device, passEncoder, piplines[1373], [output0, buf_0, buf_143, buf_1, buf_433, buf_1118, input7], [64, 1, 1]);
     passEncoder.end();
         commandEncoder.copyBufferToBuffer(output0, 0, gpuReadBuffer, 0, output0.size);
@@ -39570,6 +39572,8 @@ commandEncoder.copyBufferToBuffer(gpuWriteBuffer0, 0, input0, 0, gpuWriteBuffer0
     passEncoder.end();
     passEncoder = commandEncoder.beginComputePass();
     addComputePass(device, passEncoder, piplines[221], [buf_177, buf_157, buf_178, buf_179], [8, 64, 1]);
+    passEncoder.end();
+    passEncoder = commandEncoder.beginComputePass();
     addComputePass(device, passEncoder, piplines[222], [output0, buf_177], [2048, 1, 1]);
     passEncoder.end();
         commandEncoder.copyBufferToBuffer(output0, 0, gpuReadBuffer, 0, output0.size);
